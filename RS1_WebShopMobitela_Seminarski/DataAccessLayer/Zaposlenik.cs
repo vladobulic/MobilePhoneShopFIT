@@ -2,12 +2,12 @@ using DataAccessLayer;
 using System;
 public class Zaposlenik : BaseEntity {
 	 
-	public string Ime;
-	public string Prezime;
-	public string Ulica;
-	public string Email;
-	public string Password;
-	public bool isDeleted;
+	public string Ime { get; set; }
+	public string Prezime { get; set; }
+	public string Ulica { get; set; }
+	public string Email { get; set; }
+	public string Password { get; set; }
+	public bool isDeleted { get; set; }
 
 	public virtual System.Collections.Generic.List<Servis> Servis { get; set; }
 	public virtual System.Collections.Generic.List<Narudzba> Narudzba { get; set; }

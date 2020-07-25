@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace RepositoryLayer
 {
@@ -8,12 +9,12 @@ namespace RepositoryLayer
         {
         }
         public DbSet<Administrator> Administratori { get; set; }
-        public DbSet<BannedKupac> BannedKupaci { get; set; }
+        public DbSet<BannedKupac> BannedKupci { get; set; }
         public DbSet<Dobavljac> Dobavljaci { get; set; }
         public DbSet<Grad> Gradovi { get; set; }
         public DbSet<Komentar> Komentari { get; set; }
         public DbSet<Komponente> Komponente { get; set; }
-        public DbSet<Kupac> Kupaci { get; set; }
+        public DbSet<Kupac> Kupci { get; set; }
         public DbSet<Log> Log { get; set; }
         public DbSet<Mobiteli> Mobiteli { get; set; }
         public DbSet<Narudzba> Narudzbe { get; set; }
@@ -33,7 +34,35 @@ namespace RepositoryLayer
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             base.OnModelCreating(modelBuilder);
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+            //modelBuilder.Entity<Administrator>();
+            //modelBuilder.Entity<BannedKupac>();
+            //modelBuilder.Entity<Dobavljac>();
+            //modelBuilder.Entity<Grad>();
+            //modelBuilder.Entity<Komentar>();
+            //modelBuilder.Entity<Komponente>();
+            //modelBuilder.Entity<Kupac>();
+            //modelBuilder.Entity<Log>();
+            //modelBuilder.Entity<Mobiteli>();
+            //modelBuilder.Entity<Narudzba>();
+            //modelBuilder.Entity<Novosti>();
+            //modelBuilder.Entity<OperativniSustav>();
+            //modelBuilder.Entity<Popusti>();
+            //modelBuilder.Entity<Poruka>();
+            //modelBuilder.Entity<Proizvodjac>();
+            //modelBuilder.Entity<Servis>();
+            //modelBuilder.Entity<Slika>();
+            //modelBuilder.Entity<SmsLog>();
+            //modelBuilder.Entity<StavkaNarudzbe>();
+            //modelBuilder.Entity<StavkaServisa>();
+            //modelBuilder.Entity<TipKomponente>();
+            //modelBuilder.Entity<Zaposlenik>();
+            //modelBuilder.Entity<Zupanija>();
         }
     }
 }

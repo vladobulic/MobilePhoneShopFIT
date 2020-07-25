@@ -3,8 +3,8 @@ using System;
 public class Grad : BaseEntity
 {
 
-    public string Naziv;
-    public int PostanskiBroj;
+    public string Naziv { get; set; }
+    public int PostanskiBroj { get; set; }
 
     public virtual System.Collections.Generic.List<Narudzba> Narudzba { get; set; }
     public virtual System.Collections.Generic.List<Zaposlenik> Zaposlenik { get; set; }

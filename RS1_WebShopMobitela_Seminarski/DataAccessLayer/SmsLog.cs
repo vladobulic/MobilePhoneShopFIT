@@ -2,8 +2,8 @@ using DataAccessLayer;
 using System;
 public class SmsLog : BaseEntity {
 	 
-	public string Broj;
-	public string Poruka;
-	public string Dodatnisadrzaj;
+	public string Broj { get; set; }
+	public string Poruka { get; set; }
+	public string Dodatnisadrzaj { get; set; }
 
 }

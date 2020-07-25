@@ -2,13 +2,13 @@ using DataAccessLayer;
 using System;
 public class Kupac : BaseEntity {
 
-	public string Ime;
-	public string Prezime;
-	public string Email;
-	public string Password;
-	public int BrojPokusaja;
-	public DateTime DatumPokusaja;
-	public string BrojMobitela;
+	public string Ime { get; set; }
+	public string Prezime { get; set; }
+	public string Email { get; set; }
+	public string Password { get; set; }
+	public int BrojPokusaja { get; set; }
+	public DateTime DatumPokusaja { get; set; }
+	public string BrojMobitela { get; set; }
 
 	public virtual System.Collections.Generic.List<Narudzba> Narudzba { get; set; }
 	public virtual System.Collections.Generic.List<Komentar> Komentar { get; set; }

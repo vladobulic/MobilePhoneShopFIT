@@ -2,19 +2,19 @@ using DataAccessLayer;
 using System;
 public class Mobiteli : BaseEntity{
 	 
-	public string Naziv;
-	public float Megapikseli;
-	public float Ram_Gb;
-	public int StanjeNaSkladistu;
-	public bool EksternaMemorija;
-	public double Cijena;
-	public int KapacitetBaterije;
-	public int Tezina;
-	public string Rezolucija;
-	public float DijagonalaEkrana;
-	public string Procesor;
-	public string Graficka;
-	public bool IsDeleted;
+	public string Naziv { get; set; }
+	public float Megapikseli { get; set; }
+	public float Ram_Gb { get; set; }
+	public int StanjeNaSkladistu { get; set; }
+	public bool EksternaMemorija { get; set; }
+	public double Cijena { get; set; }
+	public int KapacitetBaterije { get; set; }
+	public int Tezina { get; set; }
+	public string Rezolucija { get; set; }
+	public float DijagonalaEkrana { get; set; }
+	public string Procesor { get; set; }
+	public string Graficka { get; set; }
+	public bool IsDeleted { get; set; }
 
 
 	public virtual System.Collections.Generic.List<Slika> Slika { get; set; }

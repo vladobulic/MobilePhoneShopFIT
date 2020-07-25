@@ -2,9 +2,9 @@ using DataAccessLayer;
 using System;
 public class Komponente : BaseEntity{
 	 
-	public string Ime;
-	public int KolicinaNaSkladistu;
-	public double PreporucenaCijena;
+	public string Ime { get; set; }
+	public int KolicinaNaSkladistu { get; set; }
+	public double PreporucenaCijena { get; set; }
 
 	public virtual System.Collections.Generic.List<StavkaServisa> StavkaServisa { get; set; }
 

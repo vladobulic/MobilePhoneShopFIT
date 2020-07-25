@@ -2,11 +2,11 @@ using DataAccessLayer;
 using System;
 public class Servis : BaseEntity{
 	 
-	public DateTime DatumPrijema;
-	public DateTime DatumZavrsetka;
-	public string Opis;
-	public double CijenaUkupno;
-	public int StanjeServisa;
+	public DateTime DatumPrijema { get; set; }
+	public DateTime DatumZavrsetka { get; set; }
+	public string Opis { get; set; }
+	public double CijenaUkupno { get; set; }
+	public int StanjeServisa { get; set; }
 
 	public virtual System.Collections.Generic.List<StavkaServisa> StavkaServisa { get; set; }
 

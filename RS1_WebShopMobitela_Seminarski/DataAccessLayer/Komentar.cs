@@ -2,9 +2,9 @@ using DataAccessLayer;
 using System;
 public class Komentar : BaseEntity{
 	 
-	public string Sadrzaj;
-	public DateTime Datum;
-	public bool IsDeleted;
+	public string Sadrzaj { get; set; }
+	public DateTime Datum { get; set; }
+	public bool IsDeleted { get; set; }
 
 	public int MobitelId { get; set; }
 	public virtual Mobiteli Mobitel { get; set; }
