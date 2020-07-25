@@ -8,23 +8,23 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\sandr\\.nuget\\packages\\": {},
+    "C:\\Users\\sandol\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sandr\\Documents\\Fakultet\\rs1\\webapp\\RS1_WebShopMobitela_Seminarski\\Web\\Web.csproj",
+      "projectUniqueName": "C:\\Users\\sandol\\Documents\\Faculty\\3 godina\\RS1\\webapp\\webapp\\RS1_WebShopMobitela_Seminarski\\Web\\Web.csproj",
       "projectName": "Web",
-      "projectPath": "C:\\Users\\sandr\\Documents\\Fakultet\\rs1\\webapp\\RS1_WebShopMobitela_Seminarski\\Web\\Web.csproj",
-      "packagesPath": "C:\\Users\\sandr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sandr\\Documents\\Fakultet\\rs1\\webapp\\RS1_WebShopMobitela_Seminarski\\Web\\obj\\",
+      "projectPath": "C:\\Users\\sandol\\Documents\\Faculty\\3 godina\\RS1\\webapp\\webapp\\RS1_WebShopMobitela_Seminarski\\Web\\Web.csproj",
+      "packagesPath": "C:\\Users\\sandol\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sandol\\Documents\\Faculty\\3 godina\\RS1\\webapp\\webapp\\RS1_WebShopMobitela_Seminarski\\Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\sandr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sandol\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
