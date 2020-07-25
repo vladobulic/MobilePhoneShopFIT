@@ -8,6 +8,10 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using RepositoryLayer;
+using ServiceLayer;
 
 namespace Web
 {
@@ -23,6 +27,11 @@ namespace Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient<IMobitelService, MobitelService>();
+            services.AddTransient<IGradoviService, GradoviService>();
+
             services.AddControllersWithViews();
         }
 
@@ -48,9 +57,14 @@ namespace Web
 
             app.UseEndpoints(endpoints =>
             {
+               
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    name: "Areas",
+                    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                   name: "Customer",
+                   pattern: "{area=Customer}/{controller=Customer}/{action=Index}/{id?}");
             });
         }
     }
