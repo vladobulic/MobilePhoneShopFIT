@@ -25,7 +25,7 @@ public class Mobiteli : BaseEntity{
 	public virtual Proizvodjac Prozivodjac { get; set; }
 	public int OperativniSustavId { get; set; }
 	public virtual OperativniSustav OperativniSustav { get; set; }
-	public int PopustId { get; set; }
+	public int? PopustId { get; set; }
 	public virtual Popusti Popust { get; set; }
 
 }

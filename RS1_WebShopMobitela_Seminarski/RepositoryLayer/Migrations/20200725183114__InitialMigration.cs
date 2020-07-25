@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RepositoryLayer.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class _InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -111,8 +111,7 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Naziv = table.Column<string>(nullable: true),
-                    Verzija = table.Column<float>(nullable: false)
+                    Naziv = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -181,7 +180,7 @@ namespace RepositoryLayer.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     ProizvodjacId = table.Column<int>(nullable: false),
                     OperativniSustavId = table.Column<int>(nullable: false),
-                    PopustId = table.Column<int>(nullable: false)
+                    PopustId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -533,6 +532,79 @@ namespace RepositoryLayer.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Administratori",
+                columns: new[] { "Id", "Email", "Ime", "IsSuperAdmin", "Password", "Prezime" },
+                values: new object[] { 1, "admin@admin.com", "admin", true, "admin", "admin" });
+
+            migrationBuilder.InsertData(
+                table: "Dobavljaci",
+                columns: new[] { "Id", "Broj", "Ime", "Mail" },
+                values: new object[] { 1, "063323718", "Samsung", "dobavljac@dobavljac.com" });
+
+            migrationBuilder.InsertData(
+                table: "OperativniSustavi",
+                columns: new[] { "Id", "Naziv", "Verzija" },
+                values: new object[] { 1, "Android", 11f });
+
+            migrationBuilder.InsertData(
+                table: "Popusti",
+                columns: new[] { "Id", "DatumDo", "DatumOd", "PostotakPopusta" },
+                values: new object[] { 1, new DateTime(2020, 7, 25, 20, 31, 13, 656, DateTimeKind.Local).AddTicks(3134), new DateTime(2020, 7, 25, 20, 31, 13, 653, DateTimeKind.Local).AddTicks(7492), 5f });
+
+            migrationBuilder.InsertData(
+                table: "Proizvodjaci",
+                columns: new[] { "Id", "Naziv" },
+                values: new object[] { 1, "Samsung" });
+
+            migrationBuilder.InsertData(
+                table: "Zupanije",
+                columns: new[] { "Id", "Naziv" },
+                values: new object[,]
+                {
+                    { 1, "Hercegovacko-Neretvanska" },
+                    { 2, "Zapadno-Hercegovacka" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Gradovi",
+                columns: new[] { "Id", "Naziv", "PostanskiBroj", "ZupanijaId" },
+                values: new object[,]
+                {
+                    { 1, "Citluk", 88260, 1 },
+                    { 2, "Siroki Brijeg", 88520, 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Mobiteli",
+                columns: new[] { "Id", "Cijena", "DijagonalaEkrana", "EksternaMemorija", "Graficka", "IsDeleted", "KapacitetBaterije", "Megapikseli", "Naziv", "OperativniSustavId", "PopustId", "Procesor", "ProizvodjacId", "Ram_Gb", "Rezolucija", "StanjeNaSkladistu", "Tezina" },
+                values: new object[,]
+                {
+                    { 1, 1200.0, 6.1f, true, "Ardent", false, 3200, 12.3f, "S10", 1, 1, "Xenon A5G", 1, 8f, "FULL HD IPS", 10, 320 },
+                    { 2, 1200.0, 6.1f, true, "Ardent", false, 3200, 12.3f, "S20", 1, 1, "Xenon A5G", 1, 8f, "FULL HD IPS", 10, 320 },
+                    { 3, 1200.0, 6.1f, true, "Ardent", false, 3200, 12.3f, "A50", 1, 1, "Xenon A5G", 1, 8f, "FULL HD IPS", 10, 320 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Kupci",
+                columns: new[] { "Id", "BannedKupacId", "BrojMobitela", "BrojPokusaja", "DatumPokusaja", "Email", "GradId", "Ime", "Password", "Prezime" },
+                values: new object[] { 1, null, "063525555", 0, new DateTime(2020, 7, 25, 20, 31, 13, 657, DateTimeKind.Local).AddTicks(6674), "kupac@kupac.com", 1, "kupac", "kupac", "kupic" });
+
+            migrationBuilder.InsertData(
+                table: "Zaposlenici",
+                columns: new[] { "Id", "Email", "Gradid", "Ime", "Password", "Prezime", "Ulica", "isDeleted" },
+                values: new object[] { 1, "Zaposlenik@zaposlenik.com", 1, "Zaposlenik", "zaposlenik", "Zaposlenko", "markovac", false });
+
+            migrationBuilder.InsertData(
+                table: "Komentari",
+                columns: new[] { "Id", "Datum", "IsDeleted", "KupacId", "MobitelId", "Sadrzaj" },
+                values: new object[] { 1, new DateTime(2020, 7, 25, 20, 31, 13, 657, DateTimeKind.Local).AddTicks(2277), false, 1, 1, null });
+
+            migrationBuilder.InsertData(
+                table: "Novosti",
+                columns: new[] { "Id", "Datum", "Naslov", "SadrzajTekst", "ZaposlenikId" },
+                values: new object[] { 1, new DateTime(2020, 7, 25, 20, 31, 13, 658, DateTimeKind.Local).AddTicks(2172), "Novi iPhone stigao u BiH", "ok mobitel", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Gradovi_ZupanijaId",

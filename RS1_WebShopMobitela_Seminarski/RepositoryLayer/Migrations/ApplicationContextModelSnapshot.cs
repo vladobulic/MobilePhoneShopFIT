@@ -44,6 +44,17 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Administratori");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "admin@admin.com",
+                            Ime = "admin",
+                            IsSuperAdmin = true,
+                            Password = "admin",
+                            Prezime = "admin"
+                        });
                 });
 
             modelBuilder.Entity("BannedKupac", b =>
@@ -86,6 +97,15 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Dobavljaci");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Broj = "063323718",
+                            Ime = "Samsung",
+                            Mail = "dobavljac@dobavljac.com"
+                        });
                 });
 
             modelBuilder.Entity("Grad", b =>
@@ -109,6 +129,22 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("ZupanijaId");
 
                     b.ToTable("Gradovi");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Naziv = "Citluk",
+                            PostanskiBroj = 88260,
+                            ZupanijaId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Naziv = "Siroki Brijeg",
+                            PostanskiBroj = 88520,
+                            ZupanijaId = 2
+                        });
                 });
 
             modelBuilder.Entity("Komentar", b =>
@@ -140,6 +176,16 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("MobitelId");
 
                     b.ToTable("Komentari");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Datum = new DateTime(2020, 7, 25, 20, 31, 13, 657, DateTimeKind.Local).AddTicks(2277),
+                            IsDeleted = false,
+                            KupacId = 1,
+                            MobitelId = 1
+                        });
                 });
 
             modelBuilder.Entity("Komponente", b =>
@@ -214,6 +260,20 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("GradId");
 
                     b.ToTable("Kupci");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BrojMobitela = "063525555",
+                            BrojPokusaja = 0,
+                            DatumPokusaja = new DateTime(2020, 7, 25, 20, 31, 13, 657, DateTimeKind.Local).AddTicks(6674),
+                            Email = "kupac@kupac.com",
+                            GradId = 1,
+                            Ime = "kupac",
+                            Password = "kupac",
+                            Prezime = "kupic"
+                        });
                 });
 
             modelBuilder.Entity("Log", b =>
@@ -292,7 +352,7 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("OperativniSustavId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PopustId")
+                    b.Property<int?>("PopustId")
                         .HasColumnType("int");
 
                     b.Property<string>("Procesor")
@@ -322,6 +382,68 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("ProizvodjacId");
 
                     b.ToTable("Mobiteli");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Cijena = 1200.0,
+                            DijagonalaEkrana = 6.1f,
+                            EksternaMemorija = true,
+                            Graficka = "Ardent",
+                            IsDeleted = false,
+                            KapacitetBaterije = 3200,
+                            Megapikseli = 12.3f,
+                            Naziv = "S10",
+                            OperativniSustavId = 1,
+                            PopustId = 1,
+                            Procesor = "Xenon A5G",
+                            ProizvodjacId = 1,
+                            Ram_Gb = 8f,
+                            Rezolucija = "FULL HD IPS",
+                            StanjeNaSkladistu = 10,
+                            Tezina = 320
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Cijena = 1200.0,
+                            DijagonalaEkrana = 6.1f,
+                            EksternaMemorija = true,
+                            Graficka = "Ardent",
+                            IsDeleted = false,
+                            KapacitetBaterije = 3200,
+                            Megapikseli = 12.3f,
+                            Naziv = "S20",
+                            OperativniSustavId = 1,
+                            PopustId = 1,
+                            Procesor = "Xenon A5G",
+                            ProizvodjacId = 1,
+                            Ram_Gb = 8f,
+                            Rezolucija = "FULL HD IPS",
+                            StanjeNaSkladistu = 10,
+                            Tezina = 320
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Cijena = 1200.0,
+                            DijagonalaEkrana = 6.1f,
+                            EksternaMemorija = true,
+                            Graficka = "Ardent",
+                            IsDeleted = false,
+                            KapacitetBaterije = 3200,
+                            Megapikseli = 12.3f,
+                            Naziv = "A50",
+                            OperativniSustavId = 1,
+                            PopustId = 1,
+                            Procesor = "Xenon A5G",
+                            ProizvodjacId = 1,
+                            Ram_Gb = 8f,
+                            Rezolucija = "FULL HD IPS",
+                            StanjeNaSkladistu = 10,
+                            Tezina = 320
+                        });
                 });
 
             modelBuilder.Entity("Narudzba", b =>
@@ -387,6 +509,16 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("ZaposlenikId");
 
                     b.ToTable("Novosti");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Datum = new DateTime(2020, 7, 25, 20, 31, 13, 658, DateTimeKind.Local).AddTicks(2172),
+                            Naslov = "Novi iPhone stigao u BiH",
+                            SadrzajTekst = "ok mobitel",
+                            ZaposlenikId = 1
+                        });
                 });
 
             modelBuilder.Entity("OperativniSustav", b =>
@@ -405,6 +537,14 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("OperativniSustavi");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Naziv = "Android",
+                            Verzija = 11f
+                        });
                 });
 
             modelBuilder.Entity("Popusti", b =>
@@ -426,6 +566,15 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Popusti");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DatumDo = new DateTime(2020, 7, 25, 20, 31, 13, 656, DateTimeKind.Local).AddTicks(3134),
+                            DatumOd = new DateTime(2020, 7, 25, 20, 31, 13, 653, DateTimeKind.Local).AddTicks(7492),
+                            PostotakPopusta = 5f
+                        });
                 });
 
             modelBuilder.Entity("Poruka", b =>
@@ -475,12 +624,16 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("Naziv")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("Verzija")
-                        .HasColumnType("real");
-
                     b.HasKey("Id");
 
                     b.ToTable("Proizvodjaci");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Naziv = "Samsung"
+                        });
                 });
 
             modelBuilder.Entity("Servis", b =>
@@ -663,6 +816,19 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("Gradid");
 
                     b.ToTable("Zaposlenici");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "Zaposlenik@zaposlenik.com",
+                            Gradid = 1,
+                            Ime = "Zaposlenik",
+                            Password = "zaposlenik",
+                            Prezime = "Zaposlenko",
+                            Ulica = "markovac",
+                            isDeleted = false
+                        });
                 });
 
             modelBuilder.Entity("Zupanija", b =>
@@ -678,6 +844,18 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Zupanije");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Naziv = "Hercegovacko-Neretvanska"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Naziv = "Zapadno-Hercegovacka"
+                        });
                 });
 
             modelBuilder.Entity("Grad", b =>
@@ -744,8 +922,7 @@ namespace RepositoryLayer.Migrations
                     b.HasOne("Popusti", "Popust")
                         .WithMany()
                         .HasForeignKey("PopustId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Proizvodjac", "Prozivodjac")
                         .WithMany("Mobiteli")

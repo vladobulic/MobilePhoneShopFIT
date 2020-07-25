@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 
 namespace RepositoryLayer
@@ -38,31 +39,14 @@ namespace RepositoryLayer
             base.OnModelCreating(modelBuilder);
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {
-                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+                relationship.DeleteBehavior = DeleteBehavior.Restrict; 
             }
-            //modelBuilder.Entity<Administrator>();
-            //modelBuilder.Entity<BannedKupac>();
-            //modelBuilder.Entity<Dobavljac>();
-            //modelBuilder.Entity<Grad>();
-            //modelBuilder.Entity<Komentar>();
-            //modelBuilder.Entity<Komponente>();
-            //modelBuilder.Entity<Kupac>();
-            //modelBuilder.Entity<Log>();
-            //modelBuilder.Entity<Mobiteli>();
-            //modelBuilder.Entity<Narudzba>();
-            //modelBuilder.Entity<Novosti>();
-            //modelBuilder.Entity<OperativniSustav>();
-            //modelBuilder.Entity<Popusti>();
-            //modelBuilder.Entity<Poruka>();
-            //modelBuilder.Entity<Proizvodjac>();
-            //modelBuilder.Entity<Servis>();
-            //modelBuilder.Entity<Slika>();
-            //modelBuilder.Entity<SmsLog>();
-            //modelBuilder.Entity<StavkaNarudzbe>();
-            //modelBuilder.Entity<StavkaServisa>();
-            //modelBuilder.Entity<TipKomponente>();
-            //modelBuilder.Entity<Zaposlenik>();
-            //modelBuilder.Entity<Zupanija>();
+            // seed initial db with data.
+            SeedDb.Make(modelBuilder);
+
+
         }
+
+
     }
 }
