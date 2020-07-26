@@ -52,7 +52,7 @@ steps:
     serverUrl: 'ftp://p1914.app.fit.ba'
     username: 'p1914'
     password: 's6RUcy!'
-    rootDirectory: '$(build.artifactstagingdirectory)/RS1_WebShopMobitela_Seminarski.Web'
+    rootDirectory: '$(build.artifactstagingdirectory)/Web'
     filePatterns: '**'
     remoteDirectory: '/httpdocs/'
     clean: false
