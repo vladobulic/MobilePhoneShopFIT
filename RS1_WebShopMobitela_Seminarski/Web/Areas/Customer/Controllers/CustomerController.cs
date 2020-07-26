@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer;
+using ServiceLayer.Interfaces;
 using Web.Areas.Customer.Models;
 
 namespace Web.Areas.Customer.Controllers
 {
+    [Authorize]
     [Area("Customer")]
+   
     public class CustomerController : Controller
     {
         private readonly IMobitelService mobitelService;

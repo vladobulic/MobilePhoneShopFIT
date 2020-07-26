@@ -25,5 +25,49 @@ namespace RepositoryLayer
         {
             return entities.SingleOrDefault(p => p.Id == id);
         }
+
+        public void Insert(T entity)
+        {
+            if(entity == null)
+            {
+                throw new ArgumentNullException("entity");
+            }
+            entities.Add(entity);
+            context.SaveChanges();
+        }
+
+        public void Update(T entity)
+        {
+            if (entity == null)
+            {
+                throw new ArgumentNullException("entity");
+            }
+            entities.Update(entity);
+            context.SaveChanges();
+        }
+
+        public void Delete(T entity)
+        {
+            if (entity == null)
+            {
+                throw new ArgumentNullException("entity");
+            }
+            entities.Remove(entity);
+            context.SaveChanges();
+        }
+
+        public void Remove(T entity)
+        {
+            if (entity == null)
+            {
+                throw new ArgumentNullException("entity");
+            }
+            entities.Remove(entity);
+        }
+
+        public void SaveChanges(T entity)
+        {
+            context.SaveChanges();
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace RepositoryLayer
     {
         public static void Make(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Administrator>().HasData(new Administrator { Id = 1, Email = "admin@admin.com", Ime = "admin", IsSuperAdmin = true, Password = "admin", Prezime = "admin" });
+            modelBuilder.Entity<Administrator>().HasData(new Administrator { Id = 1, Email = "admin@admin.com", Ime = "admin", IsSuperAdmin = true, Prezime = "admin" });
 
             modelBuilder.Entity<Dobavljac>().HasData(new Dobavljac { Id = 1, Ime = "Samsung", Broj = "063323718", Mail = "dobavljac@dobavljac.com" });
             modelBuilder.Entity<Zupanija>().HasData(new Zupanija { Id = 1, Naziv = "Hercegovacko-Neretvanska" }, new Zupanija { Id = 2, Naziv = "Zapadno-Hercegovacka" });
@@ -83,10 +83,10 @@ namespace RepositoryLayer
 
 
 
-            modelBuilder.Entity<Kupac>().HasData(new Kupac { Id = 1, Email = "kupac@kupac.com", BrojMobitela = "063525555", Ime = "kupac", Prezime = "kupic", BrojPokusaja = 0, DatumPokusaja = DateTime.Now, GradId = 1, Password = "kupac" });
+            modelBuilder.Entity<Kupac>().HasData(new Kupac { Id = 1, Email = "kupac@kupac.com", BrojMobitela = "063525555", Ime = "kupac", Prezime = "kupic", BrojPokusaja = 0, DatumPokusaja = DateTime.Now, GradId = 1 });
             //modelBuilder.Entity<Komponente>().HasData();
             //modelBuilder.Entity<Narudzba>().HasData();
-            modelBuilder.Entity<Zaposlenik>().HasData(new Zaposlenik { Id = 1, isDeleted = false, Ime = "Zaposlenik", Prezime = "Zaposlenko", Email = "Zaposlenik@zaposlenik.com", Gradid = 1, Password = "zaposlenik", Ulica = "markovac" });
+            modelBuilder.Entity<Zaposlenik>().HasData(new Zaposlenik { Id = 1, isDeleted = false, Ime = "Zaposlenik", Prezime = "Zaposlenko", Email = "Zaposlenik@zaposlenik.com", Gradid = 1,  Ulica = "markovac" });
             modelBuilder.Entity<Novosti>().HasData(new Novosti { Id = 1, Datum = DateTime.Now, Naslov = "Novi iPhone stigao u BiH", SadrzajTekst = "ok mobitel", ZaposlenikId = 1 });
 
 
