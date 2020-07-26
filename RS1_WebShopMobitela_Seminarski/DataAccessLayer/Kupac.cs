@@ -5,7 +5,6 @@ public class Kupac : BaseEntity {
 	public string Ime { get; set; }
 	public string Prezime { get; set; }
 	public string Email { get; set; }
-	public string Password { get; set; }
 	public int BrojPokusaja { get; set; }
 	public DateTime DatumPokusaja { get; set; }
 	public string BrojMobitela { get; set; }
@@ -19,5 +18,7 @@ public class Kupac : BaseEntity {
 
 	public int? BannedKupacId { get; set; }
 	public virtual BannedKupac BannedKupac { get; set; }
+
+	public virtual ApplicationUser ApplicationUser { get; set; }
 
 }

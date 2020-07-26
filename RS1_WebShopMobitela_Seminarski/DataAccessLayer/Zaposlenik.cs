@@ -6,7 +6,6 @@ public class Zaposlenik : BaseEntity {
 	public string Prezime { get; set; }
 	public string Ulica { get; set; }
 	public string Email { get; set; }
-	public string Password { get; set; }
 	public bool isDeleted { get; set; }
 
 	public virtual System.Collections.Generic.List<Servis> Servis { get; set; }
@@ -16,5 +15,7 @@ public class Zaposlenik : BaseEntity {
 
 	public int Gradid { get; set; }
 	public virtual Grad Grad { get; set; }
+
+	public virtual ApplicationUser ApplicationUser { get; set; }
 
 }

@@ -12,6 +12,12 @@ using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer;
 using ServiceLayer;
+using Microsoft.AspNetCore.Identity;
+using DataAccessLayer;
+using Web.Areas.Identity.Services;
+using ServiceLayer.Interfaces;
+using ServiceLayer.Classes;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Web
 {
@@ -29,10 +35,46 @@ namespace Web
         {
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            //services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<ApplicationContext>();
+
+            //register services
             services.AddTransient<IMobitelService, MobitelService>();
             services.AddTransient<IGradoviService, GradoviService>();
+            services.AddTransient<IKupacService, KupacService>();
 
-            services.AddControllersWithViews();
+            services.AddMvc();
+
+           
+
+            services.AddIdentityCore<ApplicationUser>()
+               .AddRoles<IdentityRole>()
+               .AddEntityFrameworkStores<ApplicationContext>()
+               .AddSignInManager()
+               .AddDefaultTokenProviders();
+
+           
+
+            services.AddAuthentication(o =>
+            {
+                o.DefaultScheme = IdentityConstants.ApplicationScheme;
+                o.DefaultSignInScheme = IdentityConstants.ExternalScheme;
+                o.DefaultAuthenticateScheme = IdentityConstants.ApplicationScheme;
+                o.DefaultChallengeScheme = IdentityConstants.ApplicationScheme;
+
+            })
+            .AddIdentityCookies(o => { });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = $"/Identity/Account/Login";
+                options.LogoutPath = $"/Identity/Account/Logout";
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            });
+
+            // Add application services.
+            services.AddTransient<IEmailSender, AuthMessageSender>();
+            services.AddTransient<ISmsSender, AuthMessageSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,18 +95,22 @@ namespace Web
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {
                
                 endpoints.MapControllerRoute(
-                    name: "Areas",
-                    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+                    name: "Admin",
+                    pattern: "{area}/{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
                    name: "Customer",
                    pattern: "{area=Customer}/{controller=Customer}/{action=Index}/{id?}");
+
+               
             });
         }
     }

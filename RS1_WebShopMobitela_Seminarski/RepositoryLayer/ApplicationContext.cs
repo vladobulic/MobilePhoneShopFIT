@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 
 namespace RepositoryLayer
 {
-    public class ApplicationContext : DbContext
+    public class ApplicationContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
@@ -43,7 +45,10 @@ namespace RepositoryLayer
             }
             // seed initial db with data.
             SeedDb.Make(modelBuilder);
-
+            // add foreign key to aspnetusers table to match our existing users in the db.
+            modelBuilder.Entity<Administrator>().HasOne(x => x.ApplicationUser).WithMany(x => x.Administratori);
+            modelBuilder.Entity<Zaposlenik>().HasOne(x => x.ApplicationUser).WithMany(x => x.Zaposlenici);
+            modelBuilder.Entity<Kupac>().HasOne(x => x.ApplicationUser).WithMany(x => x.Kupci);
 
         }
 
