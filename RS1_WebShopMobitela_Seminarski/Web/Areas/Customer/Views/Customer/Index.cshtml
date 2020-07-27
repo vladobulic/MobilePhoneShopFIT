@@ -1,16 +1,68 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model List<Web.Areas.Customer.Models.MobitelViewModel>
+@model Web.Areas.Customer.Models.IndexViewModel
 @{
 }
 
-@foreach (var mobitel in Model)
-{
-    <div style="background-color:palevioletred; width:100%; height:auto; text-align:center; font-size:x-large">
-        <p>Id: @mobitel.Id</p>
-        <p>Naziv: @mobitel.Naziv</p>
-        <p>2020</p>
+<div class="row">
+
+    <div class="col-lg-3">
+
+        <div class="list-group">
+            <input type="text" class="js-range-slider bg-primary" name="my_range" value=""
+                   data-type="double"
+                   data-min="0"
+                   data-max="@Model.PriceTo"
+                   data-from="200"
+                   data-to="500"
+                   data-grid="true"
+                   prefix="KM" />
+
+            <select asp-for="ProizvodjacId" asp-items="Model.Proizvodjaci" class="form-control">
+                <option value="">Odaberite proizvodjaca</option>
+            </select>
+        </div>
+
     </div>
-}
-<p>Customer area</p>
+    <!-- /.col-lg-3 -->
+
+    <div class="col-lg-9">
+
+        <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+
+        </div>
+
+        <div class="row">
+
+            @foreach (var mobitel in Model.Mobiteli)
+            {
+                <div class="col-lg-4 col-md-6 mb-4" >
+                    
+                        <div class="card h-100">
+                            <a asp-area="Customer" asp-controller="Mobitel" asp-action="Index">
+                                <img class="card-img-top" src="http://placehold.it/700x400" alt="">
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a href="#">@mobitel.Naziv</a>
+                                    </h4>
+                                    <h5>@mobitel.Cijena KM</h5>
+                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                                </div>
+                            </a>
+                            <div class="card-footer">
+                                <button class="btn btn-primary">Dodaj <span class="oi oi-basket" title="basket" aria-hidden="true"></span></button>
+                            </div>
+                        </div>
+                    
+                </div>
+            }
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.col-lg-9 -->
+
+</div>
+<!-- /.row -->
