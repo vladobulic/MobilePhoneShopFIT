@@ -27,7 +27,7 @@ namespace Web.Areas.Customer.Models
         public int StanjeNaSkladistu { get; set; }
 
 
-        public List<string> Slike { get; set; } 
+        public List<string> Slike { get; set; }
         public static List<MobitelViewModel> ConvertToMobitelViewModel(IEnumerable<Mobiteli> mobiteli)
         {
             // cijena je sa popustom ako je popust true. 
@@ -49,6 +49,27 @@ namespace Web.Areas.Customer.Models
                     Slike = x.Slika.Select(x => x.Path).ToList()
                 }
             ).ToList();
+        }
+
+        public static MobitelViewModel ConvertToMobitelViewModel(Mobiteli x)
+        {
+            // cijena je sa popustom ako je popust true. 
+            return new MobitelViewModel
+            {
+                Id = x.Id,
+                Naziv = x.Naziv,
+                DijagonalaEkrana = x.DijagonalaEkrana.ToString(),
+                Graficka = x.Graficka,
+                Megapikseli = x.Megapikseli.ToString(),
+                Popust = x.PopustId != null,
+                Cijena = x.PopustId != null ? (x.Cijena - (x.Cijena * x.Popust.PostotakPopusta)).ToString("0.##") : x.Cijena.ToString("0.##") + "KM",
+                Procesor = x.Procesor,
+                Ram_Gb = x.Ram_Gb.ToString(),
+                StanjeNaSkladistu = x.StanjeNaSkladistu,
+                Tezina = x.Tezina.ToString(),
+                Rezolucija = x.Rezolucija,
+                Slike = x.Slika.Select(x => x.Path).ToList()
+            };
         }
     }
 
