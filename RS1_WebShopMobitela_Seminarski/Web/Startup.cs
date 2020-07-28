@@ -18,6 +18,7 @@ using Web.Areas.Identity.Services;
 using ServiceLayer.Interfaces;
 using ServiceLayer.Classes;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Web
 {
@@ -42,7 +43,9 @@ namespace Web
             services.AddTransient<IMobitelService, MobitelService>();
             services.AddTransient<IGradoviService, GradoviService>();
             services.AddTransient<IKupacService, KupacService>();
+            services.AddTransient<ILogService, LogService>();
             services.AddTransient<IProizvodjacService, ProizvodjacService>();
+            
 
             services.AddMvc();
 
@@ -74,6 +77,7 @@ namespace Web
             });
 
             // Add application services.
+            
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
         }
@@ -83,12 +87,12 @@ namespace Web
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage();  
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                // custom exception handler for logging our users potential exceptions.
+                app.UseExceptionHandler("/Customer/Customer/Error");
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
