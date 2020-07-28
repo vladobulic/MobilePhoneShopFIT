@@ -98,3 +98,32 @@ body {
         border-radius: 4px;
         cursor: zoom-in;
     }
+
+.mb30 {
+    margin-bottom: 30px;
+}
+
+.widget-five .post-tools > li a {
+    color: #565656;
+    font-size: 17px;
+    padding: 4px 10px;
+    display: inline-block;
+}
+
+a:hover, a:active, a:focus {
+    text-decoration: none;
+    outline: 0;
+}
+
+.widget-five .post-tools {
+    padding: 10px 20px;
+    background: #eee;
+}
+
+    .widget-five .post-tools > li {
+        display: inline-block;
+    }
+
+.resize-v {
+    resize: vertical;
+}

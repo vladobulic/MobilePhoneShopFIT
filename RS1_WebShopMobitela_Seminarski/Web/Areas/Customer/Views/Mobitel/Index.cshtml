@@ -1,7 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model Web.Areas.Customer.Models.MobitelViewModel
+@model Web.Areas.Customer.Models.MobitelIndexViewModel
 @{
 }
 
@@ -10,26 +10,26 @@
         <aside class="col-sm-5 border-right">
             <article class="gallery-wrap">
                 <div class="img-big-wrap">
-                    <div> <a href="#"><img src="@(Model.Slike.FirstOrDefault() ?? "/Customer/slike/iphone.jpg")"></a></div>
+                    <div> <a href="#"><img src="@(Model.Mobitel.Slike.FirstOrDefault() ?? "/Customer/slike/iphone.jpg")"></a></div>
                 </div> <!-- slider-product.// -->
                 <div class="img-small-wrap">
-                    
-                    @foreach (var path in Model.Slike)
+
+                    @foreach (var path in Model.Mobitel.Slike)
                     {
                         <div class="item-gallery"> <img src="@path"> </div>
                     }
 
-                    
+
                 </div> <!-- slider-nav.// -->
             </article> <!-- gallery-wrap .end// -->
         </aside>
         <aside class="col-sm-7">
             <article class="card-body p-5">
-                <h3 class="title mb-3">@Model.Naziv</h3>
+                <h3 class="title mb-3">@Model.Mobitel.Naziv</h3>
 
                 <p class="price-detail-wrap">
                     <span class="price h3 text-warning">
-                        <span class="currency">KM </span><span class="num">@Model.Cijena</span>
+                        <span class="currency">KM </span><span class="num">@Model.Mobitel.Cijena</span>
                     </span>
                     <span>/po jedinici</span>
                 </p> <!-- price-detail-wrap .// -->
@@ -37,46 +37,100 @@
                     <dt>Opis</dt>
                     <dd>
                         <p>
-                            @Model.Opis
+                            @Model.Mobitel.Opis
                         </p>
                     </dd>
                 </dl>
                 <dl class="param param-feature">
                     <dt>Procesor</dt>
-                    <dd>@Model.Procesor</dd>
+                    <dd>@Model.Mobitel.Procesor</dd>
                 </dl>
 
                 <dl class="param param-feature">
                     <dt>Megapikseli</dt>
-                    <dd>@Model.Megapikseli</dd>
+                    <dd>@Model.Mobitel.Megapikseli</dd>
                 </dl>
 
                 <dl class="param param-feature">
                     <dt>Ram</dt>
-                    <dd>@Model.Ram_Gb</dd>
+                    <dd>@Model.Mobitel.Ram_Gb</dd>
                 </dl>
 
                 <dl class="param param-feature">
                     <dt>Tezina</dt>
-                    <dd>@Model.Tezina g.</dd>
+                    <dd>@Model.Mobitel.Tezina g.</dd>
                 </dl>
 
                 <dl class="param param-feature">
                     <dt>Rezolucija</dt>
-                    <dd>@Model.Rezolucija</dd>
+                    <dd>@Model.Mobitel.Rezolucija</dd>
                 </dl>
 
                 <dl class="param param-feature">
                     <dt>Dijagonala ekrana</dt>
-                    <dd>@Model.DijagonalaEkrana</dd>
+                    <dd>@Model.Mobitel.DijagonalaEkrana</dd>
                 </dl>
 
                 <hr>
-                
-                
+
+
                 <a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Dodaj u kosaricu </a>
             </article> <!-- card-body.// -->
         </aside> <!-- col.// -->
     </div> <!-- row.// -->
 </div> <!-- card.// -->
+
+@if (User.Identity.IsAuthenticated)
+{
+<form asp-area="Customer" asp-controller="Mobitel" asp-action="Komentiraj" method="post" id="sortingForm">
+    <!-- Input and Submit elements -->
+    @Html.AntiForgeryToken()
+
+    
+    
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget-five mb30">
+
+                @Html.TextArea("komentar", new { @class = "form-control resize-v post-area", @maxlength = "1000", @rows = "5", @placeholder="Napisite nesto..."})
+                @Html.Hidden("mobitelId", Model.Mobitel.Id)
+                <ul class="post-tools list-unstyled clearfix">
+                    
+                    <li class="pull-right">
+                        <button type="submit" class="btn btn-primary btn-block">Komentiraj</button>
+                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</form>
+}
+
+<div class="row d-flex justify-content-center mt-100 mb-100">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body text-center">
+                <h4 class="card-title">Latest Comments</h4>
+            </div>
+            <div class="comment-widgets">
+
+
+                @foreach (var komentar in Model.Komentari)
+                {
+                    <!-- Comment Row -->
+                    <div class="d-flex flex-row comment-row m-t-0">
+                        <div class="p-2"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583336/AAA/4.jpg" alt="user" width="50" class="rounded-circle"></div>
+                        <div class="comment-text w-100">
+                            <h6 class="font-medium">@komentar.Kupac.Ime</h6> <span class="m-b-15 d-block">@komentar.Sadrzaj </span>
+                            <div class="comment-footer"> <span class="text-muted float-right">@komentar.Datum.ToShortDateString()</span></div>
+                        </div>
+                    </div> <!-- Comment Row -->
+                }
+            </div> <!-- Card -->
+        </div>
+    </div>
 </div>
+

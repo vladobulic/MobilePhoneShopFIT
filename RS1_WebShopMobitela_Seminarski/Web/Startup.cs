@@ -43,6 +43,7 @@ namespace Web
             services.AddTransient<IMobitelService, MobitelService>();
             services.AddTransient<IGradoviService, GradoviService>();
             services.AddTransient<IKupacService, KupacService>();
+            services.AddTransient<IKomentarService, KomentarService>();
             services.AddTransient<ILogService, LogService>();
             services.AddTransient<IProizvodjacService, ProizvodjacService>();
             

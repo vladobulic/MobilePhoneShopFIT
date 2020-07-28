@@ -2,6 +2,7 @@
 using ServiceLayer.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ServiceLayer.Classes
@@ -18,6 +19,11 @@ namespace ServiceLayer.Classes
         public Kupac GetKupac(int id)
         {
             return kupacRepository.Get(id);
+        }
+
+        public int GetKupacByAspUserId(string userId)
+        {
+            return kupacRepository.GetAllQueryable().FirstOrDefault(x => x.ApplicationUser.Id == userId)?.Id ?? 0;
         }
 
         public IEnumerable<Kupac> GetKupci()
