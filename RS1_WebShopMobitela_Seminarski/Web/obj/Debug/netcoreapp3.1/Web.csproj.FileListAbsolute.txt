@@ -197,9 +197,6 @@ C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\
 C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.dll
 C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
 C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Embedded.dll
-C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Web.csproj.CoreCompileInputs.cache
-C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Web.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Web.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs
 C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\ConfirmEmail.cshtml.g.cs
 C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\ConfirmEmailChange.cshtml.g.cs
@@ -281,3 +278,8 @@ C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\
 C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Kosarica\Index.cshtml.g.cs
 C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Mobitel\Index.cshtml.g.cs
 C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Customer\Error.cshtml.g.cs
+C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\bin\Debug\netcoreapp3.1\wwwroot\Customer\slike\iphone.jpg
+C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\bin\Debug\netcoreapp3.1\wwwroot\Customer\slike\samsung.jpg
+C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Web.csproj.CoreCompileInputs.cache
+C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Web.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Web.MvcApplicationPartsAssemblyInfo.cache

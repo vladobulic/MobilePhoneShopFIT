@@ -10,6 +10,8 @@ namespace Web.Areas.Customer.Models
         public int Id { get; set; }
         public string Naziv { get; set; }
 
+        public string Opis { get; set; }
+        public string KratkiOpis { get; set; }
         // cijena sa popustom ako popusta ima
         public string Cijena { get; set; }
         public bool Popust { get; set; }
@@ -23,6 +25,9 @@ namespace Web.Areas.Customer.Models
         public string Procesor { get; set; }
         public string Graficka { get; set; }
         public int StanjeNaSkladistu { get; set; }
+
+
+        public List<string> Slike { get; set; } 
         public static List<MobitelViewModel> ConvertToMobitelViewModel(IEnumerable<Mobiteli> mobiteli)
         {
             // cijena je sa popustom ako je popust true. 
@@ -40,7 +45,8 @@ namespace Web.Areas.Customer.Models
                     Ram_Gb = x.Ram_Gb.ToString(),
                     StanjeNaSkladistu = x.StanjeNaSkladistu,
                     Tezina = x.Tezina.ToString(),
-                    Rezolucija = x.Rezolucija
+                    Rezolucija = x.Rezolucija,
+                    Slike = x.Slika.Select(x => x.Path).ToList()
                 }
             ).ToList();
         }

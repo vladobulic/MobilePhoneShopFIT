@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace RepositoryLayer
@@ -9,7 +10,7 @@ namespace RepositoryLayer
     {
         T Get(int id);
         IEnumerable<T> GetAll();
-
+        IQueryable<T> GetAllQueryable();
         void Insert(T entity);
         void Update(T entity);
         void Delete(T entity);

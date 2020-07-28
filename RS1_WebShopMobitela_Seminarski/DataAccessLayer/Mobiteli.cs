@@ -3,6 +3,9 @@ using System;
 public class Mobiteli : BaseEntity{
 	 
 	public string Naziv { get; set; }
+
+	public string Opis { get; set; }
+	public string KratkiOpis { get; set; }
 	public float Megapikseli { get; set; }
 	public float Ram_Gb { get; set; }
 	public int StanjeNaSkladistu { get; set; }

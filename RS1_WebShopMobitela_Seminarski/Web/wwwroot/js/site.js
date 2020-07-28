@@ -9,6 +9,6 @@ $(".js-range-slider").ionRangeSlider({
 
     onFinish: function (data) {
         // fired on pointer release
-        
+        $("#sortingForm").submit();
     }
 });

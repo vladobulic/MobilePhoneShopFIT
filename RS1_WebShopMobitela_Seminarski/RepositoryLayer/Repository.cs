@@ -21,6 +21,10 @@ namespace RepositoryLayer
         {
             return entities.AsEnumerable();
         }
+        public IQueryable<T> GetAllQueryable()
+        {
+            return entities.AsQueryable();
+        }
         public T Get(int id)
         {
             return entities.SingleOrDefault(p => p.Id == id);
@@ -69,5 +73,7 @@ namespace RepositoryLayer
         {
             context.SaveChanges();
         }
+
+        
     }
 }

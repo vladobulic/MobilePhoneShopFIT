@@ -5,64 +5,89 @@
 @{
 }
 
-<div class="row">
+    <div class="row">
 
-    <div class="col-lg-3">
+        <div class="col-lg-3 rounded">
 
-        <div class="list-group">
-            <input type="text" class="js-range-slider bg-primary" name="my_range" value=""
-                   data-type="double"
-                   data-min="0"
-                   data-max="@Model.PriceTo"
-                   data-from="200"
-                   data-to="500"
-                   data-grid="true"
-                   prefix="KM" />
+            <div class="list-group">
+                <form asp-area="Customer" asp-controller="Customer" asp-action="Index" method="get" id="sortingForm">
+                    <!-- Input and Submit elements -->
+                    <br />
+                    <select asp-for="ProizvodjacId" asp-items="Model.Proizvodjaci" class="form-control">
+                        <option value="">Odaberite proizvodjaca</option>
+                    </select>
+                    <br />
+                    <h2 class="text-center">Vas budzet</h2>
+                    <input type="text" class="js-range-slider bg-primary" name="my_range" value=""
+                           data-type="double"
+                           data-min="0"
+                           data-max="@Model.PriceTo"
+                           data-grid="true"
+                           prefix="KM" />
 
-            <select asp-for="ProizvodjacId" asp-items="Model.Proizvodjaci" class="form-control">
-                <option value="">Odaberite proizvodjaca</option>
-            </select>
+                    <br />
+                    <div class="form-check text-center">
+                        @Html.CheckBoxFor(x => x.PriceDesc, new { @class = "form-check-input" })
+                        <label class="form-check-label" for="exampleCheck1">Cijena Opadajuca</label>
+                    </div>
+
+                    <br />
+                    <input type="submit" value="Sortiraj" class="btn btn-primary btn-block">
+                </form>
+
+            </div>
+
         </div>
+        <!-- /.col-lg-3 -->
 
-    </div>
-    <!-- /.col-lg-3 -->
+        <div class="col-lg-9">
 
-    <div class="col-lg-9">
+            @*<div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
 
-        <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+            </div>*@
 
-        </div>
 
-        <div class="row">
+            <div class="row">
 
-            @foreach (var mobitel in Model.Mobiteli)
-            {
-                <div class="col-lg-4 col-md-6 mb-4" >
-                    
-                        <div class="card h-100">
-                            <a asp-area="Customer" asp-controller="Mobitel" asp-action="Index">
-                                <img class="card-img-top" src="http://placehold.it/700x400" alt="">
+                @foreach (var mobitel in Model.Mobiteli)
+                {
+                    <div class="col-lg-4 col-md-6 mb-4">
+
+                        <div class="card h-100" style="border-color:palegoldenrod!important">
+                            <a asp-area="Customer" asp-controller="Mobitel" asp-action="Index"> </a>
+                                <img class="card-img-top" src="@(mobitel.Slike.FirstOrDefault() ?? "/Customer/slike/iphone.jpg")"   alt="">
                                 <div class="card-body">
                                     <h4 class="card-title">
                                         <a href="#">@mobitel.Naziv</a>
                                     </h4>
-                                    <h5>@mobitel.Cijena KM</h5>
+                                    <h5>@mobitel.Cijena</h5>
                                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
                                 </div>
-                            </a>
+                           
                             <div class="card-footer">
                                 <button class="btn btn-primary">Dodaj <span class="oi oi-basket" title="basket" aria-hidden="true"></span></button>
                             </div>
                         </div>
-                    
-                </div>
-            }
 
+                    </div>
+                }
+
+            </div>
+            <!-- /.row -->
+            <div>
+                <ul class="pagination">
+                    @for (var i = 1; i <= Model.TotalPages; i++)
+                    {
+                        <li class="page-item @(i == Model.Page ? "active" : "")">
+                            <a asp-area="Customer" asp-controller="Customer" asp-action="Index" asp-route-page="@i" asp-route-SearchName="@Model.SearchName" asp-route-ProizvodjacId="@Model.ProizvodjacId" asp-route-PriceDesc="@Model.PriceDesc" asp-route-my_range="@Model.my_range" class="page-link">@i</a>
+                        </li>
+                    }
+                </ul>
+            </div>
         </div>
-        <!-- /.row -->
-
+        <!-- /.col-lg-9 -->
+       
     </div>
-    <!-- /.col-lg-9 -->
-
-</div>
 <!-- /.row -->
+
+

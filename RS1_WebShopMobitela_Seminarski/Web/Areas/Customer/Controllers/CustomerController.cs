@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Castle.Core.Internal;
 using DataAccessLayer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Diagnostics;
@@ -24,6 +25,7 @@ namespace Web.Areas.Customer.Controllers
         private readonly IProizvodjacService proizvodjacService;
         private readonly ILogService logService;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly int resultsPerPage = 6;
 
         public CustomerController(IMobitelService mobitelService, IProizvodjacService proizvodjacService, ILogService logService, UserManager<ApplicationUser> userManager)
         {
@@ -32,18 +34,40 @@ namespace Web.Areas.Customer.Controllers
             this.logService = logService;
             _userManager = userManager;
         }
-        public IActionResult Index()
+        public IActionResult Index(IndexViewModel model)
         {
-            IndexViewModel model = new IndexViewModel();
+
             model.Proizvodjaci = Converter.ConvertToSelectListItem(proizvodjacService.GetProizvodjaci());
+
+
             var mobiteli = mobitelService.GetMobiteli();
-            if (mobiteli != null)
-            {
-                model.Mobiteli = MobitelViewModel.ConvertToMobitelViewModel(mobiteli);
+            if (!mobiteli.IsNullOrEmpty())
                 model.PriceTo = (int)Math.Ceiling(mobiteli.Max(x => x.Cijena));
+            else
+                model.PriceTo = 3500;
+
+
+            int TotalPages = 0;
+            model.Mobiteli = MobitelViewModel.ConvertToMobitelViewModel(mobitelService.GetMobiteliSorted(model.Page ?? 0, model.PriceDesc, model.SearchName, model.my_range, model.ProizvodjacId, resultsPerPage,ref TotalPages));
+            model.TotalPages = TotalPages;
+
+            // setup our slider data
+            if (!string.IsNullOrEmpty(model.my_range))
+            {
+                model.sliderFrom = Convert.ToInt32(model.my_range.Split(';')[0]);
+                model.sliderTo = Convert.ToInt32(model.my_range.Split(';')[1]);
             }
+            else
+            {
+                model.sliderFrom = 0;
+                model.sliderFrom = model.PriceTo;
+            }
+            
+            
             return View(model);
         }
+
+
 
         public IActionResult Novosti()
         {

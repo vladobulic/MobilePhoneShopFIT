@@ -11,9 +11,19 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="border-color: gold!important">
             <div class="container ">
                 <a class="navbar-brand" asp-area="Customer" asp-controller="Customer" asp-action="Index">Mobitel Web Shop</a>
+                <div class="col-sm-3 col-md-3">
+                    <form class="navbar-form" role="search" asp-area="Customer" asp-controller="Customer" asp-action="Index">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Pretrazi mobitele" name="SearchName">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><span class="oi oi-magnifying-glass" title="search" aria-hidden="true"></span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

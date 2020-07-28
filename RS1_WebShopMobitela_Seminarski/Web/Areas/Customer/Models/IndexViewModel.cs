@@ -10,12 +10,26 @@ namespace Web.Areas.Customer.Models
     {
         public int PriceTo { get; set; }
 
+        public string my_range { get; set; }
         
         public List<MobitelViewModel> Mobiteli{ get;set; }
 
         public int ProizvodjacId { get; set; }
         public List<SelectListItem> Proizvodjaci { get; set; }
 
-        int ? Page { get; set; }
+        public int ? Page { get; set; }
+
+        public bool PriceDesc { get; set; }
+
+        public string SearchName { get; set; }
+
+
+        public int sliderFrom { get; set; }
+        public int sliderTo { get; set; }
+
+
+        // paging helper attributes
+        public int TotalPages { get; set; }
+
     }
 }
