@@ -25,13 +25,15 @@ namespace Web.Areas.Customer.Controllers
         private readonly IProizvodjacService proizvodjacService;
         private readonly ILogService logService;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly INovostiService novostiService;
         private readonly int resultsPerPage = 6;
 
-        public CustomerController(IMobitelService mobitelService, IProizvodjacService proizvodjacService, ILogService logService, UserManager<ApplicationUser> userManager)
+        public CustomerController(IMobitelService mobitelService, IProizvodjacService proizvodjacService, ILogService logService, UserManager<ApplicationUser> userManager, INovostiService novostiService)
         {
             this.mobitelService = mobitelService;
             this.proizvodjacService = proizvodjacService;
             this.logService = logService;
+            this.novostiService = novostiService;
             _userManager = userManager;
         }
         public IActionResult Index(IndexViewModel model)
@@ -72,8 +74,10 @@ namespace Web.Areas.Customer.Controllers
         public IActionResult Novosti()
         {
 
-            return View();
+            return View(novostiService.GetNovosti());
         }
+
+      
 
         public IActionResult Kontakt()
         {

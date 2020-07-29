@@ -44,8 +44,10 @@ namespace Web
             services.AddTransient<IGradoviService, GradoviService>();
             services.AddTransient<IKupacService, KupacService>();
             services.AddTransient<IKomentarService, KomentarService>();
-            services.AddTransient<ILogService, LogService>();
+            services.AddTransient<INovostiService, NovostiService>();
             services.AddTransient<IProizvodjacService, ProizvodjacService>();
+            services.AddTransient<ILogService, LogService>();
+            
             
 
             services.AddMvc();
