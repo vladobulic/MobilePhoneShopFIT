@@ -3,6 +3,7 @@
 
 // Write your JavaScript code.
 
+
 $(".js-range-slider").ionRangeSlider({
 
 
@@ -12,3 +13,6 @@ $(".js-range-slider").ionRangeSlider({
         $("#sortingForm").submit();
     }
 });
+
+
+

@@ -74,7 +74,7 @@
                 <hr>
 
 
-                <a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Dodaj u kosaricu </a>
+                <a href="#" class="btn btn-lg btn-outline-primary text-uppercase AddKosarica" mobitelId="@Model.Mobitel.Id"> <i class="fas fa-shopping-cart"></i> Dodaj u kosaricu </a>
             </article> <!-- card-body.// -->
         </aside> <!-- col.// -->
     </div> <!-- row.// -->
@@ -82,31 +82,31 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-<form asp-area="Customer" asp-controller="Mobitel" asp-action="Komentiraj" method="post" id="sortingForm">
-    <!-- Input and Submit elements -->
-    @Html.AntiForgeryToken()
+    <form asp-area="Customer" asp-controller="Mobitel" asp-action="Komentiraj" method="post" id="sortingForm">
+        <!-- Input and Submit elements -->
+        @Html.AntiForgeryToken()
 
-    
-    
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="widget-five mb30">
 
-                @Html.TextArea("komentar", new { @class = "form-control resize-v post-area", @maxlength = "1000", @rows = "5", @placeholder="Napisite nesto..."})
-                @Html.Hidden("mobitelId", Model.Mobitel.Id)
-                <ul class="post-tools list-unstyled clearfix">
-                    
-                    <li class="pull-right">
-                        <button type="submit" class="btn btn-primary btn-block">Komentiraj</button>
-                        
-                    </li>
-                </ul>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="widget-five mb30">
+
+                    @Html.TextArea("komentar", new { @class = "form-control resize-v post-area", @maxlength = "1000", @rows = "5", @placeholder = "Napisite nesto..." })
+                    @Html.Hidden("mobitelId", Model.Mobitel.Id)
+                    <ul class="post-tools list-unstyled clearfix">
+
+                        <li class="pull-right">
+                            <button type="submit" class="btn btn-primary btn-block">Komentiraj</button>
+
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
 
-</form>
+    </form>
 }
 
 <div class="row d-flex justify-content-center mt-100 mb-100">
@@ -133,4 +133,33 @@
         </div>
     </div>
 </div>
+
+@section scripts {
+
+    <script>
+        $(document).ready(function () {
+        $(".AddKosarica").on('click', function (e) {
+
+
+            mobitelid = this.getAttribute("mobitelId")
+            urldoakcije = "@Url.Action("Dodaj", "Kosarica", new { Area = "Customer" })";
+
+            $.ajax({
+                type: "GET",
+                url: urldoakcije,
+                data: { id: mobitelid},
+                dataType: "text",
+                success: function (msg) {
+                    alert(msg);
+                },
+                error: function (req, status, error) {
+                    alert(error);
+            }
+    });
+        });
+        });
+
+    </script>
+
+}
 

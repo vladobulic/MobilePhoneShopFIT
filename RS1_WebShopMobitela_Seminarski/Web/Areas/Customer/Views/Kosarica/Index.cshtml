@@ -1,6 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@model KosaricaIndexViewModel
 @{
 }
 
@@ -12,53 +13,42 @@
                     <thead>
                         <tr>
                             <th scope="col"> </th>
-                            <th scope="col">Product</th>
-                            <th scope="col">Available</th>
-                            <th scope="col" class="text-center">Quantity</th>
-                            <th scope="col" class="text-right">Price</th>
+                            <th scope="col">Produkt</th>
+                            <th scope="col">Dostupnost</th>
+                            <th scope="col" class="text-center">Kolicina</th>
+                            <th scope="col" class="text-right">Cijena</th>
                             <th> </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Product Name Dada</td>
-                            <td>In stock</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">124,90 €</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Product Name Toto</td>
-                            <td>In stock</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">33,90 €</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Product Name Titi</td>
-                            <td>In stock</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">70,00 €</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                        </tr>
+                        @foreach (var item in Model.Items)
+                        {
+                            <tr>
+                                <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+                                <td>@item.Product.mobitel.Naziv</td>
+                                <td>U skladistu: @item.Product.mobitel.StanjeNaSkladistu</td>
+                                <td><input class="form-control" type="text" value="@item.Quantity" /></td>
+                                <td class="text-right">@item.Product.mobitel.Cijena</td>
+                                <td class="text-right"><a asp-area="Customer" asp-controller="Kosarica" asp-action="Brisi" asp-route-id="@item.Product.Id" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a> </td>
+                            </tr>
+                        }
+
+
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td>Sub-Total</td>
-                            <td class="text-right">255,90 €</td>
+                            <td class="text-right">@Model.TotalPrice</td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td>Shipping</td>
-                            <td class="text-right">6,90 €</td>
+                            <td>Dostava</td>
+                            <td class="text-right">Besplatno</td>
                         </tr>
                         <tr>
                             <td></td>
@@ -66,7 +56,7 @@
                             <td></td>
                             <td></td>
                             <td><strong>Total</strong></td>
-                            <td class="text-right"><strong>346,90 €</strong></td>
+                            <td class="text-right"><strong>@Model.TotalPrice</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -75,10 +65,10 @@
         <div class="col mb-2">
             <div class="row">
                 <div class="col-sm-12  col-md-6">
-                    <button class="btn btn-block btn-light">Continue Shopping</button>
+                    <button class="btn btn-block btn-light">Nastavite kupovinu</button>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
-                    <button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+                    <button class="btn btn-lg btn-block btn-success text-uppercase">Narucite</button>
                 </div>
             </div>
         </div>

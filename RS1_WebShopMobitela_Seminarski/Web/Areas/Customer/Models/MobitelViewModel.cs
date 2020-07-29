@@ -13,7 +13,7 @@ namespace Web.Areas.Customer.Models
         public string Opis { get; set; }
         public string KratkiOpis { get; set; }
         // cijena sa popustom ako popusta ima
-        public string Cijena { get; set; }
+        public double Cijena { get; set; }
         public bool Popust { get; set; }
 
         public string Megapikseli { get; set; }
@@ -40,7 +40,7 @@ namespace Web.Areas.Customer.Models
                     Graficka = x.Graficka,
                     Megapikseli = x.Megapikseli.ToString(),
                     Popust = x.PopustId != null,
-                    Cijena = x.PopustId != null ? (x.Cijena - (x.Cijena * x.Popust.PostotakPopusta)).ToString("0.##") : x.Cijena.ToString("0.##") + "KM",
+                    Cijena = x.PopustId != null ? (x.Cijena - (x.Cijena * x.Popust.PostotakPopusta)) : x.Cijena,
                     Procesor = x.Procesor,
                     Ram_Gb = x.Ram_Gb.ToString(),
                     StanjeNaSkladistu = x.StanjeNaSkladistu,
@@ -62,7 +62,7 @@ namespace Web.Areas.Customer.Models
                 Graficka = x.Graficka,
                 Megapikseli = x.Megapikseli.ToString(),
                 Popust = x.PopustId != null,
-                Cijena = x.PopustId != null ? (x.Cijena - (x.Cijena * x.Popust.PostotakPopusta)).ToString("0.##") : x.Cijena.ToString("0.##") + "KM",
+                Cijena = x.PopustId != null ? (x.Cijena - (x.Cijena * x.Popust.PostotakPopusta)) : x.Cijena,
                 Procesor = x.Procesor,
                 Ram_Gb = x.Ram_Gb.ToString(),
                 StanjeNaSkladistu = x.StanjeNaSkladistu,

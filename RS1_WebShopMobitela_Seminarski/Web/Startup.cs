@@ -51,8 +51,9 @@ namespace Web
             
 
             services.AddMvc();
+            services.AddSession();
+            services.AddHttpContextAccessor();
 
-           
 
             services.AddIdentityCore<ApplicationUser>()
                .AddRoles<IdentityRole>()
@@ -99,8 +100,9 @@ namespace Web
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+            app.UseSession();
             app.UseStaticFiles();
-
+            
             app.UseRouting();
 
             app.UseAuthentication();
