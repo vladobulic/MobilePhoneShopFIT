@@ -62,7 +62,7 @@ namespace Web.Areas.Customer.Controllers
             else
             {
                 model.sliderFrom = 0;
-                model.sliderFrom = model.PriceTo;
+                model.sliderTo = model.PriceTo;
             }
             
             

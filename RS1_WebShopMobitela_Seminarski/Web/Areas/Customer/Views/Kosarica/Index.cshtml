@@ -1,9 +1,15 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using Microsoft.AspNetCore.Identity
+@using Web.Areas.Identity.Models
+@using DataAccessLayer
+
 @model KosaricaIndexViewModel
 @{
 }
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 <div class="container mb-4">
     <div class="row">
@@ -23,40 +29,23 @@
                     <tbody>
                         @foreach (var item in Model.Items)
                         {
-                            <tr>
-                                <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                                <td>@item.Product.mobitel.Naziv</td>
-                                <td>U skladistu: @item.Product.mobitel.StanjeNaSkladistu</td>
-                                <td><input class="form-control" type="text" value="@item.Quantity" /></td>
-                                <td class="text-right">@item.Product.mobitel.Cijena</td>
-                                <td class="text-right"><a asp-area="Customer" asp-controller="Kosarica" asp-action="Brisi" asp-route-id="@item.Product.Id" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a> </td>
-                            </tr>
+                        <tr>
+                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+                            <td>@item.Product.mobitel.Naziv</td>
+                            <td>U skladistu: @item.Product.mobitel.StanjeNaSkladistu</td>
+                            <td class="text-right">item.Quantity</td>
+                            <td class="text-right">@item.Product.mobitel.Cijena</td>
+                            <td class="text-right"><a asp-area="Customer" asp-controller="Kosarica" asp-action="Brisi" asp-route-id="@item.Product.Id" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a> </td>
+                        </tr>
                         }
 
-
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>Sub-Total</td>
-                            <td class="text-right">@Model.TotalPrice</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>Dostava</td>
-                            <td class="text-right">Besplatno</td>
-                        </tr>
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td><strong>Total</strong></td>
-                            <td class="text-right"><strong>@Model.TotalPrice</strong></td>
+                            <td class="text-right"><strong>@Model.TotalPrice KM</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -65,12 +54,15 @@
         <div class="col mb-2">
             <div class="row">
                 <div class="col-sm-12  col-md-6">
-                    <button class="btn btn-block btn-light">Nastavite kupovinu</button>
+                    <a asp-area="Customer" asp-controller="Customer" asp-action="Index" class="btn btn-block btn-light">Nastavite kupovinu</a>
                 </div>
+
                 <div class="col-sm-12 col-md-6 text-right">
-                    <button class="btn btn-lg btn-block btn-success text-uppercase">Narucite</button>
+                    <a asp-area="Customer" asp-controller="Narudzba" asp-action="Index" class="btn btn-lg btn-block">Narucite</a>
                 </div>
+
             </div>
+
         </div>
     </div>
 </div>

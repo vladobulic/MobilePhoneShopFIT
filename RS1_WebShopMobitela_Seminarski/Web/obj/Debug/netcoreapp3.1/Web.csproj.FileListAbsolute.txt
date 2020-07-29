@@ -283,3 +283,5 @@ C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\
 C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Web.csproj.CoreCompileInputs.cache
 C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Web.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Narudzba\Index.cshtml.g.cs
+C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Narudzba\Narudzbe.cshtml.g.cs

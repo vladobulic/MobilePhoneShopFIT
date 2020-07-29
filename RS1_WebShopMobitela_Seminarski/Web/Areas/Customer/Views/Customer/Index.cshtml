@@ -97,9 +97,19 @@
 
     <script>
         $(document).ready(function () {
+
+            let my_range = $(".js-range-slider").data("ionRangeSlider");
+
+            // 3. Update range slider content (this will change handles positions)
+            my_range.update({
+                from: "@(Model.sliderFrom == 0 ? 0 : Model.sliderFrom)",
+                to: "@(Model.sliderTo == 0 ? Model.PriceTo : Model.sliderTo )"
+            });
+
+
         $(".AddKosarica").on('click', function (e) {
 
-            
+
             mobitelid = this.getAttribute("mobitelId")
             urldoakcije = "@Url.Action("Dodaj", "Kosarica", new { Area = "Customer" })";
 
@@ -115,7 +125,7 @@
                     console.log(notificationcount);
                 },
                 error: function (req, status, error) {
-                    
+
             }
     });
         });

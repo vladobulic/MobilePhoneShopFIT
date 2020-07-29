@@ -40,6 +40,16 @@ namespace RepositoryLayer
             context.SaveChanges();
         }
 
+        public void InsertRange(List<T> entity)
+        {
+            if (entity == null)
+            {
+                throw new ArgumentNullException("entity");
+            }
+            entities.AddRange(entity);
+            context.SaveChanges();
+        }
+
         public void Update(T entity)
         {
             if (entity == null)
@@ -74,6 +84,15 @@ namespace RepositoryLayer
             context.SaveChanges();
         }
 
-        
+        public int InsertAndReturnEntityId(T entity)
+        {
+            if (entity == null)
+            {
+                throw new ArgumentNullException("entity");
+            }
+            entities.Add(entity);
+            context.SaveChanges();
+            return entity.Id;
+        }
     }
 }

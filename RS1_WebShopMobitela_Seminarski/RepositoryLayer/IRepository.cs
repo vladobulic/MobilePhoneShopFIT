@@ -12,6 +12,10 @@ namespace RepositoryLayer
         IEnumerable<T> GetAll();
         IQueryable<T> GetAllQueryable();
         void Insert(T entity);
+
+        int InsertAndReturnEntityId(T entity);
+
+        void InsertRange(List<T> entity);
         void Update(T entity);
         void Delete(T entity);
         void Remove(T entity);

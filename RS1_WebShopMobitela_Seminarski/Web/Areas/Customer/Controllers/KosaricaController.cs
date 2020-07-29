@@ -15,7 +15,7 @@ namespace Web.Areas.Customer.Controllers
     {
 
         private readonly IMobitelService mobitelService;
-        private readonly string CartName = "cart";
+        private static readonly string CartName = "cart";
 
         public KosaricaController(IMobitelService mobitelService)
         {

@@ -45,6 +45,7 @@ namespace Web
             services.AddTransient<IKupacService, KupacService>();
             services.AddTransient<IKomentarService, KomentarService>();
             services.AddTransient<INovostiService, NovostiService>();
+            services.AddTransient<INarudzbaService, NarudzbaService>();
             services.AddTransient<IProizvodjacService, ProizvodjacService>();
             services.AddTransient<ILogService, LogService>();
             
