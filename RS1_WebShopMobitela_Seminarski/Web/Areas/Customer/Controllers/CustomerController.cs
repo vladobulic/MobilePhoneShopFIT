@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer;
+using ServiceLayer.Classes.Helper;
 using ServiceLayer.Interfaces;
 using Web.Areas.Customer.Helpers;
 using Web.Areas.Customer.Models;
@@ -26,14 +27,16 @@ namespace Web.Areas.Customer.Controllers
         private readonly ILogService logService;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly INovostiService novostiService;
+        private readonly IEmailService emailService;
         private readonly int resultsPerPage = 6;
 
-        public CustomerController(IMobitelService mobitelService, IProizvodjacService proizvodjacService, ILogService logService, UserManager<ApplicationUser> userManager, INovostiService novostiService)
+        public CustomerController(IMobitelService mobitelService, IProizvodjacService proizvodjacService, ILogService logService, UserManager<ApplicationUser> userManager, INovostiService novostiService, IEmailService emailService)
         {
             this.mobitelService = mobitelService;
             this.proizvodjacService = proizvodjacService;
             this.logService = logService;
             this.novostiService = novostiService;
+            this.emailService = emailService;
             _userManager = userManager;
         }
         public IActionResult Index(IndexViewModel model)
@@ -102,6 +105,7 @@ namespace Web.Areas.Customer.Controllers
 
             // exception handler 
             logService.InsertLog(Converter.CreateLog( exception, _userManager, HttpContext, pathString));
+            emailService.SendEmailAsync(new MailRequest { Body = exception.StackTrace, Subject = "Dogodila se exceptija u app", ToEmail = "webshopmobitela@gmail.com" });
             return View();
         }
     }

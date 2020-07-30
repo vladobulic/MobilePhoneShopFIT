@@ -53,6 +53,14 @@
             <label class="order-form-label">Hvala na povjerenju, molimo vas unesite podatke za dostavu :)</label>
         </div>
         <div class="form-group ">
+            <input asp-for="Ime" class="form-control" placeholder="Ime">
+            <span asp-validation-for="Ime" class="text-danger"></span>
+        </div>
+        <div class="form-group ">
+            <input asp-for="Prezime" class="form-control" placeholder="Prezime">
+            <span asp-validation-for="Prezime" class="text-danger"></span>
+        </div>
+        <div class="form-group ">
             <input asp-for="KontaktTelefon" class="form-control" placeholder="Kontakt Telefon">
             <span asp-validation-for="KontaktTelefon" class="text-danger"></span>
         </div>

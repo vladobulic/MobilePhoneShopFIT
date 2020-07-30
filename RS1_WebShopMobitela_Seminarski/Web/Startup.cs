@@ -19,6 +19,7 @@ using ServiceLayer.Interfaces;
 using ServiceLayer.Classes;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using ServiceLayer.Classes.Helper;
 
 namespace Web
 {
@@ -48,8 +49,12 @@ namespace Web
             services.AddTransient<INarudzbaService, NarudzbaService>();
             services.AddTransient<IProizvodjacService, ProizvodjacService>();
             services.AddTransient<ILogService, LogService>();
-            
-            
+            services.AddTransient<ISmsService, SmsService>();
+            services.AddTransient<IEmailService, EmailService>();
+
+            // add our mail settings
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
+            services.Configure<SmsSettings>(Configuration.GetSection("SmsSettings"));
 
             services.AddMvc();
             services.AddSession();

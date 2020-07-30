@@ -6,6 +6,9 @@ using DataAccessLayer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Nexmo.Api;
+using ServiceLayer.Classes.Helper;
 using ServiceLayer.Interfaces;
 using Web.Areas.Customer.Helpers;
 using Web.Areas.Customer.Models;
@@ -20,15 +23,20 @@ namespace Web.Areas.Customer.Controllers
         private readonly IMobitelService mobitelService;
         private readonly INarudzbaService narudzbaService;
         private readonly IKupacService kupacService;
+        private readonly ISmsService smsService;
         private readonly UserManager<ApplicationUser> _userManager;
+        public IConfiguration Configuration { get; set; }
 
 
-        public NarudzbaController(IMobitelService mobitelService, INarudzbaService narudzbaService, UserManager<ApplicationUser> _userManager, IKupacService kupacService)
+        public NarudzbaController(IMobitelService mobitelService, INarudzbaService narudzbaService, UserManager<ApplicationUser> _userManager, IKupacService kupacService, ISmsService smsService, IConfiguration config)
         {
             this.mobitelService = mobitelService;
             this.narudzbaService = narudzbaService;
             this.kupacService = kupacService;
             this._userManager = _userManager;
+            this.smsService = smsService;
+            this.Configuration = config;
+
         }
 
         public IActionResult Index()
@@ -80,6 +88,11 @@ namespace Web.Areas.Customer.Controllers
 
             
             narudzbaService.InsertNarudzba(narudzba, listaStavki);
+
+            // posalji sms zahvale kupcu
+            string poruka = "Hvala vam na naruzbi sa webshopmobitela, " + model.Ime + ".Vasa naruzba ce ubrzo biti dostavljena u ulicu " + model.Ulica+".";
+            
+            smsService.SendSms(new SmsModel { To = model.KontaktTelefon, Text =  poruka});
 
 
             // nakon uspjesne narudzbe ukloni sve iz kosarice.

@@ -12,6 +12,12 @@ namespace Web.Areas.Customer.Models
 
         public KosaricaIndexViewModel Detalji { get; set; }
 
+        [Required(ErrorMessage = "Morate unjeti ime")]
+        public string Ime { get; set; }
+
+        [Required(ErrorMessage = "Morate unjeti prezime")]
+        public string Prezime { get; set; }
+
         [Required(ErrorMessage = "Morate unjeti kontakt telefon")]
         public string KontaktTelefon { get; set; }
 
