@@ -92,7 +92,7 @@ namespace Web.Areas.Customer.Controllers
             // posalji sms zahvale kupcu
             string poruka = "Hvala vam na naruzbi sa webshopmobitela, " + model.Ime + ".Vasa naruzba ce ubrzo biti dostavljena u ulicu " + model.Ulica+".";
             
-            smsService.SendSms(new SmsModel { To = model.KontaktTelefon, Text =  poruka});
+            smsService.SendSms(new SmsModel { To = model.FullPhone, Text =  poruka});
 
 
             // nakon uspjesne narudzbe ukloni sve iz kosarice.
@@ -127,7 +127,7 @@ namespace Web.Areas.Customer.Controllers
                 var mobitel = mobitelService.GetMobitel(item.Product.Id);
 
                 item.Product.mobitel = MobitelViewModel.ConvertToMobitelViewModel(mobitel);
-                model.TotalPrice += item.Product.mobitel.Cijena * item.Quantity;
+                model.TotalPrice += Converter.RoundToTwoDecimal(item.Product.mobitel.Cijena * item.Quantity);
             }
             model.Items = cart;
 

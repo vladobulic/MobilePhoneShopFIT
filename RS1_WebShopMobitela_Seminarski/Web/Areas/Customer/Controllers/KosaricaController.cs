@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Castle.Core.Internal;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Interfaces;
 using Web.Areas.Customer.Helpers;
@@ -27,6 +28,10 @@ namespace Web.Areas.Customer.Controllers
             model.TotalPrice = 0;
             List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, CartName);
 
+            
+            if (cart.IsNullOrEmpty())
+                return RedirectToAction("Index", "Customer", new { area = "Customer" });
+
             // get all of the data for display view and calculate the total price of the phone
             foreach (var item in cart)
             {
@@ -35,8 +40,10 @@ namespace Web.Areas.Customer.Controllers
                 item.Product.mobitel = MobitelViewModel.ConvertToMobitelViewModel(mobitel);
                 model.TotalPrice += item.Product.mobitel.Cijena * item.Quantity;
             }
+            model.TotalPrice = Converter.RoundToTwoDecimal(model.TotalPrice);
             model.Items = cart;
             return View(model);
+            
         }
 
         public IActionResult Dodaj(int id)

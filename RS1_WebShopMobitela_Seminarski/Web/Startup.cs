@@ -14,7 +14,6 @@ using RepositoryLayer;
 using ServiceLayer;
 using Microsoft.AspNetCore.Identity;
 using DataAccessLayer;
-using Web.Areas.Identity.Services;
 using ServiceLayer.Interfaces;
 using ServiceLayer.Classes;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -86,10 +85,6 @@ namespace Web
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
             });
 
-            // Add application services.
-            
-            services.AddTransient<IEmailSender, AuthMessageSender>();
-            services.AddTransient<ISmsSender, AuthMessageSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -97,7 +92,7 @@ namespace Web
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();  
+                app.UseDeveloperExceptionPage();
             }
             else
             {
@@ -105,6 +100,7 @@ namespace Web
                 app.UseExceptionHandler("/Customer/Customer/Error");
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseSession();
             app.UseStaticFiles();

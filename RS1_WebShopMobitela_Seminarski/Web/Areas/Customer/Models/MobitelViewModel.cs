@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Web.Areas.Customer.Helpers;
 
 namespace Web.Areas.Customer.Models
 {
@@ -62,7 +63,7 @@ namespace Web.Areas.Customer.Models
                 Graficka = x.Graficka,
                 Megapikseli = x.Megapikseli.ToString(),
                 Popust = x.PopustId != null,
-                Cijena = x.PopustId != null ? (x.Cijena - (x.Cijena * x.Popust.PostotakPopusta)) : x.Cijena,
+                Cijena = Converter.RoundToTwoDecimal(x.PopustId != null ? (x.Cijena - (x.Cijena * x.Popust.PostotakPopusta)) : x.Cijena),
                 Procesor = x.Procesor,
                 Ram_Gb = x.Ram_Gb.ToString(),
                 StanjeNaSkladistu = x.StanjeNaSkladistu,

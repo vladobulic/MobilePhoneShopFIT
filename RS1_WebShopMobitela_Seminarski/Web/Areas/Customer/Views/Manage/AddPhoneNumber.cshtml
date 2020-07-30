@@ -1,0 +1,46 @@
+﻿@model Web.Areas.Customer.Models.ManageViewModels.AddPhoneNumberViewModel
+
+    <link rel="stylesheet" href="/Customer/css/intlTelInput.css" />
+
+<form asp-controller="Manage" asp-action="AddPhoneNumber" method="post" class="form-horizontal" role="form">
+    <h4>Potvrdite vas broj telefona.</h4>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="PhoneNumber" class="form-control" id="phone"/>
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-default">Send verification code</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script src="/Customer/js/intlTelInput.js"></script>
+    <script src="/Customer/js/utils.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var input = document.querySelector("#phone");
+
+
+            window.intlTelInput(input, {
+                hiddenInput: "FullPhone",
+                initialCountry: "BA",
+                formatOnDisplay: true,
+                submitCountryCode: true,
+                onlyCountries: ["BA"],
+                utilsScript: "utils.js?1590403638580" // just for formatting/placeholders etc
+            });
+
+
+
+        });
+    </script>
+}

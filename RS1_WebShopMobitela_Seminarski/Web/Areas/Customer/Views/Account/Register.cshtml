@@ -1,0 +1,95 @@
+﻿@model Web.Areas.Customer.Models.RegisterViewModel
+
+@{ ViewData["Title"] = "Register"; }
+    <link rel="stylesheet" href="/Customer/css/intlTelInput.css" />
+<h1>Registracija</h1>
+
+<form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
+    <h4>Kreirajte vas racun da biste mogli komentirati mobitele i pratiti vase narudzbe :)</h4>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Ime" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Ime" class="form-control" />
+            <span asp-validation-for="Ime" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Prezime" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Prezime" class="form-control" />
+            <span asp-validation-for="Prezime" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BrojMobitela" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="BrojMobitela"  id="phone" class="form-control" />
+            <span asp-validation-for="BrojMobitela" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Izaberi grad</label>
+        <div class="col-md-10">
+            <select asp-for="GradId" asp-items="@Model.Gradovi" class="form-control">
+                <option value="">Izaberite vas grad</option>
+            </select>
+            <span asp-validation-for="GradId" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="ConfirmPassword" class="form-control" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script src="/Customer/js/intlTelInput.js"></script>
+    <script src="/Customer/js/utils.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var input = document.querySelector("#phone");
+            
+
+            window.intlTelInput(input, {
+                hiddenInput: "FullPhone",
+                initialCountry: "BA",
+                formatOnDisplay: true,
+                submitCountryCode: true,
+                onlyCountries: ["BA"],
+                utilsScript: "utils.js?1590403638580" // just for formatting/placeholders etc
+            });
+
+
+            
+        });
+    </script>
+}
+

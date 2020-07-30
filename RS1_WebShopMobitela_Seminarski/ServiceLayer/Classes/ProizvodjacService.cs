@@ -2,6 +2,7 @@
 using ServiceLayer.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ServiceLayer.Classes
@@ -21,7 +22,7 @@ namespace ServiceLayer.Classes
 
         public IEnumerable<Proizvodjac> GetProizvodjaci()
         {
-            return proizvodjacRepository.GetAll();
+            return proizvodjacRepository.GetAllQueryable().OrderBy(x => x.Naziv).ToList();
         }
     }
 }

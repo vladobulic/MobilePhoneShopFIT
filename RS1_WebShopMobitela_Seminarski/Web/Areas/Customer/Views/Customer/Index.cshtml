@@ -80,7 +80,7 @@
             <ul class="pagination">
                 @for (var i = 1; i <= Model.TotalPages; i++)
                 {
-                    <li class="page-item @(i == Model.Page ? "active" : "")">
+                    <li class="page-item @((i == Model.Page || (Model.Page == null && i == 1)) ? "active" : "")">
                         <a asp-area="Customer" asp-controller="Customer" asp-action="Index" asp-route-page="@i" asp-route-SearchName="@Model.SearchName" asp-route-ProizvodjacId="@Model.ProizvodjacId" asp-route-PriceDesc="@Model.PriceDesc" asp-route-my_range="@Model.my_range" class="page-link">@i</a>
                     </li>
                 }
@@ -122,7 +122,7 @@
                     notificationcount = parseInt($("#notification_count").html());
                     notificationcount += 1;
                     $("#notification_count").html(notificationcount);
-                    console.log(notificationcount);
+                    $("#shakeme").effect("bounce");
                 },
                 error: function (req, status, error) {
 

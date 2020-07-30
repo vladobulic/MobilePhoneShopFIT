@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@using Web.Areas.Identity.Models
+@using Web.Areas.Customer.Models
 @using DataAccessLayer
 @using Web.Areas.Customer.Helpers
 @inject SignInManager<ApplicationUser> SignInManager
@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="~/Customer/css/ion.rangeSlider.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <script src="https://kit.fontawesome.com/7576b4ea0f.js" crossorigin="anonymous"></script>
+    
     <link href="/lib/iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 </head>
 <body>
@@ -41,23 +42,32 @@
 
                         @if (SignInManager.IsSignedIn(User))
                         {
-                            <form asp-area="Identity" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm">
-                                
-                                    <li>
-                                        <a asp-area="Identity" asp-controller="Manage" asp-action="Index" title="Manage">Zdravo, @UserManager.GetUserName(User)!</a>
-                                    </li>
-                                    <li>
-                                        <button type="submit" class="btn btn-link navbar-btn navbar-link">Odjava</button>
-                                    </li>
-                               
-                            </form>
+
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Customer" asp-controller="Manage" asp-action="Index" title="Manage">@UserManager.GetUserName(User)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Customer" asp-controller="Narudzba" asp-action="Narudzbe">Narudzbe</a>
+                            </li>
+                            <li class="nav-item border-right">
+                                <form name="myform" asp-area="Customer" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm">
+                                    <a class="nav-link text-dark" href="javascript: submitform()">Odjava</a>
+
+                                </form>
+                            </li>
+
+
+
                         }
                         else
                         {
-                            
-                                <li><a asp-area="Identity" asp-controller="Account" asp-action="Register">Registracija</a></li>
-                                <li><a asp-area="Identity" asp-controller="Account" asp-action="Login">Log in</a></li>
-                           
+
+                            <li class="nav-item"><a class="nav-link text-dark" asp-area="Customer" asp-controller="Account" asp-action="Register">Registracija</a></li>
+                            <li class="nav-item border-right"><a class="nav-link text-dark" asp-area="Customer" asp-controller="Account" asp-action="Login">Log in</a></li>
+
                         }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Customer" asp-controller="Customer" asp-action="Novosti">Novosti</a>
@@ -67,7 +77,7 @@
                             <a class="nav-link text-dark" asp-area="Customer" asp-controller="Customer" asp-action="Kontakt">Kontakt</a>
                         </li>
 
-                        <li class="nav-item bg-primary rounded-lg">
+                        <li class="nav-item bg-primary rounded-lg" id="shakeme">
                             <a class="nav-link text-white" asp-area="Customer" asp-controller="Kosarica" asp-action="Index">
                                 <span class="oi oi-basket" title="basket" aria-hidden="true"></span>
                                 <span class="badge badge-light text-danger" id="notification_count">@LayoutHelpers.NotificationCount(Context)</span>
@@ -88,10 +98,14 @@
     <!-- Footer -->
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery-ui.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="~/Customer/js/ion.rangeSlider.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
+    <script>
+        function submitform() { document.myform.submit(); } 
+    </script>
 </body>
 </html>

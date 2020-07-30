@@ -26,7 +26,7 @@ namespace ServiceLayer.Classes
             message.To.Add(new MailAddress(mailRequest.ToEmail));
             message.Subject = mailRequest.Subject;
           
-            message.IsBodyHtml = false;
+            message.IsBodyHtml = true;
             message.Body = mailRequest.Body;
             smtp.Port = _mailSettings.Port;
             smtp.Host = _mailSettings.Host;

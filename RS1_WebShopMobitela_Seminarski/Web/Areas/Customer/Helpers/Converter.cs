@@ -39,5 +39,7 @@ namespace Web.Areas.Customer.Helpers
                 RequestPath = httpContext.Request.Path
             };
         }
+
+        public static double RoundToTwoDecimal(double d) => Math.Round(d, 2);
     }
 }

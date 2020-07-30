@@ -5,7 +5,7 @@
 }
 @model NaruzbaViewModel
 
-
+<link rel="stylesheet" href="/Customer/css/intlTelInput.css" />
 
 <div class="table-responsive">
     <table class="table table-striped">
@@ -50,8 +50,13 @@
     <div class="col-12">
 
         <div class="col-12">
-            <label class="order-form-label">Hvala na povjerenju, molimo vas unesite podatke za dostavu :)</label>
+            <label class="order-form-label">Hvala Vam na povjerenju! Molimo vas unesite podatke za dostavu :)</label>
         </div>
+        <div class="form-group ">
+            <input asp-for="KontaktTelefon" id="phone" type="tel" class="form-control">
+            <span asp-validation-for="KontaktTelefon" class="text-danger"></span>
+        </div>
+
         <div class="form-group ">
             <input asp-for="Ime" class="form-control" placeholder="Ime">
             <span asp-validation-for="Ime" class="text-danger"></span>
@@ -60,10 +65,7 @@
             <input asp-for="Prezime" class="form-control" placeholder="Prezime">
             <span asp-validation-for="Prezime" class="text-danger"></span>
         </div>
-        <div class="form-group ">
-            <input asp-for="KontaktTelefon" class="form-control" placeholder="Kontakt Telefon">
-            <span asp-validation-for="KontaktTelefon" class="text-danger"></span>
-        </div>
+
         <div class="form-group ">
             <input asp-for="Kanton" class="form-control" placeholder="Kanton">
             <span asp-validation-for="Kanton" class="text-danger"></span>
@@ -83,10 +85,35 @@
 
         <div class="row">
             <div class="col-12">
-                <button type="submit" id="btnSubmit" class="btn btn-dark d-block mx-auto btn-submit">Naruci</button>
+                <button type="submit" id="btnSubmit" class="btn d-block mx-auto btn-primary">Naruci</button>
             </div>
         </div>
 
     </div>
 
 </form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script src="/Customer/js/intlTelInput.js"></script>
+    <script src="/Customer/js/utils.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var input = document.querySelector("#phone");
+
+
+            window.intlTelInput(input, {
+                hiddenInput: "FullPhone",
+                initialCountry: "BA",
+                formatOnDisplay: true,
+                submitCountryCode: true,
+                onlyCountries: ["BA"],
+                utilsScript: "utils.js?1590403638580" // just for formatting/placeholders etc
+            });
+
+
+
+        });
+    </script>
+}

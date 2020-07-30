@@ -29,12 +29,13 @@ namespace Tests.TestsMethods
             var proizvodjacService = new Mock<IProizvodjacService>();
             var logService = new Mock<ILogService>();
             var novostiService = new Mock<INovostiService>();
+            var emailService = new Mock<IEmailService>();
 
 
 
 
 
-            CustomerController customerController = new CustomerController(mobitelService.Object, proizvodjacService.Object, logService.Object, null, novostiService.Object);
+            CustomerController customerController = new CustomerController(mobitelService.Object, proizvodjacService.Object, logService.Object, null, novostiService.Object, emailService.Object);
 
             
             var ivm = new IndexViewModel

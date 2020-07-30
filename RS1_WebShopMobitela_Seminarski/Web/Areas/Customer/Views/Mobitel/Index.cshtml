@@ -108,35 +108,37 @@
 
     </form>
 }
+@if (Model.Komentari.Count != 0)
+{
+    <div class="row d-flex justify-content-center mt-100 mb-100">
+        <div class="col-lg-6">
+            <div class="card">
 
-<div class="row d-flex justify-content-center mt-100 mb-100">
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-body text-center">
-                <h4 class="card-title">Komentari</h4>
+                <div class="card-body text-center">
+                    <h4 class="card-title">Komentari</h4>
+                </div>
+                <div class="comment-widgets">
+
+
+                    @foreach (var komentar in Model.Komentari)
+                    {
+                        <!-- Comment Row -->
+                        <div class="d-flex flex-row comment-row m-t-0">
+                            <div class="p-2"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583336/AAA/4.jpg" alt="user" width="50" class="rounded-circle"></div>
+                            <div class="comment-text w-100">
+                                <h6 class="font-medium">@komentar.Kupac.Ime</h6> <span class="m-b-15 d-block">@komentar.Sadrzaj </span>
+                                <div class="comment-footer"> <span class="text-muted float-right">@komentar.Datum.ToShortDateString()</span></div>
+                            </div>
+                        </div> <!-- Comment Row -->
+                    }
+                </div> <!-- Card -->
             </div>
-            <div class="comment-widgets">
-
-
-                @foreach (var komentar in Model.Komentari)
-                {
-                    <!-- Comment Row -->
-                    <div class="d-flex flex-row comment-row m-t-0">
-                        <div class="p-2"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583336/AAA/4.jpg" alt="user" width="50" class="rounded-circle"></div>
-                        <div class="comment-text w-100">
-                            <h6 class="font-medium">@komentar.Kupac.Ime</h6> <span class="m-b-15 d-block">@komentar.Sadrzaj </span>
-                            <div class="comment-footer"> <span class="text-muted float-right">@komentar.Datum.ToShortDateString()</span></div>
-                        </div>
-                    </div> <!-- Comment Row -->
-                }
-            </div> <!-- Card -->
         </div>
     </div>
-</div>
+}
+    @section scripts {
 
-@section scripts {
-
-    <script>
+        <script>
         $(document).ready(function () {
         $(".AddKosarica").on('click', function (e) {
 
@@ -150,16 +152,17 @@
                 data: { id: mobitelid},
                 dataType: "text",
                 success: function (msg) {
-                    alert(msg);
-                },
-                error: function (req, status, error) {
-                    alert(error);
-            }
+                    notificationcount = parseInt($("#notification_count").html());
+                    notificationcount += 1;
+                    $("#notification_count").html(notificationcount);
+                    $("#shakeme").effect("bounce");
+                }
+                
     });
         });
         });
 
-    </script>
+        </script>
 
-}
+    }
 
