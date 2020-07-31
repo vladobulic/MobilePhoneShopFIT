@@ -20,12 +20,32 @@ namespace ServiceLayer.Classes
 
         public async Task SendEmailAsync(MailRequest mailRequest)
         {
+            await SendEmail(mailRequest, false);
+        }
+
+        public async Task SendEmailToMyselfAsync(MailRequest mailRequest)
+        {
+            await SendEmail(mailRequest, true);
+        }
+
+        private Task SendEmail(MailRequest mailRequest, bool toMyself)
+        {
             MailMessage message = new MailMessage();
             SmtpClient smtp = new SmtpClient();
+
             message.From = new MailAddress(_mailSettings.Mail, _mailSettings.DisplayName);
-            message.To.Add(new MailAddress(mailRequest.ToEmail));
+
+            if (toMyself)
+            {
+                message.To.Add(new MailAddress(_mailSettings.Mail));
+            }
+            else
+            {
+                message.To.Add(new MailAddress(mailRequest.ToEmail));
+            }
+
             message.Subject = mailRequest.Subject;
-          
+
             message.IsBodyHtml = true;
             message.Body = mailRequest.Body;
             smtp.Port = _mailSettings.Port;
@@ -34,7 +54,7 @@ namespace ServiceLayer.Classes
             smtp.UseDefaultCredentials = false;
             smtp.Credentials = new NetworkCredential(_mailSettings.Mail, _mailSettings.Password);
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-            await smtp.SendMailAsync(message);
+            return smtp.SendMailAsync(message);
         }
     }
 }

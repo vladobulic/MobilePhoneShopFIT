@@ -9,5 +9,6 @@ namespace ServiceLayer.Interfaces
     public interface IEmailService
     {
         Task SendEmailAsync(MailRequest mailRequest);
+        Task SendEmailToMyselfAsync(MailRequest mailRequest);
     }
 }

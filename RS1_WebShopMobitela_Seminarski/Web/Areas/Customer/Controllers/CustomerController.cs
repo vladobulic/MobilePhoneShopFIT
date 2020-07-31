@@ -28,6 +28,7 @@ namespace Web.Areas.Customer.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly INovostiService novostiService;
         private readonly IEmailService emailService;
+
         private readonly int resultsPerPage = 6;
 
         public CustomerController(IMobitelService mobitelService, IProizvodjacService proizvodjacService, ILogService logService, UserManager<ApplicationUser> userManager, INovostiService novostiService, IEmailService emailService)
@@ -88,6 +89,20 @@ namespace Web.Areas.Customer.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Kontakt(KontaktViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            emailService.SendEmailToMyselfAsync(new MailRequest { Body = model.Poruka, Subject = model.Ime + " " + model.Mail + " vam je poslao mail sa web shopa" });
+            ViewBag.HvalaVam ="Vasa poruka je poslana, uskoro cemo vam se javiti :)";
+            return View();
+
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -105,7 +120,7 @@ namespace Web.Areas.Customer.Controllers
 
             // exception handler 
             logService.InsertLog(Converter.CreateLog( exception, _userManager, HttpContext, pathString));
-            emailService.SendEmailAsync(new MailRequest { Body = exception.StackTrace, Subject = "Dogodila se exceptija u app", ToEmail = "webshopmobitela@gmail.com" });
+            emailService.SendEmailToMyselfAsync(new MailRequest { Body = exception.StackTrace, Subject = "Exception: " + exception.Message });
             return View();
         }
     }
