@@ -266,3 +266,4 @@ C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\
 C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\bin\Debug\netcoreapp3.1\wwwroot\Customer\slike\samsungs8.png
 C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\bin\Debug\netcoreapp3.1\wwwroot\Customer\slike\samsung_galaxy_a30.jpg
 C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\bin\Debug\netcoreapp3.1\wwwroot\Customer\slike\yezz_classic_c221.jpg
+C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Customer\NapredneFunkcionalnostiSandro.cshtml.g.cs

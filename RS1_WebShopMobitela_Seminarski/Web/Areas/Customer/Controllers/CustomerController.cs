@@ -89,6 +89,12 @@ namespace Web.Areas.Customer.Controllers
             return View();
         }
 
+        public IActionResult NapredneFunkcionalnostiSandro()
+        {
+
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Kontakt(KontaktViewModel model)
