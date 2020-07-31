@@ -54,7 +54,10 @@ namespace ServiceLayer
             else
                 mobiteli = mobiteli.OrderBy(x => x.Cijena);
 
-            TotalPages = (int)(decimal.Divide(mobiteli.Count(), resultsPerPage));
+            TotalPages = (int)Math.Ceiling(decimal.Divide(mobiteli.Count(), resultsPerPage));
+            
+            if (page != 0)
+                page -= 1;
             mobiteli = mobiteli.Skip(resultsPerPage * page).Take(resultsPerPage);
            
 

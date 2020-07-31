@@ -10,8 +10,8 @@ using RepositoryLayer;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20200729162301_narudzbe")]
-    partial class narudzbe
+    [Migration("20200731104933__initial")]
+    partial class _initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -184,7 +184,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            Datum = new DateTime(2020, 7, 29, 18, 23, 0, 227, DateTimeKind.Local).AddTicks(7339),
+                            Datum = new DateTime(2020, 7, 31, 12, 49, 32, 727, DateTimeKind.Local).AddTicks(5831),
                             IsDeleted = false,
                             KupacId = 1,
                             MobitelId = 1
@@ -272,7 +272,7 @@ namespace RepositoryLayer.Migrations
                             Id = 1,
                             BrojMobitela = "063525555",
                             BrojPokusaja = 0,
-                            DatumPokusaja = new DateTime(2020, 7, 29, 18, 23, 0, 228, DateTimeKind.Local).AddTicks(1753),
+                            DatumPokusaja = new DateTime(2020, 7, 31, 12, 49, 32, 728, DateTimeKind.Local).AddTicks(4996),
                             Email = "kupac@kupac.com",
                             GradId = 1,
                             Ime = "kupac",
@@ -558,7 +558,7 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("Naziv")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OperativniSustavId")
+                    b.Property<int?>("OperativniSustavId")
                         .HasColumnType("int");
 
                     b.Property<string>("Opis")
@@ -570,7 +570,7 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("Procesor")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProizvodjacId")
+                    b.Property<int?>("ProizvodjacId")
                         .HasColumnType("int");
 
                     b.Property<float>("Ram_Gb")
@@ -599,15 +599,17 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            Cijena = 1200.0,
+                            Cijena = 1210.0,
                             DijagonalaEkrana = 6.1f,
                             EksternaMemorija = true,
                             Graficka = "Ardent",
                             IsDeleted = false,
                             KapacitetBaterije = 3200,
+                            KratkiOpis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća",
                             Megapikseli = 12.3f,
                             Naziv = "S10",
                             OperativniSustavId = 1,
+                            Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
                             PopustId = 1,
                             Procesor = "Xenon A5G",
                             ProizvodjacId = 1,
@@ -619,15 +621,17 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 2,
-                            Cijena = 1200.0,
+                            Cijena = 1580.0,
                             DijagonalaEkrana = 6.1f,
                             EksternaMemorija = true,
                             Graficka = "Ardent",
                             IsDeleted = false,
                             KapacitetBaterije = 3200,
+                            KratkiOpis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća",
                             Megapikseli = 12.3f,
                             Naziv = "S20",
                             OperativniSustavId = 1,
+                            Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
                             PopustId = 1,
                             Procesor = "Xenon A5G",
                             ProizvodjacId = 1,
@@ -639,15 +643,273 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 3,
-                            Cijena = 1200.0,
+                            Cijena = 990.0,
                             DijagonalaEkrana = 6.1f,
                             EksternaMemorija = true,
                             Graficka = "Ardent",
                             IsDeleted = false,
                             KapacitetBaterije = 3200,
+                            KratkiOpis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća",
                             Megapikseli = 12.3f,
-                            Naziv = "A50",
+                            Naziv = "S10 Lite",
                             OperativniSustavId = 1,
+                            Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
+                            PopustId = 1,
+                            Procesor = "Xenon A5G",
+                            ProizvodjacId = 1,
+                            Ram_Gb = 8f,
+                            Rezolucija = "FULL HD IPS",
+                            StanjeNaSkladistu = 10,
+                            Tezina = 320
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Cijena = 440.0,
+                            DijagonalaEkrana = 6.1f,
+                            EksternaMemorija = true,
+                            Graficka = "Ardent",
+                            IsDeleted = false,
+                            KapacitetBaterije = 3200,
+                            KratkiOpis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća",
+                            Megapikseli = 12.3f,
+                            Naziv = "Redmi Note 9",
+                            OperativniSustavId = 1,
+                            Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
+                            PopustId = 1,
+                            Procesor = "Xenon A5G",
+                            ProizvodjacId = 4,
+                            Ram_Gb = 8f,
+                            Rezolucija = "FULL HD IPS",
+                            StanjeNaSkladistu = 10,
+                            Tezina = 320
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Cijena = 1320.0,
+                            DijagonalaEkrana = 6.1f,
+                            EksternaMemorija = true,
+                            Graficka = "Ardent",
+                            IsDeleted = false,
+                            KapacitetBaterije = 3200,
+                            KratkiOpis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća",
+                            Megapikseli = 12.3f,
+                            Naziv = "Pixel 4",
+                            OperativniSustavId = 1,
+                            Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
+                            PopustId = 1,
+                            Procesor = "Xenon A5G",
+                            ProizvodjacId = 6,
+                            Ram_Gb = 8f,
+                            Rezolucija = "FULL HD IPS",
+                            StanjeNaSkladistu = 10,
+                            Tezina = 320
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Cijena = 2350.0,
+                            DijagonalaEkrana = 6.1f,
+                            EksternaMemorija = true,
+                            Graficka = "Ardent",
+                            IsDeleted = false,
+                            KapacitetBaterije = 3200,
+                            KratkiOpis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća",
+                            Megapikseli = 12.3f,
+                            Naziv = "iPhone 11 pro",
+                            OperativniSustavId = 2,
+                            Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
+                            PopustId = 1,
+                            Procesor = "Xenon A5G",
+                            ProizvodjacId = 2,
+                            Ram_Gb = 8f,
+                            Rezolucija = "FULL HD IPS",
+                            StanjeNaSkladistu = 10,
+                            Tezina = 320
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Cijena = 1220.0,
+                            DijagonalaEkrana = 6.1f,
+                            EksternaMemorija = true,
+                            Graficka = "Ardent",
+                            IsDeleted = false,
+                            KapacitetBaterije = 3200,
+                            KratkiOpis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća",
+                            Megapikseli = 12.3f,
+                            Naziv = "iPhone XR",
+                            OperativniSustavId = 2,
+                            Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
+                            Procesor = "Xenon A5G",
+                            ProizvodjacId = 2,
+                            Ram_Gb = 8f,
+                            Rezolucija = "FULL HD IPS",
+                            StanjeNaSkladistu = 10,
+                            Tezina = 320
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Cijena = 880.0,
+                            DijagonalaEkrana = 6.1f,
+                            EksternaMemorija = true,
+                            Graficka = "Ardent",
+                            IsDeleted = false,
+                            KapacitetBaterije = 3200,
+                            KratkiOpis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća",
+                            Megapikseli = 12.3f,
+                            Naziv = "iPhone 8",
+                            OperativniSustavId = 2,
+                            Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
+                            Procesor = "Xenon A5G",
+                            ProizvodjacId = 2,
+                            Ram_Gb = 8f,
+                            Rezolucija = "FULL HD IPS",
+                            StanjeNaSkladistu = 10,
+                            Tezina = 320
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Cijena = 390.0,
+                            DijagonalaEkrana = 6.1f,
+                            EksternaMemorija = true,
+                            Graficka = "Ardent",
+                            IsDeleted = false,
+                            KapacitetBaterije = 3200,
+                            KratkiOpis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća",
+                            Megapikseli = 12.3f,
+                            Naziv = "Honor 9",
+                            OperativniSustavId = 1,
+                            Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
+                            Procesor = "Xenon A5G",
+                            ProizvodjacId = 3,
+                            Ram_Gb = 8f,
+                            Rezolucija = "FULL HD IPS",
+                            StanjeNaSkladistu = 10,
+                            Tezina = 320
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Cijena = 990.0,
+                            DijagonalaEkrana = 6.1f,
+                            EksternaMemorija = true,
+                            Graficka = "Ardent",
+                            IsDeleted = false,
+                            KapacitetBaterije = 3200,
+                            KratkiOpis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća",
+                            Megapikseli = 12.3f,
+                            Naziv = "Mate 30 Pro",
+                            OperativniSustavId = 1,
+                            Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
+                            Procesor = "Xenon A5G",
+                            ProizvodjacId = 3,
+                            Ram_Gb = 8f,
+                            Rezolucija = "FULL HD IPS",
+                            StanjeNaSkladistu = 10,
+                            Tezina = 320
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Cijena = 250.0,
+                            DijagonalaEkrana = 6.1f,
+                            EksternaMemorija = true,
+                            Graficka = "Ardent",
+                            IsDeleted = false,
+                            KapacitetBaterije = 3200,
+                            KratkiOpis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća",
+                            Megapikseli = 12.3f,
+                            Naziv = "B26",
+                            OperativniSustavId = 1,
+                            Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
+                            Procesor = "Xenon A5G",
+                            ProizvodjacId = 7,
+                            Ram_Gb = 8f,
+                            Rezolucija = "FULL HD IPS",
+                            StanjeNaSkladistu = 10,
+                            Tezina = 320
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Cijena = 30.0,
+                            DijagonalaEkrana = 6.1f,
+                            EksternaMemorija = true,
+                            Graficka = "Ardent",
+                            IsDeleted = false,
+                            KapacitetBaterije = 3200,
+                            KratkiOpis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća",
+                            Megapikseli = 12.3f,
+                            Naziv = "Classic c221",
+                            OperativniSustavId = 1,
+                            Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
+                            Procesor = "Xenon A5G",
+                            ProizvodjacId = 8,
+                            Ram_Gb = 8f,
+                            Rezolucija = "FULL HD IPS",
+                            StanjeNaSkladistu = 10,
+                            Tezina = 320
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Cijena = 430.0,
+                            DijagonalaEkrana = 6.1f,
+                            EksternaMemorija = true,
+                            Graficka = "Ardent",
+                            IsDeleted = false,
+                            KapacitetBaterije = 3200,
+                            KratkiOpis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća",
+                            Megapikseli = 12.3f,
+                            Naziv = "42",
+                            OperativniSustavId = 1,
+                            Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
+                            Procesor = "Xenon A5G",
+                            ProizvodjacId = 5,
+                            Ram_Gb = 8f,
+                            Rezolucija = "FULL HD IPS",
+                            StanjeNaSkladistu = 10,
+                            Tezina = 320
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Cijena = 430.0,
+                            DijagonalaEkrana = 6.1f,
+                            EksternaMemorija = true,
+                            Graficka = "Ardent",
+                            IsDeleted = false,
+                            KapacitetBaterije = 3200,
+                            KratkiOpis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća",
+                            Megapikseli = 12.3f,
+                            Naziv = "210",
+                            OperativniSustavId = 1,
+                            Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
+                            Procesor = "Xenon A5G",
+                            ProizvodjacId = 5,
+                            Ram_Gb = 8f,
+                            Rezolucija = "FULL HD IPS",
+                            StanjeNaSkladistu = 10,
+                            Tezina = 320
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Cijena = 670.0,
+                            DijagonalaEkrana = 6.1f,
+                            EksternaMemorija = true,
+                            Graficka = "Ardent",
+                            IsDeleted = false,
+                            KapacitetBaterije = 3200,
+                            KratkiOpis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća",
+                            Megapikseli = 12.3f,
+                            Naziv = "A71",
+                            OperativniSustavId = 1,
+                            Opis = "Lorem Ipsum je jednostavno probni tekst koji se koristi u tiskarskoj i slovoslagarskoj industriji. Lorem Ipsum postoji kao industrijski standard još od 16-og stoljeća, kada je nepoznati tiskar uzeo tiskarsku galiju slova i posložio ih da bi napravio knjigu s uzorkom tiska. Taj je tekst ne samo preživio pet stoljeća, već se i vinuo u svijet elektronskog slovoslagarstva, ostajući u suštini nepromijenjen. Postao je popularan tijekom 1960-ih s pojavom Letraset listova s odlomcima Lorem Ipsum-a, a u skorije vrijeme sa software-om za stolno izdavaštvo kao što je Aldus PageMaker koji također sadrži varijante Lorem Ipsum-a.",
                             PopustId = 1,
                             Procesor = "Xenon A5G",
                             ProizvodjacId = 1,
@@ -738,7 +1000,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            Datum = new DateTime(2020, 7, 29, 18, 23, 0, 228, DateTimeKind.Local).AddTicks(6448),
+                            Datum = new DateTime(2020, 7, 31, 12, 49, 32, 729, DateTimeKind.Local).AddTicks(1632),
                             Naslov = "Novi iPhone stigao u BiH",
                             SadrzajTekst = "ok mobitel",
                             ZaposlenikId = 1
@@ -768,6 +1030,12 @@ namespace RepositoryLayer.Migrations
                             Id = 1,
                             Naziv = "Android",
                             Verzija = 11f
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Naziv = "iOS",
+                            Verzija = 13.4f
                         });
                 });
 
@@ -795,9 +1063,9 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            DatumDo = new DateTime(2020, 7, 29, 18, 23, 0, 226, DateTimeKind.Local).AddTicks(8152),
-                            DatumOd = new DateTime(2020, 7, 29, 18, 23, 0, 224, DateTimeKind.Local).AddTicks(2445),
-                            PostotakPopusta = 5f
+                            DatumDo = new DateTime(2020, 7, 31, 12, 49, 32, 726, DateTimeKind.Local).AddTicks(1312),
+                            DatumOd = new DateTime(2020, 7, 31, 12, 49, 32, 722, DateTimeKind.Local).AddTicks(7406),
+                            PostotakPopusta = 0.1f
                         });
                 });
 
@@ -857,6 +1125,41 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Naziv = "Samsung"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Naziv = "Apple"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Naziv = "Huawei"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Naziv = "Xiaomi"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Naziv = "Nokia"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Naziv = "Google"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Naziv = "CAT"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Naziv = "YEZZ"
                         });
                 });
 
@@ -913,6 +1216,113 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("MobitelId");
 
                     b.ToTable("Slike");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            MobitelId = 1,
+                            Order = 1,
+                            Path = "/Customer/slike/samsung.jpg"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            MobitelId = 2,
+                            Order = 1,
+                            Path = "/Customer/slike/samsungS20.jpg"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            MobitelId = 3,
+                            Order = 1,
+                            Path = "/Customer/slike/samsung_galaxy_a30.jpg"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            MobitelId = 4,
+                            Order = 1,
+                            Path = "/Customer/slike/redminote.jpg"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            MobitelId = 5,
+                            Order = 1,
+                            Path = "/Customer/slike/pixel4-2.jpg"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            MobitelId = 6,
+                            Order = 1,
+                            Path = "/Customer/slike/appiph11.jpg"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            MobitelId = 7,
+                            Order = 1,
+                            Path = "/Customer/slike/apple_iphone_xr.jpg"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            MobitelId = 8,
+                            Order = 1,
+                            Path = "/Customer/slike/iphone_8.jpg"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            MobitelId = 9,
+                            Order = 1,
+                            Path = "/Customer/slike/huawei_honor_9.jpg"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            MobitelId = 10,
+                            Order = 1,
+                            Path = "/Customer/slike/mate30pro.jpg"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            MobitelId = 11,
+                            Order = 1,
+                            Path = "/Customer/slike/catb26.jpg"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            MobitelId = 12,
+                            Order = 1,
+                            Path = "/Customer/slike/yezz_classic_c221.jpg"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            MobitelId = 13,
+                            Order = 1,
+                            Path = "/Customer/slike/nokia42.jpg"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            MobitelId = 14,
+                            Order = 1,
+                            Path = "/Customer/slike/nokia42.jpg"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            MobitelId = 15,
+                            Order = 1,
+                            Path = "/Customer/slike/nokia_210.png"
+                        });
                 });
 
             modelBuilder.Entity("SmsLog", b =>
@@ -1212,8 +1622,7 @@ namespace RepositoryLayer.Migrations
                     b.HasOne("OperativniSustav", "OperativniSustav")
                         .WithMany("Mobiteli")
                         .HasForeignKey("OperativniSustavId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Popusti", "Popust")
                         .WithMany()
@@ -1223,8 +1632,7 @@ namespace RepositoryLayer.Migrations
                     b.HasOne("Proizvodjac", "Prozivodjac")
                         .WithMany("Mobiteli")
                         .HasForeignKey("ProizvodjacId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Narudzba", b =>

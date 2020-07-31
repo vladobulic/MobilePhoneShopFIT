@@ -59,9 +59,17 @@
                         </a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a asp-area="Customer" asp-controller="Mobitel" asp-action="Index" asp-route-id="@mobitel.Id">@mobitel.Naziv</a>
+                                <a asp-area="Customer" asp-controller="Mobitel" asp-action="Index" asp-route-id="@mobitel.Id">@mobitel.Proizvodjac @mobitel.Naziv</a>
                             </h4>
-                            <h5>@mobitel.Cijena</h5>
+                            @if (mobitel.Popust)
+                            {
+                                <h5 style="color:indianred">@mobitel.Cijena KM sa popustom</h5>
+                            }
+                            else
+                            {
+                                <h5>@mobitel.Cijena KM</h5>
+                            }
+
                             <p class="card-text">@mobitel.KratkiOpis</p>
                         </div>
 

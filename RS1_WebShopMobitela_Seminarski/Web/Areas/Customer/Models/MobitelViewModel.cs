@@ -11,6 +11,7 @@ namespace Web.Areas.Customer.Models
         public int Id { get; set; }
         public string Naziv { get; set; }
 
+        public string Proizvodjac { get; set; }
         public string Opis { get; set; }
         public string KratkiOpis { get; set; }
         // cijena sa popustom ako popusta ima
@@ -41,13 +42,16 @@ namespace Web.Areas.Customer.Models
                     Graficka = x.Graficka,
                     Megapikseli = x.Megapikseli.ToString(),
                     Popust = x.PopustId != null,
-                    Cijena = x.PopustId != null ? (x.Cijena - (x.Cijena * x.Popust.PostotakPopusta)) : x.Cijena,
+                    Cijena = Converter.RoundToTwoDecimal(x.PopustId != null ? (x.Cijena - (x.Cijena * (double)x.Popust.PostotakPopusta)) : x.Cijena),
                     Procesor = x.Procesor,
                     Ram_Gb = x.Ram_Gb.ToString(),
                     StanjeNaSkladistu = x.StanjeNaSkladistu,
                     Tezina = x.Tezina.ToString(),
                     Rezolucija = x.Rezolucija,
-                    Slike = x.Slika.Select(x => x.Path).ToList()
+                    Slike = x.Slika.Select(x => x.Path).ToList(),
+                    Opis = x.Opis,
+                    KratkiOpis = x.KratkiOpis,
+                    Proizvodjac = x.Prozivodjac.Naziv
                 }
             ).ToList();
         }
@@ -69,7 +73,11 @@ namespace Web.Areas.Customer.Models
                 StanjeNaSkladistu = x.StanjeNaSkladistu,
                 Tezina = x.Tezina.ToString(),
                 Rezolucija = x.Rezolucija,
-                Slike = x.Slika.Select(x => x.Path).ToList()
+                Slike = x.Slika.Select(x => x.Path).ToList(),
+                Opis = x.Opis,
+                KratkiOpis = x.KratkiOpis,
+                Proizvodjac = x.Prozivodjac.Naziv
+
             };
         }
     }
