@@ -7,3 +7,12 @@ C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\Data
 C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.dll
 C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.pdb
 C:\Users\sandr\Documents\Fakultet\rs1\webapp\RS1_WebShopMobitela_Seminarski\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.csprojAssemblyReference.cache
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.deps.json
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.dll
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.pdb
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.csprojAssemblyReference.cache
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.AssemblyInfo.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.dll
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.pdb

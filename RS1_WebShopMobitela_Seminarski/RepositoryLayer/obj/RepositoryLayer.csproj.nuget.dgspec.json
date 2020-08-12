@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sandr\\Documents\\Fakultet\\rs1\\webapp\\RS1_WebShopMobitela_Seminarski\\RepositoryLayer\\RepositoryLayer.csproj": {}
+    "C:\\Users\\Vlado\\Desktop\\FIT 3\\RS1\\App\\webapp\\RS1_WebShopMobitela_Seminarski\\RepositoryLayer\\RepositoryLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sandr\\Documents\\Fakultet\\rs1\\webapp\\RS1_WebShopMobitela_Seminarski\\DataAccessLayer\\DataAccessLayer.csproj": {
+    "C:\\Users\\Vlado\\Desktop\\FIT 3\\RS1\\App\\webapp\\RS1_WebShopMobitela_Seminarski\\DataAccessLayer\\DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sandr\\Documents\\Fakultet\\rs1\\webapp\\RS1_WebShopMobitela_Seminarski\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectUniqueName": "C:\\Users\\Vlado\\Desktop\\FIT 3\\RS1\\App\\webapp\\RS1_WebShopMobitela_Seminarski\\DataAccessLayer\\DataAccessLayer.csproj",
         "projectName": "DataAccessLayer",
-        "projectPath": "C:\\Users\\sandr\\Documents\\Fakultet\\rs1\\webapp\\RS1_WebShopMobitela_Seminarski\\DataAccessLayer\\DataAccessLayer.csproj",
-        "packagesPath": "C:\\Users\\sandr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sandr\\Documents\\Fakultet\\rs1\\webapp\\RS1_WebShopMobitela_Seminarski\\DataAccessLayer\\obj\\",
+        "projectPath": "C:\\Users\\Vlado\\Desktop\\FIT 3\\RS1\\App\\webapp\\RS1_WebShopMobitela_Seminarski\\DataAccessLayer\\DataAccessLayer.csproj",
+        "packagesPath": "C:\\Users\\Vlado\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Vlado\\Desktop\\FIT 3\\RS1\\App\\webapp\\RS1_WebShopMobitela_Seminarski\\DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\sandr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vlado\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -73,20 +73,20 @@
         }
       }
     },
-    "C:\\Users\\sandr\\Documents\\Fakultet\\rs1\\webapp\\RS1_WebShopMobitela_Seminarski\\RepositoryLayer\\RepositoryLayer.csproj": {
+    "C:\\Users\\Vlado\\Desktop\\FIT 3\\RS1\\App\\webapp\\RS1_WebShopMobitela_Seminarski\\RepositoryLayer\\RepositoryLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sandr\\Documents\\Fakultet\\rs1\\webapp\\RS1_WebShopMobitela_Seminarski\\RepositoryLayer\\RepositoryLayer.csproj",
+        "projectUniqueName": "C:\\Users\\Vlado\\Desktop\\FIT 3\\RS1\\App\\webapp\\RS1_WebShopMobitela_Seminarski\\RepositoryLayer\\RepositoryLayer.csproj",
         "projectName": "RepositoryLayer",
-        "projectPath": "C:\\Users\\sandr\\Documents\\Fakultet\\rs1\\webapp\\RS1_WebShopMobitela_Seminarski\\RepositoryLayer\\RepositoryLayer.csproj",
-        "packagesPath": "C:\\Users\\sandr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sandr\\Documents\\Fakultet\\rs1\\webapp\\RS1_WebShopMobitela_Seminarski\\RepositoryLayer\\obj\\",
+        "projectPath": "C:\\Users\\Vlado\\Desktop\\FIT 3\\RS1\\App\\webapp\\RS1_WebShopMobitela_Seminarski\\RepositoryLayer\\RepositoryLayer.csproj",
+        "packagesPath": "C:\\Users\\Vlado\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Vlado\\Desktop\\FIT 3\\RS1\\App\\webapp\\RS1_WebShopMobitela_Seminarski\\RepositoryLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\sandr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vlado\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -99,8 +99,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\sandr\\Documents\\Fakultet\\rs1\\webapp\\RS1_WebShopMobitela_Seminarski\\DataAccessLayer\\DataAccessLayer.csproj": {
-                "projectPath": "C:\\Users\\sandr\\Documents\\Fakultet\\rs1\\webapp\\RS1_WebShopMobitela_Seminarski\\DataAccessLayer\\DataAccessLayer.csproj"
+              "C:\\Users\\Vlado\\Desktop\\FIT 3\\RS1\\App\\webapp\\RS1_WebShopMobitela_Seminarski\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "C:\\Users\\Vlado\\Desktop\\FIT 3\\RS1\\App\\webapp\\RS1_WebShopMobitela_Seminarski\\DataAccessLayer\\DataAccessLayer.csproj"
               }
             }
           }
