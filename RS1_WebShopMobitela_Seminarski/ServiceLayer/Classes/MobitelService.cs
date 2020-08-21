@@ -4,6 +4,7 @@ using ServiceLayer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace ServiceLayer
@@ -62,6 +63,24 @@ namespace ServiceLayer
            
 
             return mobiteli.ToList();
+        }
+
+        public int InsertMobitel(Mobiteli model)
+        {
+            
+            return mobitelRepository.InsertAndReturnEntityId(model);
+           
+        }
+
+        public bool Delete(int id)
+        {
+             Mobiteli mobitel = mobitelRepository.Get(id);
+            if(mobitel!=null)
+            {
+                mobitelRepository.Delete(mobitel);
+                return true;
+            }
+            return false;
         }
     }
 }

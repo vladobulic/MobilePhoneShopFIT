@@ -11,5 +11,10 @@ namespace ServiceLayer.Interfaces
 
         IEnumerable<Mobiteli> GetMobiteliSorted(int page,bool priceDesc, string searchNaziv, string priceFromAndTo, int ? ProizvodjacId, int resultsPerPage, ref int TotalPages);
         Mobiteli GetMobitel(int id);
+
+        int InsertMobitel(Mobiteli model);
+
+        bool Delete(int id);
+      
     }
 }

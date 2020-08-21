@@ -1,0 +1,127 @@
+﻿@model IEnumerable<Web.Areas.Admin.Models.MobitelDodajVM>
+
+@using Web.Areas.Admin.Models 
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+
+
+
+<h1>Index</h1>
+
+<p>
+    <a  asp-area="Admin" asp-controller="Mobitel" asp-action="Dodaj">Dodaj</a>
+</p>
+<table class="table-bordered" >
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Naziv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proizvodjac)
+            </th>
+            <th>
+                
+                @Html.DisplayNameFor(model => model.Opis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KratkiOpis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cijena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Popust)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Megapikseli)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ram_Gb)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tezina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rezolucija)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DijagonalaEkrana)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Procesor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Graficka)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StanjeNaSkladistu)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+       
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proizvodjac)
+            </td>
+            <td>
+
+                @Html.DisplayFor(modelItem => item.Opis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KratkiOpis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cijena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Popust)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Megapikseli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ram_Gb)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tezina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rezolucija)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DijagonalaEkrana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Procesor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Graficka)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StanjeNaSkladistu)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Detalji", "Detalji", new {  id=item.Id  }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

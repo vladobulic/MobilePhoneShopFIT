@@ -7,5 +7,6 @@ namespace ServiceLayer.Interfaces
     public interface INovostiService
     {
         public IEnumerable<Novosti> GetNovosti();
+        public int InsertNovost(Novosti entitity);
     }
 }

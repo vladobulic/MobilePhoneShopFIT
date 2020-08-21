@@ -19,5 +19,10 @@ namespace ServiceLayer.Classes
         {
             return novostiRepository.GetAllQueryable().OrderByDescending(x => x.Datum).ToList();
         }
+
+        public int InsertNovost(Novosti entitity)
+        {
+            return novostiRepository.InsertAndReturnEntityId(entitity);
+        }
     }
 }
