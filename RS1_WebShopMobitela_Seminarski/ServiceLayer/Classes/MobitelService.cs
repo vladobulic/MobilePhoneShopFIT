@@ -17,11 +17,14 @@ namespace ServiceLayer
         {
             this.mobitelRepository = mobitelRepository;
         }
+
+       
+
         public IEnumerable<Mobiteli> GetMobiteli()
         {
             return mobitelRepository.GetAll();
         }
-
+        
         public Mobiteli GetMobitel(int id)
         {
             return mobitelRepository.Get(id);
@@ -71,7 +74,12 @@ namespace ServiceLayer
             return mobitelRepository.InsertAndReturnEntityId(model);
            
         }
+        public void InsertMobitel2(Mobiteli model)
+        {
 
+             mobitelRepository.Insert(model);
+
+        }
         public bool Delete(int id)
         {
              Mobiteli mobitel = mobitelRepository.Get(id);
@@ -81,6 +89,14 @@ namespace ServiceLayer
                 return true;
             }
             return false;
+        }
+        public void saveChanges2()
+        {
+            mobitelRepository.SaveChanges2();
+        }
+        public void Edit(int id)
+        {
+                
         }
     }
 }

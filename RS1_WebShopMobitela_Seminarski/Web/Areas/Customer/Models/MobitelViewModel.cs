@@ -50,8 +50,8 @@ namespace Web.Areas.Customer.Models
                     Rezolucija = x.Rezolucija,
                     Slike = x.Slika.Select(x => x.Path).ToList(),
                     Opis = x.Opis,
-                    KratkiOpis = x.KratkiOpis,
-                    Proizvodjac = x.Prozivodjac.Naziv
+                    KratkiOpis = x.KratkiOpis
+                    //Proizvodjac = x.Prozivodjac.Naziv
                 }
             ).ToList();
         }

@@ -20,6 +20,7 @@ namespace RepositoryLayer
         void Delete(T entity);
         void Remove(T entity);
         void SaveChanges(T entity);
+        void SaveChanges2();
 
     }
 }

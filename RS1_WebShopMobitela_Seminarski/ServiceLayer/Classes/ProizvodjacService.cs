@@ -11,9 +11,9 @@ namespace ServiceLayer.Classes
     {
         private IRepository<Proizvodjac> proizvodjacRepository;
 
-        public ProizvodjacService(IRepository<Proizvodjac> gradRepository)
+        public ProizvodjacService(IRepository<Proizvodjac> proizvodjacRepository)
         {
-            this.proizvodjacRepository = gradRepository;
+            this.proizvodjacRepository = proizvodjacRepository;
         }
         public Proizvodjac Get(int id)
         {

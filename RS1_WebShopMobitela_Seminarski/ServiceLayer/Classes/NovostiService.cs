@@ -15,6 +15,11 @@ namespace ServiceLayer.Classes
             this.novostiRepository = novostiRepository;
         }
 
+        public Novosti GetNovost(int Id)
+        {
+            return novostiRepository.Get(Id);
+        }
+
         public IEnumerable<Novosti> GetNovosti()
         {
             return novostiRepository.GetAllQueryable().OrderByDescending(x => x.Datum).ToList();
@@ -23,6 +28,24 @@ namespace ServiceLayer.Classes
         public int InsertNovost(Novosti entitity)
         {
             return novostiRepository.InsertAndReturnEntityId(entitity);
+        }
+
+
+        public void InsertNovost2(Novosti entitity)
+        {
+             novostiRepository.Insert(entitity);
+        }
+
+        public void ObrisiNovost(Novosti entity)
+        {
+            novostiRepository.Delete(entity);
+        }
+
+
+
+        public void SaveChanges(Novosti entity)
+        {
+            novostiRepository.SaveChanges(entity);
         }
     }
 }

@@ -1,22 +1,22 @@
-﻿@model IEnumerable<Web.Areas.Admin.Models.MobitelDodajVM>
+﻿@model IEnumerable<Web.Areas.Admin.Models.MobitelDetaljiVM>
 
 @using Web.Areas.Admin.Models 
 
 @{
     ViewData["Title"] = "Index";
-    
+
 }
 
 
-
-<h1>Index</h1>
+<h1>Upravljanje mobitelima</h1>
 
 <p>
-    <a  asp-area="Admin" asp-controller="Mobitel" asp-action="Dodaj">Dodaj</a>
+    <a  asp-area="Admin" asp-controller="Mobitel" asp-action="Dodaj" class="btn btn-success" >Dodaj mobitel</a>
 </p>
-<table class="table-bordered" >
+<table class="table table-striped" >
     <thead>
         <tr>
+           
             <th>
                 @Html.DisplayNameFor(model => model.Id)
             </th>
@@ -37,7 +37,7 @@
                 @Html.DisplayNameFor(model => model.Cijena)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Popust)
+                @Html.DisplayNameFor(model => model.PopustId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Megapikseli)
@@ -80,8 +80,10 @@
                 @Html.DisplayFor(modelItem => item.Proizvodjac)
             </td>
             <td>
-
-                @Html.DisplayFor(modelItem => item.Opis)
+                @item.Opis.Substring(0, Math.Min(item.Opis.Length, 200));
+               
+                
+                @*@Html.DisplayFor(modelItem => item.Opis)*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.KratkiOpis)
@@ -90,7 +92,8 @@
                 @Html.DisplayFor(modelItem => item.Cijena)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Popust)
+
+                *@Html.DisplayFor(modelItem => item.popustiPrikaz)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Megapikseli)
@@ -117,9 +120,9 @@
                 @Html.DisplayFor(modelItem => item.StanjeNaSkladistu)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Detalji", "Detalji", new {  id=item.Id  }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new {@class="btn btn-primary" }) 
+                @Html.ActionLink("Detalji", "Detalji", new {  id=item.Id  }, new {@class="btn btn-primary" }) 
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
             </td>
         </tr>
 }

@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Dodaj";
+}
+
+<h1>Dodaj</h1>
+
+
+<form asp-action="SnimiNovost">
+    <div class="form-group">
+        <label>Naslov</label>
+        <input name="Naslov"class="form-control" placeholder="Unesite naslov">
+
+    </div>
+    <div class="form-group">
+        <label>Sadrzaj</label>
+        <input name="SadrzajTekst" class="form-control" placeholder="Sadrzaj">
+    </div>
+    <div class="form-group">
+        <label>Datum</label>
+        <input name="Datum" type="datetime" class="form-control" placeholder="Unesite datum">
+    </div>
+
+
+    <div class="form-group">
+        <label>Zaposlenik</label>
+        <input name="ZaposlenikId" class="form-control" placeholder="ZaposlenikId">
+    </div>
+    <button type="submit" class="btn btn-primary">Dodaj novost</button>
+</form>

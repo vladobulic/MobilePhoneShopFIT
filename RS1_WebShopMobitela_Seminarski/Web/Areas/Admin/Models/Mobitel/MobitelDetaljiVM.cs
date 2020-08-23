@@ -1,26 +1,27 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Web.Areas.Customer.Helpers;
 
 namespace Web.Areas.Admin.Models
 {
-    public class MobitelDodajVM
+    public class MobitelDetaljiVM
     {
-        
         public int Id { get; set; }
         public string Naziv { get; set; }
 
+        public int? ProizvodjacId { get; set; }
         public string Proizvodjac { get; set; }
-        
+
         public string Opis { get; set; }
         public string KratkiOpis { get; set; }
         // cijena sa popustom ako popusta ima
         public double Cijena { get; set; }
-        public bool Popust { get; set; }
-
+        public int? PopustId { get; set; }
+        public List<SelectListItem> popusti { get; set; }
+         public string popustiPrikaz { get; set; }
         public string Megapikseli { get; set; }
         public string Ram_Gb { get; set; }
 
@@ -32,17 +33,23 @@ namespace Web.Areas.Admin.Models
         public int StanjeNaSkladistu { get; set; }
 
 
-        public static MobitelDodajVM ConvertToMobitelViewModel(Mobiteli x)
+
+        public static MobitelDetaljiVM ConvertToMobitelViewModel(Mobiteli x)
         {
+            float prikaz = 0;
+            if (x.Popust != null)
+            {
+                 prikaz = x.Popust.PostotakPopusta;
+            }
             // cijena je sa popustom ako je popust true. 
-            return new MobitelDodajVM
+            return new MobitelDetaljiVM
             {
                 Id = x.Id,
                 Naziv = x.Naziv,
                 DijagonalaEkrana = x.DijagonalaEkrana.ToString(),
                 Graficka = x.Graficka,
                 Megapikseli = x.Megapikseli.ToString(),
-                Popust = x.PopustId != null,
+                PopustId = x.PopustId,
                 Cijena = Converter.RoundToTwoDecimal(x.PopustId != null ? (x.Cijena - (x.Cijena * x.Popust.PostotakPopusta)) : x.Cijena),
                 Procesor = x.Procesor,
                 Ram_Gb = x.Ram_Gb.ToString(),
@@ -51,10 +58,10 @@ namespace Web.Areas.Admin.Models
                 Rezolucija = x.Rezolucija,
                 Opis = x.Opis,
                 KratkiOpis = x.KratkiOpis,
-                Proizvodjac = x.Prozivodjac.Naziv
-
+                ProizvodjacId = x.ProizvodjacId,
+                Proizvodjac = x.Prozivodjac.Naziv,
+                popustiPrikaz = prikaz * 100 + "%".ToString(),
             };
         }
     }
-
 }

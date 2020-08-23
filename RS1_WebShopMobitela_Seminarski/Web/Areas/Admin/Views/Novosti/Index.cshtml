@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Web.Areas.Admin.Models.NovostiIndexVM>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table table-striped">
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.Id)
+        </td>
+
+        <td>
+
+            @Html.DisplayNameFor(model => model.Naslov)
+        </td>
+        <td>
+
+            @Html.DisplayNameFor(model => model.SadrzajTekst)
+        </td>
+        <td>
+            Akcije
+        </td>
+
+    </tr>
+    @foreach(var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Naslov)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SadrzajTekst)
+    </td>
+    <td>
+        <a href="/Admin/Novosti/Obrisi?Id=@item.Id" class="btn btn-danger">Obrisi</a>
+        <a href="/Admin/Novosti/EditNovost?Id=@item.Id" class="btn btn-primary">Uredi</a>
+
+    </td>
+</tr>
+    }
+
+</table>
+
+
+

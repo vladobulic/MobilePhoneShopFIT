@@ -5,25 +5,36 @@
 }
 
 
-<h1>Dodaj</h1>
 
+<h1>Dodaj</h1>
+ 
 <h4>MobitelDodajVM</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Dodaj">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
+
+
+            <div class="form-group">
+               
+                <input asp-for="Id" style="display:none"/>
+
+            </div>
+
             <div class="form-group">
                 <label asp-for="Naziv" class="control-label"></label>
                 <input asp-for="Naziv" class="form-control" />
                 <span asp-validation-for="Naziv" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Proizvodjac" class="control-label"></label>
-                <input asp-for="Proizvodjac" class="form-control" />
-                <span asp-validation-for="Proizvodjac" class="text-danger"></span>
+                <label  class="control-label">Proizvodjaci</label>
+                <select asp-for="ProizvodjacID" asp-items="Model.proizvodjaci" class="form-control"></select>
+                @*
+        <input asp-for="ProizvodjacID" class="form-control" />
+        <span asp-validation-for="ProizvodjacID" class="text-danger"></span>*@
             </div>
+            
             <div class="form-group">
                 <label asp-for="Opis" class="control-label"></label>
                 <input asp-for="Opis" class="form-control" />
@@ -39,10 +50,12 @@
                 <input asp-for="Cijena" class="form-control" />
                 <span asp-validation-for="Cijena" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Popust" /> @Html.DisplayNameFor(model => model.Popust)
-                </label>
+            <div class="form-group">
+                <label class="control-label">Popusti</label>
+
+                <select asp-for="PopustId" asp-items="Model.popusti" class="form-control">
+                   
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="Megapikseli" class="control-label"></label>
@@ -85,7 +98,7 @@
                 <span asp-validation-for="StanjeNaSkladistu" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Dodaj" class="btn btn-primary" />
             </div>
         </form>
     </div>

@@ -8,5 +8,9 @@ namespace ServiceLayer.Interfaces
     {
         public IEnumerable<Novosti> GetNovosti();
         public int InsertNovost(Novosti entitity);
+        public void InsertNovost2(Novosti entitity);
+        public void ObrisiNovost(Novosti entity);
+        public Novosti GetNovost(int Id);
+        public void SaveChanges(Novosti entity);
     }
 }

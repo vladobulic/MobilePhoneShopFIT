@@ -1,58 +1,73 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using ServiceLayer;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Web.Areas.Customer.Helpers;
 
 namespace Web.Areas.Admin.Models
 {
-    public class MobitelDetaljiVM
+    public class MobitelDodajVM
     {
+        
         public int Id { get; set; }
         public string Naziv { get; set; }
 
-        public string Proizvodjac { get; set; }
+        public int? ProizvodjacID { get; set; }
+        
+        public List<SelectListItem> proizvodjaci { get; set; }
+
+        public List<SelectListItem> popusti { get; set; }
 
         public string Opis { get; set; }
         public string KratkiOpis { get; set; }
         // cijena sa popustom ako popusta ima
         public double Cijena { get; set; }
-        public bool Popust { get; set; }
+       public int? PopustId { get; set; }
 
-        public string Megapikseli { get; set; }
-        public string Ram_Gb { get; set; }
+        public float Megapikseli { get; set; }
+        public float Ram_Gb { get; set; }
 
-        public string Tezina { get; set; }
+        public int Tezina { get; set; }
         public string Rezolucija { get; set; }
-        public string DijagonalaEkrana { get; set; }
+        public float DijagonalaEkrana { get; set; }
         public string Procesor { get; set; }
         public string Graficka { get; set; }
         public int StanjeNaSkladistu { get; set; }
 
 
 
-        public static MobitelDetaljiVM ConvertToMobitelViewModel(Mobiteli x)
+      
+
+        public static MobitelDodajVM ConvertToMobitelViewModel(Mobiteli x)
         {
+           
             // cijena je sa popustom ako je popust true. 
-            return new MobitelDetaljiVM
+            return new MobitelDodajVM
             {
                 Id = x.Id,
                 Naziv = x.Naziv,
-                DijagonalaEkrana = x.DijagonalaEkrana.ToString(),
+                DijagonalaEkrana = x.DijagonalaEkrana,
                 Graficka = x.Graficka,
-                Megapikseli = x.Megapikseli.ToString(),
-                Popust = x.PopustId != null,
+                Megapikseli = x.Megapikseli,
+                PopustId = (int)x.PopustId,
                 Cijena = Converter.RoundToTwoDecimal(x.PopustId != null ? (x.Cijena - (x.Cijena * x.Popust.PostotakPopusta)) : x.Cijena),
                 Procesor = x.Procesor,
-                Ram_Gb = x.Ram_Gb.ToString(),
+                Ram_Gb = x.Ram_Gb,
                 StanjeNaSkladistu = x.StanjeNaSkladistu,
-                Tezina = x.Tezina.ToString(),
+                Tezina = x.Tezina,
                 Rezolucija = x.Rezolucija,
                 Opis = x.Opis,
                 KratkiOpis = x.KratkiOpis,
-                Proizvodjac = x.Prozivodjac.Naziv
+                ProizvodjacID = x.ProizvodjacId,
+               
+               // proizvodjaci = 
+
 
             };
         }
     }
+
 }

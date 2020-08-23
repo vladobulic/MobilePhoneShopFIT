@@ -83,6 +83,10 @@ namespace RepositoryLayer
         {
             context.SaveChanges();
         }
+        public void SaveChanges2()
+        {
+            context.SaveChanges();
+        }
 
         public int InsertAndReturnEntityId(T entity)
         {
