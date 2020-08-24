@@ -9,6 +9,7 @@ using ServiceLayer;
 using ServiceLayer.Interfaces;
 using Web.Areas.Admin.Models;
 using Web.Areas.Customer.Helpers;
+using Web.Areas.Customer.Models;
 
 namespace Web.Areas.Admin.Controllers
 {
@@ -51,11 +52,13 @@ namespace Web.Areas.Admin.Controllers
             {
 
                 proizvodjaci = proizvodjacService.GetProizvodjaci().Select(o => new SelectListItem { Value = o.Id.ToString(), Text = o.Naziv }).Distinct().ToList(),
-                popusti = popustiService.GetPopusti().Select(o => new SelectListItem { Value = o.Id.ToString(), Text = o.PostotakPopusta.ToString() }).ToList()
+                
+            popusti = popustiService.GetPopusti().Select(o => new SelectListItem { Value = o.Id.ToString(), Text = o.PostotakPopusta.ToString() }).ToList(),
+               
             //OpstineStavke = db.opstina.Select(o => new SelectListItem { Value = o.ID.ToString(), Text = o.Naziv }).ToList(),
 
         };
-
+            model.popusti.Insert(0, new SelectListItem { Value = null, Text = "Bez popusta", });
             return View(model);
         }
         [HttpPost]
@@ -113,6 +116,8 @@ namespace Web.Areas.Admin.Controllers
             mobitel1.proizvodjaci = proizvodjacService.GetProizvodjaci().Select(o => new SelectListItem { Value = o.Id.ToString(), Text = o.Naziv }).Distinct().ToList();
             mobitel1.popusti = popustiService.GetPopusti().Select(o => new SelectListItem { Value = o.Id.ToString(), Text = o.PostotakPopusta.ToString() }).ToList();
 
+
+            mobitel1.popusti.Insert(0, new SelectListItem { Value = null, Text = "Bez popusta", });
             if (mobitel1 != null)
             {
                 return View("Dodaj", mobitel1);

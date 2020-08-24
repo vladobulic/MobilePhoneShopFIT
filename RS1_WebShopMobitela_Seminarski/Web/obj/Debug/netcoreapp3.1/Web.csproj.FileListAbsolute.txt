@@ -507,3 +507,10 @@ C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\o
 C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Novosti\Dodaj.cshtml.g.cs
 C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Novosti\ObrisiPoruka.cshtml.g.cs
 C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Novosti\EditNovost.cshtml.g.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Grad\Index.cshtml.g.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Grad\SnimiGrad.cshtml.g.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Grad\Edit.cshtml.g.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Zupanija\Prikaz.cshtml.g.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Zupanija\SnimiZupanija.cshtml.g.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Zupanija\ObrisiPoruka.cshtml.g.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Zupanija\Edit.cshtml.g.cs

@@ -55,6 +55,7 @@ namespace Web
             services.AddTransient<ISmsService, SmsService>();
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IPopustiService, PopustiService>();
+            services.AddTransient<IZupanijaService, ZupanijaService>();
 
             // add our mail settings
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));

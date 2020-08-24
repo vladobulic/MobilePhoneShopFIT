@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Web.Areas.Admin.Models.GradPregledVM>
+
+
+    
+        @{
+            ViewData["Title"] = "View";
+        }
+<br />
+
+    <div>
+        <a asp-action="Dodaj" class="btn btn-success">Dodaj grad</a>
+    </div>
+        <h1>View</h1>
+
+        <table class="table table-striped">
+            <tr>
+                <td>Naziv</td>
+                <td>Postanski broj</td>
+                <td>Zupanija</td>
+                <td>Akcije</td>
+            </tr>
+
+            @foreach (var x in Model)
+            {
+        <tr>
+            <td>@x.Naziv</td>
+            <td>@x.PostanskiBroj</td>
+            <td>@x.zupanijaNaziv</td>
+            <td>
+                <a href="/Admin/Grad/Obrisi?Id=@x.Id" class="btn btn-danger">Obrisi</a>
+                <a href="/Admin/Grad/Edit?Id=@x.Id" class="btn btn-primary">Edit</a>
+            </td>
+        </tr>
+           }
+
+
+            </table>
+

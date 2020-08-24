@@ -9,5 +9,8 @@ namespace ServiceLayer.Interfaces
 
         IEnumerable<Grad> GetGradovi();
         Grad GetGrad(int id);
+        void InsertGrad(Grad grad);
+        void DeleteGrad(Grad grad);
+        void SaveChanges(Grad grad);
     }
 }

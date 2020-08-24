@@ -43,7 +43,15 @@ namespace Web.Areas.Admin.Models
 
         public static MobitelDodajVM ConvertToMobitelViewModel(Mobiteli x)
         {
-           
+            //int? Id;
+            //if (x.Popust != null)
+            //{
+            //    Id = x.PopustId;
+            //}
+            //else
+            //{
+            //    Id = x.PopustId;
+            //}
             // cijena je sa popustom ako je popust true. 
             return new MobitelDodajVM
             {

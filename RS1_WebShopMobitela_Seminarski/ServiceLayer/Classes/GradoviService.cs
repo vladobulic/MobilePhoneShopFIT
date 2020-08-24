@@ -14,6 +14,12 @@ namespace ServiceLayer
         {
             this.gradRepository = gradRepository;
         }
+
+        public void DeleteGrad(Grad grad)
+        {
+            gradRepository.Delete(grad);
+        }
+
         public Grad GetGrad(int id)
         {
             return gradRepository.Get(id);
@@ -22,6 +28,15 @@ namespace ServiceLayer
         public IEnumerable<Grad> GetGradovi()
         {
             return gradRepository.GetAll();
+        }
+        public void InsertGrad(Grad entity)
+        {
+            gradRepository.Insert(entity);
+        }
+
+        public void SaveChanges(Grad grad)
+        {
+            gradRepository.SaveChanges(grad);
         }
     }
 }
