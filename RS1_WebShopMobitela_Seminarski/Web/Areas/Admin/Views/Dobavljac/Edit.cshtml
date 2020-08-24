@@ -1,0 +1,38 @@
+﻿@model DobavljacPregledVM
+
+
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+
+<form asp-action="DobavljacEdit">
+
+
+    <input asp-for="Id" style="display:none" />
+
+    <div class="form-group">
+        <label class="control-label">Ime</label>
+        <input asp-for="Ime" class="form-control" />
+
+    </div>
+    <div class="form-group">
+        <label class="control-label">Broj</label>
+        <input asp-for="Broj" class="form-control" />
+
+    </div>
+
+  
+    <div class="form-group">
+        <label class="control-label">Mail</label>
+        <input asp-for="Mail" class="form-control" />
+
+    </div>
+
+    <input type="submit" value="Izmjeni podatke o dobavljacu" class="btn btn-primary" />
+
+</form>
+
+<a asp-action="Prikaz">Povratak</a>

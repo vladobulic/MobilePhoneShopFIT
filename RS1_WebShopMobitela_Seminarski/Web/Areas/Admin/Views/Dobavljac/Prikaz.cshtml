@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Web.Areas.Admin.Models.DobavljacPregledVM>
+
+
+@{
+    ViewData["Title"] = "View";
+}
+<br />
+
+<div>
+    <a asp-action="Dodaj" class="btn btn-success">Dodaj dobavljaca</a>
+</div>
+<h1>View</h1>
+
+<table class="table table-striped">
+    <tr>
+        <td>Ime</td>
+        <td>Broj</td>
+        <td>Mail</td>
+        <td>Akcije</td>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+<tr>
+    <td>@x.Ime</td>
+    <td>@x.Broj</td>
+    <td>@x.Mail</td>
+    <td>
+        <a href="/Admin/Dobavljac/Obrisi?Id=@x.Id" class="btn btn-danger">Obrisi</a>
+        <a href="/Admin/Dobavljac/Edit?Id=@x.Id" class="btn btn-primary">Edit</a>
+    </td>
+</tr>
+    }
+
+
+</table>
+
