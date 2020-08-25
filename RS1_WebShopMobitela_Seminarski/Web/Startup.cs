@@ -57,6 +57,8 @@ namespace Web
             services.AddTransient<IPopustiService, PopustiService>();
             services.AddTransient<IZupanijaService, ZupanijaService>();
             services.AddTransient<IDobavljacService, DobavljacService>();
+            services.AddTransient<IKomponenteService, KomponenteService>();
+            services.AddTransient<ITipKomponenteService, TipKomponenteService>();
 
 
             // add our mail settings

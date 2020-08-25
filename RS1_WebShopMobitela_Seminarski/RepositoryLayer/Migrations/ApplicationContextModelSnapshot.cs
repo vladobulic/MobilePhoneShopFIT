@@ -182,7 +182,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            Datum = new DateTime(2020, 8, 12, 23, 25, 45, 473, DateTimeKind.Local).AddTicks(1504),
+                            Datum = new DateTime(2020, 8, 25, 9, 40, 20, 777, DateTimeKind.Local).AddTicks(6165),
                             IsDeleted = false,
                             KupacId = 1,
                             MobitelId = 1
@@ -270,7 +270,7 @@ namespace RepositoryLayer.Migrations
                             Id = 1,
                             BrojMobitela = "063525555",
                             BrojPokusaja = 0,
-                            DatumPokusaja = new DateTime(2020, 8, 12, 23, 25, 45, 473, DateTimeKind.Local).AddTicks(8181),
+                            DatumPokusaja = new DateTime(2020, 8, 25, 9, 40, 20, 778, DateTimeKind.Local).AddTicks(2812),
                             Email = "kupac@kupac.com",
                             GradId = 1,
                             Ime = "kupac",
@@ -998,7 +998,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            Datum = new DateTime(2020, 8, 12, 23, 25, 45, 474, DateTimeKind.Local).AddTicks(2945),
+                            Datum = new DateTime(2020, 8, 25, 9, 40, 20, 778, DateTimeKind.Local).AddTicks(8516),
                             Naslov = "Novi iPhone stigao u BiH",
                             SadrzajTekst = "ok mobitel",
                             ZaposlenikId = 1
@@ -1061,8 +1061,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            DatumDo = new DateTime(2020, 8, 12, 23, 25, 45, 472, DateTimeKind.Local).AddTicks(902),
-                            DatumOd = new DateTime(2020, 8, 12, 23, 25, 45, 469, DateTimeKind.Local).AddTicks(3420),
+                            DatumDo = new DateTime(2020, 8, 25, 9, 40, 20, 776, DateTimeKind.Local).AddTicks(5547),
+                            DatumOd = new DateTime(2020, 8, 25, 9, 40, 20, 773, DateTimeKind.Local).AddTicks(8691),
                             PostotakPopusta = 0.1f
                         });
                 });
@@ -1535,14 +1535,15 @@ namespace RepositoryLayer.Migrations
                     b.HasOne("Dobavljac", "Dobavljac")
                         .WithMany("Komponente")
                         .HasForeignKey("DobavljacID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
+
+
 
                     b.HasOne("TipKomponente", "TipKomponente")
                         .WithMany("Komponente")
                         .HasForeignKey("TipKomponenteId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
+                        
                 });
 
             modelBuilder.Entity("Kupac", b =>

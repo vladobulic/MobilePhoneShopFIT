@@ -379,13 +379,13 @@ namespace RepositoryLayer.Migrations
                         column: x => x.DobavljacID,
                         principalTable: "Dobavljaci",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Komponente_TipKomponente_TipKomponenteId",
                         column: x => x.TipKomponenteId,
                         principalTable: "TipKomponente",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(

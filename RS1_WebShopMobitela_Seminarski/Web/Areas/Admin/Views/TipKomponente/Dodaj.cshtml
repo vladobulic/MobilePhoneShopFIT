@@ -1,0 +1,23 @@
+﻿@model TipKomponenteVM
+@{
+    ViewData["Title"] = "Dodaj";
+}
+
+<h1>Dodaj</h1>
+
+
+<form asp-action="SnimiTipKomponente">
+
+
+    <input asp-for="Id" style="display:none" />
+
+    <div class="form-group">
+        <label class="control-label">Naziv</label>
+        <input asp-for="Naziv" class="form-control" />
+    </div>
+
+    <input type="submit" value="Dodaj" class="btn btn-primary" />
+</form>
+
+<a asp-action="Prikaz">Povratak</a>
+

@@ -73,5 +73,7 @@ namespace Web.Areas.Admin.Controllers
 
             return RedirectToAction("Prikaz");
         }
+
+       
     }
 }

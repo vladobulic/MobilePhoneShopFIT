@@ -517,3 +517,10 @@ C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\o
 C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Dobavljac\Prikaz.cshtml.g.cs
 C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Dobavljac\SnimiDobavljac.cshtml.g.cs
 C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Dobavljac\Edit.cshtml.g.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Dobavljac\Test.cshtml.g.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Komponente\Prikaz.cshtml.g.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Komponente\Dodaj.cshtml.g.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Komponente\Edit.cshtml.g.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\TipKomponente\Prikaz.cshtml.g.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\TipKomponente\Dodaj.cshtml.g.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\TipKomponente\Edit.cshtml.g.cs

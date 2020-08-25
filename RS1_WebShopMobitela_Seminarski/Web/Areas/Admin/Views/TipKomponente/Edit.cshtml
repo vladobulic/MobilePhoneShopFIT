@@ -1,0 +1,26 @@
+﻿@model TipKomponenteVM
+
+
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+
+<form asp-action="TipKomponenteEdit">
+
+
+    <input asp-for="Id" style="display:none" />
+
+    <div class="form-group">
+        <label class="control-label">naziv</label>
+        <input asp-for="Naziv" class="form-control" />
+        </div>
+  
+
+    <input type="submit" value="Spremi" class="btn btn-primary" />
+
+</form>
+
+<a asp-action="Prikaz">Povratak</a>
