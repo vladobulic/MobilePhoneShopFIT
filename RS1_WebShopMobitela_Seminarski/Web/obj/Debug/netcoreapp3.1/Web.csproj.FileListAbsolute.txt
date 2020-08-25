@@ -451,7 +451,6 @@ C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\o
 C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index.cshtml.g.cs
 C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\Error.cshtml.g.cs
 C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_Layout.cshtml.g.cs
-C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewImports.cshtml.g.cs
 C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
 C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Account\ConfirmEmail.cshtml.g.cs
@@ -524,3 +523,7 @@ C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\o
 C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\TipKomponente\Prikaz.cshtml.g.cs
 C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\TipKomponente\Dodaj.cshtml.g.cs
 C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\TipKomponente\Edit.cshtml.g.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Narudzba\Prikaz.cshtml.g.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Narudzba\Detalji.cshtml.g.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Grad\Test.cshtml.g.cs
+C:\Users\Vlado\Desktop\FIT 3\RS1\App\webapp\RS1_WebShopMobitela_Seminarski\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs

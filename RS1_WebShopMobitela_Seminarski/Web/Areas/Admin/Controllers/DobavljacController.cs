@@ -33,6 +33,12 @@ namespace Web.Areas.Admin.Controllers
 
         public IActionResult SnimiDobavljac(DobavljacPregledVM x)
         {
+
+            if (!ModelState.IsValid)
+            {
+                
+                return View("SnimiDobavljac", x);
+            }
             Dobavljac dobavljac = new Dobavljac
             {
                 Id = x.Id,

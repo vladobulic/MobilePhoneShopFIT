@@ -7,7 +7,7 @@
 
 
 <h1>Dodaj</h1>
- 
+
 <h4>MobitelDodajVM</h4>
 <hr />
 <div class="row">
@@ -17,8 +17,8 @@
 
 
             <div class="form-group">
-               
-                <input asp-for="Id" style="display:none"/>
+
+                <input asp-for="Id" style="display:none" />
 
             </div>
 
@@ -28,13 +28,13 @@
                 <span asp-validation-for="Naziv" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label  class="control-label">Proizvodjaci</label>
+                <label class="control-label">Proizvodjaci</label>
                 <select asp-for="ProizvodjacID" asp-items="Model.proizvodjaci" class="form-control"></select>
                 @*
-        <input asp-for="ProizvodjacID" class="form-control" />
-        <span asp-validation-for="ProizvodjacID" class="text-danger"></span>*@
+                    <input asp-for="ProizvodjacID" class="form-control" />
+                    <span asp-validation-for="ProizvodjacID" class="text-danger"></span>*@
             </div>
-            
+
             <div class="form-group">
                 <label asp-for="Opis" class="control-label"></label>
                 <input asp-for="Opis" class="form-control" />
@@ -54,7 +54,6 @@
                 <label class="control-label">Popusti</label>
 
                 <select asp-for="PopustId" asp-items="Model.popusti" class="form-control">
-                   
                 </select>
             </div>
             <div class="form-group">
@@ -107,7 +106,4 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+@section Scripts { @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} }

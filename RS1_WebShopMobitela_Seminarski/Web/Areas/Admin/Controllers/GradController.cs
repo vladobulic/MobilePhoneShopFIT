@@ -30,12 +30,18 @@ namespace Web.Areas.Admin.Controllers
             model.zupanije = zupanijeService.GetZupanije().Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Naziv }).ToList();
 
 
-                
+
             return View("SnimiGrad", model);
         }
 
         public IActionResult SnimiGrad(GradDodajVM x)
         {
+
+            if (!ModelState.IsValid)
+            {
+                x.zupanije = zupanijeService.GetZupanije().Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Naziv }).ToList();
+                return View("SnimiGrad", x);
+            }
             Grad grad = new Grad
             {
                Id = x.Id,

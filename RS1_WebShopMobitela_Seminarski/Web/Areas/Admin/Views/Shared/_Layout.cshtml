@@ -1,5 +1,4 @@
 ﻿@using Microsoft.AspNetCore.Identity
-
 @using DataAccessLayer
 @using Web.Areas.Customer.Helpers
 @inject SignInManager<ApplicationUser> SignInManager
@@ -10,6 +9,8 @@
 
 <head>
 
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -18,10 +19,14 @@
     <title>Web Shop Mobitela</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
 
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="~/css/vladosite.css" />
+
 
 </head>
 
@@ -49,7 +54,7 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-        
+
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <button class="btn btn-primary" id="menu-toggle">Izbornik</button>
@@ -91,14 +96,8 @@
     <!-- /#wrapper -->
     <!-- Bootstrap core JavaScript -->
     <!-- Footer -->
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/jquery/dist/jquery-ui.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-
-    @RenderSection("Scripts", required: false)
-
+    @*@RenderSection("Scripts", required: false)*@
+    
     <!-- Menu Toggle Script -->
     <script>
         $("#menu-toggle").click(function (e) {
@@ -106,6 +105,8 @@
             $("#wrapper").toggleClass("toggled");
         });
     </script>
+
+
 
 </body>
 

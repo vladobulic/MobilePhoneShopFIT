@@ -1,0 +1,39 @@
+﻿@model  IEnumerable<Web.Areas.Admin.Models.StavkeNarudzbeVM>
+                               
+@using Web.Areas.Admin.Models
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+<h1>Upravljanje narudzbama</h1>
+
+<table class="table table-striped">
+    <tr>
+        <td>Stavke narudzbe</td>
+        <td>  </td>
+        <td>  </td>
+        <td>  </td>
+        <td>  </td>
+
+    </tr>
+
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.Id</td>
+            <td>@x.Kolicina</td>
+            <td>@x.Cijena</td>
+            <td>@x.mobitel</td>
+            <td>@x.NarudzbaId</td>
+
+
+        </tr>
+    }
+
+</table>
+
+
+
+

@@ -8,5 +8,12 @@ namespace ServiceLayer.Interfaces
     {
         void InsertNarudzba(Narudzba narudzba, List<StavkaNarudzbe> stavke);
         List<Narudzba> GetNarudzbe(string userId);
+
+
+
+        IEnumerable<Narudzba> GetNarudzbe2();
+        Narudzba GetNarudzba(int id);
+        void DeleteNarudzba(Narudzba narudzba);
+        void SaveChanges(Narudzba narudzba);
     }
 }
