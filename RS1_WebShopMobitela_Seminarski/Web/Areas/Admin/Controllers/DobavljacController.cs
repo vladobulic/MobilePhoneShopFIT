@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataAccessLayer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Interfaces;
 using Web.Areas.Admin.Models;
@@ -9,6 +11,8 @@ using Web.Areas.Admin.Models;
 namespace Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+
+    [Authorize(Roles = RolesEnums.Administrator)]
     public class DobavljacController : Controller
     {
          IDobavljacService dobavljacService;

@@ -1,15 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DataAccessLayer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace RepositoryLayer
 {
     public static class SeedDb
     {
+        
+
         public static void Make(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Administrator>().HasData(new Administrator { Id = 1, Email = "admin@admin.com", Ime = "admin", IsSuperAdmin = true, Prezime = "admin" });
+           
 
             modelBuilder.Entity<Dobavljac>().HasData(new Dobavljac { Id = 1, Ime = "Samsung", Broj = "063323718", Mail = "dobavljac@dobavljac.com" });
             modelBuilder.Entity<Zupanija>().HasData(new Zupanija { Id = 1, Naziv = "Hercegovacko-Neretvanska" }, new Zupanija { Id = 2, Naziv = "Zapadno-Hercegovacka" });
@@ -456,14 +462,14 @@ namespace RepositoryLayer
             modelBuilder.Entity<Kupac>().HasData(new Kupac { Id = 1, Email = "kupac@kupac.com", BrojMobitela = "063525555", Ime = "kupac", Prezime = "kupic", BrojPokusaja = 0, DatumPokusaja = DateTime.Now, GradId = 1 });
             //modelBuilder.Entity<Komponente>().HasData();
             //modelBuilder.Entity<Narudzba>().HasData();
-            modelBuilder.Entity<Zaposlenik>().HasData(new Zaposlenik { Id = 1, isDeleted = false, Ime = "Zaposlenik", Prezime = "Zaposlenko", Email = "Zaposlenik@zaposlenik.com", Gradid = 1,  Ulica = "markovac" });
-            modelBuilder.Entity<Novosti>().HasData(new Novosti { Id = 1, Datum = DateTime.Now, Naslov = "Novi iPhone stigao u BiH", SadrzajTekst = "ok mobitel", ZaposlenikId = 1 });
+            
+           
 
-
+            
             //modelBuilder.Entity<Poruka>().HasData();
 
             //modelBuilder.Entity<Servis>().HasData();
-            
+
             //modelBuilder.Entity<SmsLog>().HasData();
             //modelBuilder.Entity<StavkaNarudzbe>().HasData();
             //modelBuilder.Entity<StavkaServisa>().HasData();
@@ -471,6 +477,77 @@ namespace RepositoryLayer
 
             //modelBuilder.Entity<BannedKupac>().HasData();
             //modelBuilder.Entity<Log>().HasData();
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole { Name = RolesEnums.Administrator, NormalizedName = RolesEnums.Administrator.ToUpper() });
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole { Name = RolesEnums.Kupac, NormalizedName = RolesEnums.Kupac.ToUpper() });
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole { Name = RolesEnums.Zaposlenik, NormalizedName = RolesEnums.Zaposlenik.ToUpper() });
+        }
+
+    }
+
+    public static class ApplicationDbInitializer
+    {
+        public static void SeedUsers(UserManager<ApplicationUser> userManager, ApplicationContext context)
+        {
+            
+            context.Database.Migrate();
+            if (userManager.FindByEmailAsync("admin@admin.com").Result == null)
+            {
+                ApplicationUser user = new ApplicationUser
+                {
+                    UserName = "admin@admin.com",
+                    Email = "admin@admin.com"
+                };
+
+                IdentityResult result = userManager.CreateAsync(user, "Password123!.").Result;
+
+                if (result.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user, RolesEnums.Administrator).Wait();
+                    Administrator admin = new Administrator()
+                    {
+                        ApplicationUser = user,
+                        Email = user.Email,
+                        Ime = "admin",
+                        Prezime = "admin",
+                        IsSuperAdmin = true
+                    };
+                    context.Administratori.Add(admin);
+                    context.SaveChanges();
+                }
+            }
+
+            if (userManager.FindByEmailAsync("zaposlenik@zaposlenik.com").Result == null)
+            {
+                ApplicationUser user = new ApplicationUser
+                {
+                    UserName = "zaposlenik@zaposlenik.com",
+                    Email = "zaposlenik@zaposlenik.com"
+                };
+
+                IdentityResult result = userManager.CreateAsync(user, "Password123!.").Result;
+
+
+                if (result.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user, RolesEnums.Zaposlenik).Wait();
+                    Zaposlenik zaposlenik = new Zaposlenik()
+                    {
+                        ApplicationUser = user,
+                        Email = user.Email,
+                        Ime = "admin",
+                        Prezime = "admin",
+                        isDeleted = false,
+                        Gradid = 1,
+                        Ulica = "Zuranj bb"
+                    };
+                    context.Zaposlenici.Add(zaposlenik);
+                    context.SaveChanges();
+
+                    var nekaNovost = new Novosti { Datum = DateTime.Now, Naslov = "Novi iPhone stigao u BiH", SadrzajTekst = "ok mobitel", ZaposlenikId = zaposlenik.Id };
+                    context.Novosti.Add(nekaNovost);
+                    context.SaveChanges();
+                }
+            }
         }
     }
 }

@@ -73,8 +73,8 @@ namespace Web
 
             services.AddIdentityCore<ApplicationUser>()
                .AddRoles<IdentityRole>()
-               .AddEntityFrameworkStores<ApplicationContext>()
                .AddSignInManager()
+               .AddEntityFrameworkStores<ApplicationContext>()
                .AddDefaultTokenProviders();
 
            
@@ -91,7 +91,7 @@ namespace Web
 
             services.ConfigureApplicationCookie(options =>
             {
-                options.LoginPath = $"/Identity/Account/Login";
+                options.LoginPath = $"/Admin/Account/Login";
                 options.LogoutPath = $"/Identity/Account/Logout";
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
             });
@@ -99,7 +99,7 @@ namespace Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<ApplicationUser> userManager, ApplicationContext context)
         {
             if (env.IsDevelopment())
             {
@@ -120,7 +120,7 @@ namespace Web
 
             app.UseAuthentication();
             app.UseAuthorization();
-            
+            ApplicationDbInitializer.SeedUsers(userManager, context);
 
             app.UseEndpoints(endpoints =>
             {

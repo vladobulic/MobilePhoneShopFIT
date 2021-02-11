@@ -10017,6 +10017,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
             "C:\\Users\\Vlado\\Desktop\\FIT 3\\RS1\\App\\webapp\\RS1_WebShopMobitela_Seminarski\\RepositoryLayer\\RepositoryLayer.csproj": {
               "projectPath": "C:\\Users\\Vlado\\Desktop\\FIT 3\\RS1\\App\\webapp\\RS1_WebShopMobitela_Seminarski\\RepositoryLayer\\RepositoryLayer.csproj"
@@ -10032,6 +10033,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Nexmo.Csharp.Client": {
             "target": "Package",
@@ -10053,7 +10055,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

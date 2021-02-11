@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RepositoryLayer.Migrations
 {
-    public partial class _initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -379,13 +379,13 @@ namespace RepositoryLayer.Migrations
                         column: x => x.DobavljacID,
                         principalTable: "Dobavljaci",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Komponente_TipKomponente_TipKomponenteId",
                         column: x => x.TipKomponenteId,
                         principalTable: "TipKomponente",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -704,9 +704,14 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Administratori",
-                columns: new[] { "Id", "ApplicationUserId", "Email", "Ime", "IsSuperAdmin", "Prezime" },
-                values: new object[] { 1, null, "admin@admin.com", "admin", true, "admin" });
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "f56237a4-a13c-41e0-9090-203eafe2f19e", "e62e7d44-5534-4d3c-95a7-a9c1f88e6390", "Administrator", "ADMINISTRATOR" },
+                    { "ddb38490-ac71-4327-a0ef-e1ccab666823", "0d2b462c-8747-4b01-9650-e0fc10529c3c", "Kupac", "KUPAC" },
+                    { "e70f730b-60fe-48c9-acac-1fb69250aabd", "5b8db3a2-d2b9-4283-9961-51dfd8911bf2", "Zaposlenik", "ZAPOSLENIK" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Dobavljaci",
@@ -725,21 +730,21 @@ namespace RepositoryLayer.Migrations
             migrationBuilder.InsertData(
                 table: "Popusti",
                 columns: new[] { "Id", "DatumDo", "DatumOd", "PostotakPopusta" },
-                values: new object[] { 1, new DateTime(2020, 7, 31, 12, 49, 32, 726, DateTimeKind.Local).AddTicks(1312), new DateTime(2020, 7, 31, 12, 49, 32, 722, DateTimeKind.Local).AddTicks(7406), 0.1f });
+                values: new object[] { 1, new DateTime(2020, 10, 9, 15, 42, 32, 172, DateTimeKind.Local).AddTicks(1096), new DateTime(2020, 10, 9, 15, 42, 32, 169, DateTimeKind.Local).AddTicks(1800), 0.1f });
 
             migrationBuilder.InsertData(
                 table: "Proizvodjaci",
                 columns: new[] { "Id", "Naziv" },
                 values: new object[,]
                 {
-                    { 1, "Samsung" },
+                    { 8, "YEZZ" },
+                    { 7, "CAT" },
+                    { 6, "Google" },
+                    { 5, "Nokia" },
                     { 2, "Apple" },
                     { 3, "Huawei" },
-                    { 4, "Xiaomi" },
-                    { 5, "Nokia" },
-                    { 6, "Google" },
-                    { 7, "CAT" },
-                    { 8, "YEZZ" }
+                    { 1, "Samsung" },
+                    { 4, "Xiaomi" }
                 });
 
             migrationBuilder.InsertData(
@@ -785,7 +790,7 @@ namespace RepositoryLayer.Migrations
             migrationBuilder.InsertData(
                 table: "Kupci",
                 columns: new[] { "Id", "ApplicationUserId", "BannedKupacId", "BrojMobitela", "BrojPokusaja", "DatumPokusaja", "Email", "GradId", "Ime", "Prezime" },
-                values: new object[] { 1, null, null, "063525555", 0, new DateTime(2020, 7, 31, 12, 49, 32, 728, DateTimeKind.Local).AddTicks(4996), "kupac@kupac.com", 1, "kupac", "kupic" });
+                values: new object[] { 1, null, null, "063525555", 0, new DateTime(2020, 10, 9, 15, 42, 32, 173, DateTimeKind.Local).AddTicks(8452), "kupac@kupac.com", 1, "kupac", "kupic" });
 
             migrationBuilder.InsertData(
                 table: "Slike",
@@ -793,36 +798,26 @@ namespace RepositoryLayer.Migrations
                 values: new object[,]
                 {
                     { 1, 1, 1, "/Customer/slike/samsung.jpg" },
-                    { 12, 12, 1, "/Customer/slike/yezz_classic_c221.jpg" },
-                    { 11, 11, 1, "/Customer/slike/catb26.jpg" },
-                    { 5, 5, 1, "/Customer/slike/pixel4-2.jpg" },
-                    { 14, 14, 1, "/Customer/slike/nokia42.jpg" },
-                    { 13, 13, 1, "/Customer/slike/nokia42.jpg" },
-                    { 4, 4, 1, "/Customer/slike/redminote.jpg" },
-                    { 10, 10, 1, "/Customer/slike/mate30pro.jpg" },
-                    { 8, 8, 1, "/Customer/slike/iphone_8.jpg" },
-                    { 7, 7, 1, "/Customer/slike/apple_iphone_xr.jpg" },
-                    { 6, 6, 1, "/Customer/slike/appiph11.jpg" },
-                    { 15, 15, 1, "/Customer/slike/nokia_210.png" },
-                    { 3, 3, 1, "/Customer/slike/samsung_galaxy_a30.jpg" },
                     { 2, 2, 1, "/Customer/slike/samsungS20.jpg" },
-                    { 9, 9, 1, "/Customer/slike/huawei_honor_9.jpg" }
+                    { 3, 3, 1, "/Customer/slike/samsung_galaxy_a30.jpg" },
+                    { 15, 15, 1, "/Customer/slike/nokia_210.png" },
+                    { 6, 6, 1, "/Customer/slike/appiph11.jpg" },
+                    { 7, 7, 1, "/Customer/slike/apple_iphone_xr.jpg" },
+                    { 8, 8, 1, "/Customer/slike/iphone_8.jpg" },
+                    { 9, 9, 1, "/Customer/slike/huawei_honor_9.jpg" },
+                    { 10, 10, 1, "/Customer/slike/mate30pro.jpg" },
+                    { 4, 4, 1, "/Customer/slike/redminote.jpg" },
+                    { 13, 13, 1, "/Customer/slike/nokia42.jpg" },
+                    { 14, 14, 1, "/Customer/slike/nokia42.jpg" },
+                    { 5, 5, 1, "/Customer/slike/pixel4-2.jpg" },
+                    { 11, 11, 1, "/Customer/slike/catb26.jpg" },
+                    { 12, 12, 1, "/Customer/slike/yezz_classic_c221.jpg" }
                 });
-
-            migrationBuilder.InsertData(
-                table: "Zaposlenici",
-                columns: new[] { "Id", "ApplicationUserId", "Email", "Gradid", "Ime", "Prezime", "Ulica", "isDeleted" },
-                values: new object[] { 1, null, "Zaposlenik@zaposlenik.com", 1, "Zaposlenik", "Zaposlenko", "markovac", false });
 
             migrationBuilder.InsertData(
                 table: "Komentari",
                 columns: new[] { "Id", "Datum", "IsDeleted", "KupacId", "MobitelId", "Sadrzaj" },
-                values: new object[] { 1, new DateTime(2020, 7, 31, 12, 49, 32, 727, DateTimeKind.Local).AddTicks(5831), false, 1, 1, null });
-
-            migrationBuilder.InsertData(
-                table: "Novosti",
-                columns: new[] { "Id", "Datum", "Naslov", "SadrzajTekst", "ZaposlenikId" },
-                values: new object[] { 1, new DateTime(2020, 7, 31, 12, 49, 32, 729, DateTimeKind.Local).AddTicks(1632), "Novi iPhone stigao u BiH", "ok mobitel", 1 });
+                values: new object[] { 1, new DateTime(2020, 10, 9, 15, 42, 32, 173, DateTimeKind.Local).AddTicks(1874), false, 1, 1, null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Administratori_ApplicationUserId",

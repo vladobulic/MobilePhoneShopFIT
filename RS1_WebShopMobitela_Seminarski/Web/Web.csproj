@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Customer\Data\" />
+    <Folder Include="wwwroot\Admin\" />
   </ItemGroup>
 
   <ItemGroup>

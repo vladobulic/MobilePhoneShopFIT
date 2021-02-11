@@ -8,6 +8,8 @@ namespace RepositoryLayer
 {
     public class ApplicationContext : IdentityDbContext<IdentityUser>
     {
+        
+
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
         }
@@ -54,4 +56,6 @@ namespace RepositoryLayer
 
 
     }
+
+
 }

@@ -10,8 +10,8 @@ using RepositoryLayer;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20200812212546_test")]
-    partial class test
+    [Migration("20201009134232_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,16 +48,6 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Administratori");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "admin@admin.com",
-                            Ime = "admin",
-                            IsSuperAdmin = true,
-                            Prezime = "admin"
-                        });
                 });
 
             modelBuilder.Entity("BannedKupac", b =>
@@ -184,7 +174,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            Datum = new DateTime(2020, 8, 12, 23, 25, 45, 473, DateTimeKind.Local).AddTicks(1504),
+                            Datum = new DateTime(2020, 10, 9, 15, 42, 32, 173, DateTimeKind.Local).AddTicks(1874),
                             IsDeleted = false,
                             KupacId = 1,
                             MobitelId = 1
@@ -272,7 +262,7 @@ namespace RepositoryLayer.Migrations
                             Id = 1,
                             BrojMobitela = "063525555",
                             BrojPokusaja = 0,
-                            DatumPokusaja = new DateTime(2020, 8, 12, 23, 25, 45, 473, DateTimeKind.Local).AddTicks(8181),
+                            DatumPokusaja = new DateTime(2020, 10, 9, 15, 42, 32, 173, DateTimeKind.Local).AddTicks(8452),
                             Email = "kupac@kupac.com",
                             GradId = 1,
                             Ime = "kupac",
@@ -347,6 +337,29 @@ namespace RepositoryLayer.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "f56237a4-a13c-41e0-9090-203eafe2f19e",
+                            ConcurrencyStamp = "e62e7d44-5534-4d3c-95a7-a9c1f88e6390",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        },
+                        new
+                        {
+                            Id = "ddb38490-ac71-4327-a0ef-e1ccab666823",
+                            ConcurrencyStamp = "0d2b462c-8747-4b01-9650-e0fc10529c3c",
+                            Name = "Kupac",
+                            NormalizedName = "KUPAC"
+                        },
+                        new
+                        {
+                            Id = "e70f730b-60fe-48c9-acac-1fb69250aabd",
+                            ConcurrencyStamp = "5b8db3a2-d2b9-4283-9961-51dfd8911bf2",
+                            Name = "Zaposlenik",
+                            NormalizedName = "ZAPOSLENIK"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -995,16 +1008,6 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("ZaposlenikId");
 
                     b.ToTable("Novosti");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Datum = new DateTime(2020, 8, 12, 23, 25, 45, 474, DateTimeKind.Local).AddTicks(2945),
-                            Naslov = "Novi iPhone stigao u BiH",
-                            SadrzajTekst = "ok mobitel",
-                            ZaposlenikId = 1
-                        });
                 });
 
             modelBuilder.Entity("OperativniSustav", b =>
@@ -1063,8 +1066,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            DatumDo = new DateTime(2020, 8, 12, 23, 25, 45, 472, DateTimeKind.Local).AddTicks(902),
-                            DatumOd = new DateTime(2020, 8, 12, 23, 25, 45, 469, DateTimeKind.Local).AddTicks(3420),
+                            DatumDo = new DateTime(2020, 10, 9, 15, 42, 32, 172, DateTimeKind.Local).AddTicks(1096),
+                            DatumOd = new DateTime(2020, 10, 9, 15, 42, 32, 169, DateTimeKind.Local).AddTicks(1800),
                             PostotakPopusta = 0.1f
                         });
                 });
@@ -1452,18 +1455,6 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("Gradid");
 
                     b.ToTable("Zaposlenici");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "Zaposlenik@zaposlenik.com",
-                            Gradid = 1,
-                            Ime = "Zaposlenik",
-                            Prezime = "Zaposlenko",
-                            Ulica = "markovac",
-                            isDeleted = false
-                        });
                 });
 
             modelBuilder.Entity("Zupanija", b =>
