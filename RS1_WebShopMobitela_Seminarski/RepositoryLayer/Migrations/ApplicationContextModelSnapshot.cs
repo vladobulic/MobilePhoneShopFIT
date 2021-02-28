@@ -172,7 +172,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            Datum = new DateTime(2020, 10, 9, 15, 42, 32, 173, DateTimeKind.Local).AddTicks(1874),
+                            Datum = new DateTime(2021, 2, 19, 1, 25, 7, 112, DateTimeKind.Local).AddTicks(4438),
                             IsDeleted = false,
                             KupacId = 1,
                             MobitelId = 1
@@ -260,7 +260,7 @@ namespace RepositoryLayer.Migrations
                             Id = 1,
                             BrojMobitela = "063525555",
                             BrojPokusaja = 0,
-                            DatumPokusaja = new DateTime(2020, 10, 9, 15, 42, 32, 173, DateTimeKind.Local).AddTicks(8452),
+                            DatumPokusaja = new DateTime(2021, 2, 19, 1, 25, 7, 113, DateTimeKind.Local).AddTicks(1283),
                             Email = "kupac@kupac.com",
                             GradId = 1,
                             Ime = "kupac",
@@ -335,29 +335,6 @@ namespace RepositoryLayer.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "f56237a4-a13c-41e0-9090-203eafe2f19e",
-                            ConcurrencyStamp = "e62e7d44-5534-4d3c-95a7-a9c1f88e6390",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        },
-                        new
-                        {
-                            Id = "ddb38490-ac71-4327-a0ef-e1ccab666823",
-                            ConcurrencyStamp = "0d2b462c-8747-4b01-9650-e0fc10529c3c",
-                            Name = "Kupac",
-                            NormalizedName = "KUPAC"
-                        },
-                        new
-                        {
-                            Id = "e70f730b-60fe-48c9-acac-1fb69250aabd",
-                            ConcurrencyStamp = "5b8db3a2-d2b9-4283-9961-51dfd8911bf2",
-                            Name = "Zaposlenik",
-                            NormalizedName = "ZAPOSLENIK"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1064,8 +1041,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            DatumDo = new DateTime(2020, 10, 9, 15, 42, 32, 172, DateTimeKind.Local).AddTicks(1096),
-                            DatumOd = new DateTime(2020, 10, 9, 15, 42, 32, 169, DateTimeKind.Local).AddTicks(1800),
+                            DatumDo = new DateTime(2021, 2, 19, 1, 25, 7, 111, DateTimeKind.Local).AddTicks(3589),
+                            DatumOd = new DateTime(2021, 2, 19, 1, 25, 7, 108, DateTimeKind.Local).AddTicks(6724),
                             PostotakPopusta = 0.1f
                         });
                 });

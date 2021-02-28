@@ -477,77 +477,77 @@ namespace RepositoryLayer
 
             //modelBuilder.Entity<BannedKupac>().HasData();
             //modelBuilder.Entity<Log>().HasData();
-            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole { Name = RolesEnums.Administrator, NormalizedName = RolesEnums.Administrator.ToUpper() });
-            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole { Name = RolesEnums.Kupac, NormalizedName = RolesEnums.Kupac.ToUpper() });
-            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole { Name = RolesEnums.Zaposlenik, NormalizedName = RolesEnums.Zaposlenik.ToUpper() });
+            //modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole { Name = RolesEnums.Administrator, NormalizedName = RolesEnums.Administrator.ToUpper() });
+            //modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole { Name = RolesEnums.Kupac, NormalizedName = RolesEnums.Kupac.ToUpper() });
+            //modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole { Name = RolesEnums.Zaposlenik, NormalizedName = RolesEnums.Zaposlenik.ToUpper() });
         }
 
     }
 
-    public static class ApplicationDbInitializer
-    {
-        public static void SeedUsers(UserManager<ApplicationUser> userManager, ApplicationContext context)
-        {
+    //public static class ApplicationDbInitializer
+    //{
+    //    public static void SeedUsers(UserManager<ApplicationUser> userManager, ApplicationContext context)
+    //    {
             
-            context.Database.Migrate();
-            if (userManager.FindByEmailAsync("admin@admin.com").Result == null)
-            {
-                ApplicationUser user = new ApplicationUser
-                {
-                    UserName = "admin@admin.com",
-                    Email = "admin@admin.com"
-                };
+    //        context.Database.Migrate();
+    //        if (userManager.FindByEmailAsync("admin@admin.com").Result == null)
+    //        {
+    //            ApplicationUser user = new ApplicationUser
+    //            {
+    //                UserName = "admin@admin.com",
+    //                Email = "admin@admin.com"
+    //            };
 
-                IdentityResult result = userManager.CreateAsync(user, "Password123!.").Result;
+    //            IdentityResult result = userManager.CreateAsync(user, "Password123!.").Result;
 
-                if (result.Succeeded)
-                {
-                    userManager.AddToRoleAsync(user, RolesEnums.Administrator).Wait();
-                    Administrator admin = new Administrator()
-                    {
-                        ApplicationUser = user,
-                        Email = user.Email,
-                        Ime = "admin",
-                        Prezime = "admin",
-                        IsSuperAdmin = true
-                    };
-                    context.Administratori.Add(admin);
-                    context.SaveChanges();
-                }
-            }
+    //            if (result.Succeeded)
+    //            {
+    //                userManager.AddToRoleAsync(user, RolesEnums.Administrator).Wait();
+    //                Administrator admin = new Administrator()
+    //                {
+    //                    ApplicationUser = user,
+    //                    Email = user.Email,
+    //                    Ime = "admin",
+    //                    Prezime = "admin",
+    //                    IsSuperAdmin = true
+    //                };
+    //                context.Administratori.Add(admin);
+    //                context.SaveChanges();
+    //            }
+    //        }
 
-            if (userManager.FindByEmailAsync("zaposlenik@zaposlenik.com").Result == null)
-            {
-                ApplicationUser user = new ApplicationUser
-                {
-                    UserName = "zaposlenik@zaposlenik.com",
-                    Email = "zaposlenik@zaposlenik.com"
-                };
+    //        if (userManager.FindByEmailAsync("zaposlenik@zaposlenik.com").Result == null)
+    //        {
+    //            ApplicationUser user = new ApplicationUser
+    //            {
+    //                UserName = "zaposlenik@zaposlenik.com",
+    //                Email = "zaposlenik@zaposlenik.com"
+    //            };
 
-                IdentityResult result = userManager.CreateAsync(user, "Password123!.").Result;
+    //            IdentityResult result = userManager.CreateAsync(user, "Password123!.").Result;
 
 
-                if (result.Succeeded)
-                {
-                    userManager.AddToRoleAsync(user, RolesEnums.Zaposlenik).Wait();
-                    Zaposlenik zaposlenik = new Zaposlenik()
-                    {
-                        ApplicationUser = user,
-                        Email = user.Email,
-                        Ime = "admin",
-                        Prezime = "admin",
-                        isDeleted = false,
-                        Gradid = 1,
-                        Ulica = "Zuranj bb"
-                    };
-                    context.Zaposlenici.Add(zaposlenik);
-                    context.SaveChanges();
+    //            if (result.Succeeded)
+    //            {
+    //                userManager.AddToRoleAsync(user, RolesEnums.Zaposlenik).Wait();
+    //                Zaposlenik zaposlenik = new Zaposlenik()
+    //                {
+    //                    ApplicationUser = user,
+    //                    Email = user.Email,
+    //                    Ime = "admin",
+    //                    Prezime = "admin",
+    //                    isDeleted = false,
+    //                    Gradid = 1,
+    //                    Ulica = "Zuranj bb"
+    //                };
+    //                context.Zaposlenici.Add(zaposlenik);
+    //                context.SaveChanges();
 
-                    var nekaNovost = new Novosti { Datum = DateTime.Now, Naslov = "Novi iPhone stigao u BiH", SadrzajTekst = "ok mobitel", ZaposlenikId = zaposlenik.Id };
-                    context.Novosti.Add(nekaNovost);
-                    context.SaveChanges();
-                }
-            }
-        }
-    }
+    //                var nekaNovost = new Novosti { Datum = DateTime.Now, Naslov = "Novi iPhone stigao u BiH", SadrzajTekst = "ok mobitel", ZaposlenikId = zaposlenik.Id };
+    //                context.Novosti.Add(nekaNovost);
+    //                context.SaveChanges();
+    //            }
+    //        }
+    //    }
+    //}
 }

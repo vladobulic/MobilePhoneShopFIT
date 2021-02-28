@@ -34,15 +34,15 @@ namespace Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<ApplicationContext>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<ApplicationContext>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("DefaultConnectionVlado")));
+           
+            services.AddDbContext<ApplicationContext>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             //services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<ApplicationContext>();
 
 
-
-
+           
             //register services
             services.AddTransient<IMobitelService, MobitelService>();
             services.AddTransient<IGradoviService, GradoviService>();
@@ -60,16 +60,25 @@ namespace Web
             services.AddTransient<IKomponenteService, KomponenteService>();
             services.AddTransient<ITipKomponenteService, TipKomponenteService>();
             services.AddTransient<IStavkeNarudzbeService, StavkeNarudzbeService>();
+            services.AddTransient<ISlikaService, SlikaService>();
+            services.AddTransient<IAdministratorService, AdministratorService>();
+
 
 
             // add our mail settings
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
             services.Configure<SmsSettings>(Configuration.GetSection("SmsSettings"));
 
+          
+
+
             services.AddMvc();
             services.AddSession();
             services.AddHttpContextAccessor();
-
+            //options =>
+            //{
+            //    options.SignIn.RequireConfirmedEmail = true;
+            //}
 
             services.AddIdentityCore<ApplicationUser>()
                .AddRoles<IdentityRole>()
@@ -77,7 +86,7 @@ namespace Web
                .AddEntityFrameworkStores<ApplicationContext>()
                .AddDefaultTokenProviders();
 
-           
+            
 
             services.AddAuthentication(o =>
             {
@@ -93,13 +102,13 @@ namespace Web
             {
                 options.LoginPath = $"/Admin/Account/Login";
                 options.LogoutPath = $"/Identity/Account/Logout";
-                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+                options.AccessDeniedPath = $"/Admin/Account/AccessDenied";
             });
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<ApplicationUser> userManager, ApplicationContext context)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -108,7 +117,8 @@ namespace Web
             else
             {
                 // custom exception handler for logging our users potential exceptions.
-                app.UseExceptionHandler("/Customer/Customer/Error");
+                //app.UseExceptionHandler("/Customer/Customer/Error").
+                   app.UseExceptionHandler("/Admin/Account/Error");
                 app.UseHsts();
             }
 
@@ -120,7 +130,7 @@ namespace Web
 
             app.UseAuthentication();
             app.UseAuthorization();
-            ApplicationDbInitializer.SeedUsers(userManager, context);
+            //ApplicationDbInitializer.SeedUsers(userManager, context);
 
             app.UseEndpoints(endpoints =>
             {

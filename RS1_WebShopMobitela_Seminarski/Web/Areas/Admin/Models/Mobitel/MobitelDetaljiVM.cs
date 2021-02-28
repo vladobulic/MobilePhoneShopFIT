@@ -31,16 +31,46 @@ namespace Web.Areas.Admin.Models
         public string Procesor { get; set; }
         public string Graficka { get; set; }
         public int StanjeNaSkladistu { get; set; }
+        public string PhotoPath { get; set; }
 
 
+
+
+        //public static List<MobitelDetaljiVM> ConvertToMobitelViewModel(IEnumerable<Mobiteli> mobiteli)
+        //{
+        //    // cijena je sa popustom ako je popust true. 
+        //    return mobiteli.Select(x =>
+        //        new MobitelDetaljiVM
+        //        {
+        //            Id = x.Id,
+        //            Naziv = x.Naziv,
+        //            DijagonalaEkrana = x.DijagonalaEkrana.ToString(),
+        //            Graficka = x.Graficka,
+        //            Megapikseli = x.Megapikseli.ToString(),
+        //            PopustId = x.PopustId,
+        //            Cijena = Converter.RoundToTwoDecimal(x.PopustId != null ? (x.Cijena - (x.Cijena * (double)x.Popust.PostotakPopusta)) : x.Cijena),
+        //            Procesor = x.Procesor,
+        //            Ram_Gb = x.Ram_Gb.ToString(),
+        //            StanjeNaSkladistu = x.StanjeNaSkladistu,
+        //            Tezina = x.Tezina.ToString(),
+        //            Rezolucija = x.Rezolucija,
+        //            PhotoPath = x.Slika.Select(x => x.Path).FirstOrDefault(),
+        //            Opis = x.Opis,
+        //            KratkiOpis = x.KratkiOpis
+        //            //Proizvodjac = x.Prozivodjac.Naziv
+        //        }
+        //    ).ToList();
+        //}
 
         public static MobitelDetaljiVM ConvertToMobitelViewModel(Mobiteli x)
         {
             float prikaz = 0;
+            
             if (x.Popust != null)
             {
-                 prikaz = x.Popust.PostotakPopusta;
+                prikaz = x.Popust.PostotakPopusta;
             }
+            
             // cijena je sa popustom ako je popust true. 
             return new MobitelDetaljiVM
             {
@@ -57,6 +87,7 @@ namespace Web.Areas.Admin.Models
                 Tezina = x.Tezina.ToString(),
                 Rezolucija = x.Rezolucija,
                 Opis = x.Opis,
+                PhotoPath = x.Slika.Select(x => x.Path).FirstOrDefault(),
                 KratkiOpis = x.KratkiOpis,
                 ProizvodjacId = x.ProizvodjacId,
                 Proizvodjac = x.Prozivodjac.Naziv,

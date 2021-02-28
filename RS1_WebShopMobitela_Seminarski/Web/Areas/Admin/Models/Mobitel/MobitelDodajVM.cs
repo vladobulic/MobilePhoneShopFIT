@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using ServiceLayer;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,12 @@ namespace Web.Areas.Admin.Models
 {
     public class MobitelDodajVM
     {
-        
+
         public int Id { get; set; }
         public string Naziv { get; set; }
 
         public int? ProizvodjacID { get; set; }
-        
+
         public List<SelectListItem> proizvodjaci { get; set; }
 
         public List<SelectListItem> popusti { get; set; }
@@ -25,7 +26,7 @@ namespace Web.Areas.Admin.Models
         public string KratkiOpis { get; set; }
         // cijena sa popustom ako popusta ima
         public double Cijena { get; set; }
-       public int? PopustId { get; set; }
+        public int? PopustId { get; set; }
 
         public float Megapikseli { get; set; }
         public float Ram_Gb { get; set; }
@@ -36,6 +37,7 @@ namespace Web.Areas.Admin.Models
         public string Procesor { get; set; }
         public string Graficka { get; set; }
         public int StanjeNaSkladistu { get; set; }
+        public IFormFile Photos { get;set; }
 
 
 
@@ -60,7 +62,7 @@ namespace Web.Areas.Admin.Models
                 DijagonalaEkrana = x.DijagonalaEkrana,
                 Graficka = x.Graficka,
                 Megapikseli = x.Megapikseli,
-                PopustId = (int)x.PopustId,
+                PopustId = x.PopustId,
                 Cijena = Converter.RoundToTwoDecimal(x.PopustId != null ? (x.Cijena - (x.Cijena * x.Popust.PostotakPopusta)) : x.Cijena),
                 Procesor = x.Procesor,
                 Ram_Gb = x.Ram_Gb,
@@ -70,11 +72,12 @@ namespace Web.Areas.Admin.Models
                 Opis = x.Opis,
                 KratkiOpis = x.KratkiOpis,
                 ProizvodjacID = x.ProizvodjacId,
-               
-               // proizvodjaci = 
 
 
-            };
+            // proizvodjaci = 
+
+
+        };
         }
     }
 

@@ -11,8 +11,8 @@
 <h4>MobitelDodajVM</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Dodaj">
+    <div  class="col-md-4">
+        <form asp-action="Dodaj" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 
@@ -31,12 +31,25 @@
                 <label class="control-label">Proizvodjaci</label>
                 <select asp-for="ProizvodjacID" asp-items="Model.proizvodjaci" class="form-control"></select>
                 @*
-                    <input asp-for="ProizvodjacID" class="form-control" />
-                    <span asp-validation-for="ProizvodjacID" class="text-danger"></span>*@
+            <input asp-for="ProizvodjacID" class="form-control" />
+            <span asp-validation-for="ProizvodjacID" class="text-danger"></span>*@
             </div>
 
+
+            <div class="form-group row">
+                
+                <div class="col-sm-10">
+                    <label asp-for="Photos" class="col-sm-2 col-form-label"></label>
+                    <div class="custom-file">
+                        <input asp-for="Photos" class="form-control custom-file-input" />
+                        <label class="custom-file-label">Choose File...</label>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="form-group">
-                <label asp-for="Opis" class="control-label"></label>
+                <label asp-for="Opis" class="col-sm-2 col-form-label"></label>
                 <input asp-for="Opis" class="form-control" />
                 <span asp-validation-for="Opis" class="text-danger"></span>
             </div>

@@ -2,14 +2,32 @@
 
 @{
     ViewData["Title"] = "Detalji";
+    var photoPath = "~/Admin/images/" + (Model.PhotoPath ?? "noimage.jpg");
+
+    if (photoPath.Contains("Customer"))
+        photoPath = Model.PhotoPath;
+    
+
+
+
+
 }
 
 <h1>Detalji</h1>
 
 <div>
-    <h4>MobitelDodajVM</h4>
+    
+
+    <h4>MobitelDetalji</h4>
     <hr />
+
+    <img class="card-img-top" src="@photoPath" asp-append-version="true" style='width: auto; height: 200px;' />
+    @*<img class="card-img-top" src="@photoPath2" asp-append-version="true" style='width: auto; height: 200px;' />*@
+    @*<div> <a href="#"><img src="@( "/Customer/slike/iphone.jpg")"></a></div>*@
     <dl class="row">
+
+
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Id)
         </dt>
@@ -46,7 +64,7 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Cijena)
         </dd>
-        
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PopustId)
         </dt>
