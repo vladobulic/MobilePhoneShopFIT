@@ -1,0 +1,79 @@
+﻿@model DodajServisViewModel
+
+
+@using System.Collections.Generic
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Identity
+@using DataAccessLayer
+
+
+
+@{
+    ViewData["Title"] = "Dodavanje servisa";
+}
+
+
+<div class="row">
+    <div class="col-md-8">
+        <section>
+            <form asp-controller="Servis" asp-action="DodajServis" method="post" class="form-horizontal" role="form">
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group row">
+                    <label for="example-datetime-local-input" class="col-2 col-form-label">Datum i vrijeme prijema</label>
+                    <div class="col-10">
+                        <input asp-for="DatumPrijema" class="form-control" type="datetime-local" value="time">
+                        <span asp-validation-for="DatumPrijema" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="example-datetime-local-input" class="col-2 col-form-label">Datum i vrijeme završetka</label>
+                    <div class="col-10">
+                        <input asp-for="DatumZavrsetka" class="form-control" type="datetime-local" value="time">
+                        <span asp-validation-for="DatumZavrsetka"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Opis</label>
+                    <div class="col-10">
+                        <input asp-for="Opis" class="form-control">
+                        <span asp-validation-for="Opis" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Cijena</label>
+                    <div class="col-10">
+                        <input asp-for="CijenaUkupno" class="form-control" />
+                        <span asp-validation-for="CijenaUkupno" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Zaposlenik</label>
+                    <div class="col-10">
+                        <select asp-for="ZaposlenikId" asp-items="@Model.zaposlenici" class="form-control"></select>
+                    </div>       
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="submit" class="btn btn-primary">Dodaj servis</button>
+                    </div>
+                </div>
+
+            </form>
+        </section>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

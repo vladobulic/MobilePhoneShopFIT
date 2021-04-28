@@ -488,7 +488,7 @@ namespace RepositoryLayer
     //{
     //    public static void SeedUsers(UserManager<ApplicationUser> userManager, ApplicationContext context)
     //    {
-            
+
     //        context.Database.Migrate();
     //        if (userManager.FindByEmailAsync("admin@admin.com").Result == null)
     //        {

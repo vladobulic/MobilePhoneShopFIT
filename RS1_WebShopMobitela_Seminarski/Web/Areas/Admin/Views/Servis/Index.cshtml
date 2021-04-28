@@ -1,0 +1,39 @@
+﻿@model List<DodajServisViewModel>
+
+<h2>Prikaz svih servisa</h2>
+
+
+<a asp-controller="Servis" asp-action="DodajServis" class="btn btn-success">Dodaj novi servis</a>
+<br />
+<br />
+
+<table class="table table-striped">
+    <tr>
+        <td>Datum prijema</td>
+        <td>Datum završetka</td>
+        <td>Opis</td>
+        <td>Cijena</td>
+        <td>Stanje servisa</td>
+        <td>Servis obavlja: </td>
+        <td>Akcije </td>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.DatumPrijema</td>
+            <td>@x.DatumZavrsetka</td>
+            <td>@x.Opis</td>
+            <td>@x.CijenaUkupno</td>
+            <td>@x.stanjeServisa</td>
+            <td>@x.ImeZaposlenika</td>
+            <td>
+                <a asp-controller="Servis" asp-action="DodajStavke" asp-route-id="@x.Id" class="btn btn-primary">Dodaj stavke servisa</a>
+                <a asp-controller="Servis" asp-action="DetaljiServisa" asp-route-id="@x.Id" class="btn btn-primary">Detalji</a>
+                <a asp-controller="Servis" asp-action="IzmjenuStatusSms" asp-route-id="@x.Id" class="btn btn-primary">Izmjeni status servisa</a>
+            </td>
+        </tr>
+    }
+
+
+</table>

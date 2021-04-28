@@ -26,14 +26,19 @@ namespace ServiceLayer.Classes
             return kupacRepository.GetAllQueryable().FirstOrDefault(x => x.ApplicationUser.Id == userId)?.Id ?? 0;
         }
 
-        public IEnumerable<Kupac> GetKupci()
+        public IQueryable<Kupac> GetKupci()
         {
-            return kupacRepository.GetAll();
+            return kupacRepository.GetAllQueryable();
         }
 
         public void InsertKupac(Kupac kupac)
         {
             kupacRepository.Insert(kupac);
+        }
+
+        public void SaveChanges(Kupac kupac)
+        {
+            kupacRepository.SaveChanges(kupac);
         }
     }
 }

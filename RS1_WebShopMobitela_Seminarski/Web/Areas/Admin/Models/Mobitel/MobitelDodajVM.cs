@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ServiceLayer;
 using System;
@@ -14,23 +15,28 @@ namespace Web.Areas.Admin.Models
     {
 
         public int Id { get; set; }
+        [Required]
         public string Naziv { get; set; }
 
         public int? ProizvodjacID { get; set; }
 
         public List<SelectListItem> proizvodjaci { get; set; }
 
+        public int? PopustId { get; set; }
         public List<SelectListItem> popusti { get; set; }
-
+        [Required]
         public string Opis { get; set; }
         public string KratkiOpis { get; set; }
         // cijena sa popustom ako popusta ima
+        [Required]
         public double Cijena { get; set; }
-        public int? PopustId { get; set; }
+        
+        
 
         public float Megapikseli { get; set; }
         public float Ram_Gb { get; set; }
-
+      
+        
         public int Tezina { get; set; }
         public string Rezolucija { get; set; }
         public float DijagonalaEkrana { get; set; }

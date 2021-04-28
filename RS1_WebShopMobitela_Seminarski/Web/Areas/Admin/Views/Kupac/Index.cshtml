@@ -1,0 +1,33 @@
+﻿@model List<KupacPregledViewModel>
+
+<h2>Prikaz svih kupaca</h2>
+
+<table class="table table-striped">
+    <tr>
+        <td>Ime</td>
+        <td>Prezime</td>
+        <td>Email</td>
+        <td>Broj mobitela</td>
+        <td>Grad</td>
+        <td>Akcije </td>
+    </tr>
+
+  
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.Ime</td>
+            <td>@x.Prezime</td>
+            <td>@x.Email</td>
+            <td>@x.brojMobitela</td>
+            <td>@x.grad</td>
+            <td>
+                
+                <a asp-controller="Kupac" asp-action="BanKupca" asp-route-id="@x.Id" class="btn btn-danger">Ban kupca</a>
+            </td>
+        </tr>
+    }
+
+
+</table>

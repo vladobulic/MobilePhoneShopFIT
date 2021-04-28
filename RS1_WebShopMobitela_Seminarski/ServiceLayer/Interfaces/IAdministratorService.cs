@@ -4,13 +4,14 @@ using System.Text;
 
 namespace ServiceLayer.Interfaces
 {
-    public interface IGradoviService
+    public interface IAdministratorService
     {
 
-        IEnumerable<Grad> GetGradovi();
-        Grad GetGrad(int id);
-        void InsertGrad(Grad grad);
-        void DeleteGrad(Grad grad);
-        void SaveChanges(Grad grad);
+        IEnumerable<Administrator> GetAdmini();
+        Administrator GetAdmin(int id);
+        void InsertAdmin(Administrator admin);
+        void DeleteAdmin(Administrator admin);
+        void SaveChanges(Administrator admin);
+        public int GetAdminByAspUserId(string userId);
     }
 }

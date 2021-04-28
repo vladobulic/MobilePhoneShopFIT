@@ -16,111 +16,110 @@
 <h1>Detalji</h1>
 
 <div>
-    
+
 
     <h4>MobitelDetalji</h4>
     <hr />
 
     <img class="card-img-top" src="@photoPath" asp-append-version="true" style='width: auto; height: 200px;' />
-    @*<img class="card-img-top" src="@photoPath2" asp-append-version="true" style='width: auto; height: 200px;' />*@
-    @*<div> <a href="#"><img src="@( "/Customer/slike/iphone.jpg")"></a></div>*@
-    <dl class="row">
+   
+        <dl class="row">
 
 
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt class="col-sm-2">
+                Naziv
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Naziv)
+            </dd>
+            <dt class="col-sm-2">
+                Proizvodac
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Proizvodjac)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Opis)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Opis)
+            </dd>
+            <dt class="col-sm-2">
+                Kratki opis
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.KratkiOpis)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Cijena)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Cijena)
+            </dd>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Naziv)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Naziv)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Proizvodjac)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Proizvodjac)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Opis)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Opis)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.KratkiOpis)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.KratkiOpis)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Cijena)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Cijena)
-        </dd>
+            <dt class="col-sm-2">
+                Popust
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.popustiPrikaz)
+            </dd>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PopustId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.popustiPrikaz)
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Megapikseli)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Megapikseli)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Ram_Gb)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Ram_Gb)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Tezina)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Tezina)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Rezolucija)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Rezolucija)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DijagonalaEkrana)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DijagonalaEkrana)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Procesor)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Procesor)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Graficka)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Graficka)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.StanjeNaSkladistu)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.StanjeNaSkladistu)
-        </dd>
-    </dl>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Megapikseli)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Megapikseli)
+            </dd>
+            <dt class="col-sm-2">
+                RAM
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Ram_Gb)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Tezina)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Tezina)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Rezolucija)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Rezolucija)
+            </dd>
+            <dt class="col-sm-2">
+                Dijagonala ekrana
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DijagonalaEkrana)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Procesor)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Procesor)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Graficka)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Graficka)
+            </dd>
+            <dt class="col-sm-2">
+                Stanje na skladistu
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.StanjeNaSkladistu)
+            </dd>
+        </dl>
+    </table>
 </div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { Id = Model.Id }, new { @class = "btn btn-primary" }) |

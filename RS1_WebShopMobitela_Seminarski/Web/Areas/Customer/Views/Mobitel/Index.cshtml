@@ -122,14 +122,18 @@
 
                     @foreach (var komentar in Model.Komentari)
                     {
+                        if (komentar.IsDeleted != true)
+                        {
+                            <div class="d-flex flex-row comment-row m-t-0">
+                                <div class="p-2"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583336/AAA/4.jpg" alt="user" width="50" class="rounded-circle"></div>
+                                <div class="comment-text w-100">
+                                    <h6 class="font-medium">@komentar.Kupac.Ime</h6> <span class="m-b-15 d-block">@komentar.Sadrzaj </span>
+                                    <div class="comment-footer"> <span class="text-muted float-right">@komentar.Datum.ToShortDateString()</span></div>
+                                </div>
+                            </div> <!-- Comment Row -->
+                        }
                         <!-- Comment Row -->
-                        <div class="d-flex flex-row comment-row m-t-0">
-                            <div class="p-2"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583336/AAA/4.jpg" alt="user" width="50" class="rounded-circle"></div>
-                            <div class="comment-text w-100">
-                                <h6 class="font-medium">@komentar.Kupac.Ime</h6> <span class="m-b-15 d-block">@komentar.Sadrzaj </span>
-                                <div class="comment-footer"> <span class="text-muted float-right">@komentar.Datum.ToShortDateString()</span></div>
-                            </div>
-                        </div> <!-- Comment Row -->
+
                     }
                 </div> <!-- Card -->
             </div>

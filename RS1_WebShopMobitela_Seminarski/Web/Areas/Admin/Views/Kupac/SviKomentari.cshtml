@@ -1,0 +1,33 @@
+﻿@model List<KomentariPregledViewModel>
+
+
+<h3>Komentari: </h3>
+<table class="table table-striped">
+    <tr>
+        <td>Sadrzaj</td>
+        <td>Datum</td>
+        <td>Obrisan?</td>
+        <td>Mobitel</td>
+        <td>Kupac</td>
+        <td>Akcije </td>
+    </tr>
+
+
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.sadrzaj</td>
+            <td>@x.datum</td>
+            <td>@x.isDeleted</td>
+            <td>@x.nazivMobitela</td>
+            <td>@x.imeKupca</td>
+            <td>
+
+                <a asp-controller="Kupac" asp-action="ObrisiKomentar" asp-route-id="@x.Id" class="btn btn-danger">Obrisi komentar</a>
+            </td>
+        </tr>
+    }
+
+
+</table>

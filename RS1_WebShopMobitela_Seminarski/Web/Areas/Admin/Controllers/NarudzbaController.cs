@@ -33,8 +33,6 @@ namespace Web.Areas.Admin.Controllers
         public IActionResult Detalji(int Id)
         {
             var stavka = stavkeNarudzbaService.GetStavkeNarudzbe().Where(x => x.NarudzbaId == Id).ToList();
-
-
             var model = StavkeNarudzbeVM.ConvertToStavkeNarudzbeViewModel(stavka);
 
 

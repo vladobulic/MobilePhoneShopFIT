@@ -30,9 +30,10 @@ namespace Web.Areas.Admin.Controllers
         private readonly IAdministratorService administratorService;
         private readonly ILogService logService;
         private readonly IEmailService emailService;
+        private readonly IZaposlenikService zaposlenikService;
+        
 
-
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> _signInManager, RoleManager<IdentityRole> roleManager,  IAdministratorService administratorService, IEmailService emailService, ILogService logService)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> _signInManager, RoleManager<IdentityRole> roleManager,  IAdministratorService administratorService, IEmailService emailService, ILogService logService, IZaposlenikService zaposlenikService)
         {
             this.emailService = emailService;
             _userManager = userManager;
@@ -40,6 +41,8 @@ namespace Web.Areas.Admin.Controllers
             this._roleManager = roleManager;
             this.administratorService = administratorService;
             this.logService = logService;
+            this.zaposlenikService = zaposlenikService;
+            
         }
 
         [HttpGet]
@@ -56,6 +59,13 @@ namespace Web.Areas.Admin.Controllers
         };
             
             return View(model);
+        }
+
+           public IActionResult SviAdminiF()
+        {
+          
+            var admini = administratorService.GetAdmini().Select(x => SviAdmini.ConvertTo(x)).ToList();
+            return View(admini);
         }
 
         [HttpPost]
@@ -91,17 +101,35 @@ namespace Web.Areas.Admin.Controllers
 
                     if (model.ImeRole != null && (model.ImeRole == "Admin" || model.ImeRole == "admin"))
                     {
-                        
-                                      Administrator admin = new Administrator()
-                                       {
-                                            ApplicationUser = user,
-                                            Email = user.Email,
-                                            Ime = "admin",
-                                            Prezime = "admin",
-                                            IsSuperAdmin = true
-                                        };
+
+                        Administrator admin = new Administrator()
+                        {
+                            ApplicationUser = user,
+                            Email = user.Email,
+                            Ime = "admin",
+                            Prezime = "admin",
+                            IsSuperAdmin = true,
+
+                        };
                         result = await _userManager.AddToRoleAsync(user, model.ImeRole);
                         administratorService.InsertAdmin(admin);
+                    }
+
+                    if (model.ImeRole != null && (model.ImeRole == "Zaposlenik" || model.ImeRole == "zaposlenik"))
+                    {
+
+                        Zaposlenik zaposlenik = new Zaposlenik()
+                        {
+                            ApplicationUser = user,
+                            Email = user.Email,
+                            Ime = "zaposlenik",
+                            Prezime = "zaposlenik",
+                            isDeleted = false,
+                            Gradid = 1,
+                            
+                        };
+                        result = await _userManager.AddToRoleAsync(user, model.ImeRole);
+                        zaposlenikService.InsertZaposlenik(zaposlenik);
                     }
 
 
@@ -196,7 +224,7 @@ namespace Web.Areas.Admin.Controllers
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
 
-            //throw new Exception("Error during login");
+            //throw new Exception("TestPoruka");
 
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
@@ -220,10 +248,7 @@ namespace Web.Areas.Admin.Controllers
                     
                     return RedirectToAction("Index", "Home");
                 }
-                //if (result.RequiresTwoFactor)
-                //{
-                //    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                //}
+               
                
                 
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
@@ -232,6 +257,103 @@ namespace Web.Areas.Admin.Controllers
             }
 
             // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Find the user by email
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                // If the user is found AND Email is confirmed
+                if (user != null /*&& await _userManager.IsEmailConfirmedAsync(user)*/)
+                {
+                    // Generate the reset password token
+                    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+                    // Build the password reset link
+                    var passwordResetLink = Url.Action("ResetPassword", "Account",
+                            new { email = model.Email, token = token }, Request.Scheme);
+
+                    MailRequest mail = new MailRequest
+                    {
+                        Subject = "Password reset",
+                        Body = "Please reset your password by clicking this link: <a href =\"" + passwordResetLink + "\">link</a>",
+                        ToEmail = model.Email
+                    };
+
+
+                    // Send  the password reset link to email
+                   await emailService.SendEmailAsync(mail);
+                   
+
+                    // Send the user to Forgot Password Confirmation view
+                    return View("ForgotPasswordConfirmation");
+                }
+
+                // To avoid account enumeration and brute force attacks, don't
+                // reveal that the user does not exist or is not confirmed
+                return View("ForgotPasswordConfirmation");
+            }
+
+            return View(model);
+        }
+
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ResetPassword(string token, string email)
+        {
+          
+            if (token == null || email == null)
+            {
+                ModelState.AddModelError("", "Invalid password reset token");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Find the user by email
+                var user = await _userManager.FindByEmailAsync(model.Email);
+
+                if (user != null)
+                {
+                    // reset the user password
+                    var result = await _userManager.ResetPasswordAsync(user, model.Token, model.Password);
+                    if (result.Succeeded)
+                    {
+                        return View("ResetPasswordConfirmation");
+                    }
+                    // Display validation errors. For example, password reset token already
+                    // used to change the password or password complexity rules not met
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                    return View(model);
+                }
+
+                // To avoid account enumeration and brute force attacks, don't
+                // reveal that the user does not exist
+                return View("ResetPasswordConfirmation");
+            }
+            // Display validation errors if model state is not valid
             return View(model);
         }
 

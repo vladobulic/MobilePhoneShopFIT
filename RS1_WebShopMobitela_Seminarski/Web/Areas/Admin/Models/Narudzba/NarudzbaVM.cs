@@ -36,23 +36,27 @@ namespace Web.Areas.Admin.Models
 
         public static NarudzbaVM ConvertToNarudzbaViewModel(Narudzba x)
         {
-            return new NarudzbaVM
-            {
-                Id = x.Id,
-                UkupnaCijena = x.UkupnaCijena,
-                Datum = x.Datum,
-                Stanje = x.Stanje,
-                KontaktTelefon = x.KontaktTelefon,
-                KupacId = x.KupacId,
-                Opcina = x.Opcina,
-                Kanton = x.Kanton,
-                PostanskiBroj = x.PostanskiBroj,
-                Ulica  = x.Ulica,
-                ZaposlenikId = x.ZaposlenikId,
-                zaposlenik = x.Zaposlenik.Ime + " " + x.Zaposlenik.Prezime,
-                kupac = x.Kupac.Ime + " " + x.Kupac.Prezime
-            };
-        }
+            
+                return new NarudzbaVM
+                {
+                    
+                    Id = x.Id,
+                    UkupnaCijena = x.UkupnaCijena,
+                    Datum = x.Datum,
+                    Stanje = x.Stanje,
+                    KontaktTelefon = x.KontaktTelefon,
+                    KupacId = x.KupacId,
+                    Opcina = x.Opcina,
+                    Kanton = x.Kanton,
+                    PostanskiBroj = x.PostanskiBroj,
+                    Ulica = x.Ulica,
+                    //ZaposlenikId = x.ZaposlenikId,
+                    //zaposlenik = x.Zaposlenik.Ime + " " + x.Zaposlenik.Prezime,
+                    kupac = x.Kupac.Ime + " " + x.Kupac.Prezime
+                };
+            }
+          
+        
         
     }
 }

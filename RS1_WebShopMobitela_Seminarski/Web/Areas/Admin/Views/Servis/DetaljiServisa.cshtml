@@ -1,0 +1,23 @@
+﻿@model List<StavkaServisaViewModel>
+
+<h2>Prikaz svih servisa</h2>
+
+<table class="table table-striped">
+    <tr>
+        <td>Cijena</td>
+        <td>Ime</td>
+        <td>Komponenta</td>
+       
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.cijena</td>
+            <td>@x.Ime</td>
+            <td>@x.nazivKomponente</td>
+        </tr>
+    }
+
+
+</table>

@@ -26,5 +26,22 @@ namespace ServiceLayer.Classes
         {
             komentarRepository.Insert(komentar);
         }
+        public void DeleteKomentar(Komentar komentar)
+        {
+            komentarRepository.Delete(komentar);
+        }
+        public Komentar GetKomentar(int id)
+        {
+         return   komentarRepository.Get(id);
+        }
+        public IEnumerable<Komentar> GetKomentari()
+        {
+            return komentarRepository.GetAll();
+        }
+
+        public void SaveChanges(Komentar komentar)
+        {
+            komentarRepository.SaveChanges(komentar);
+        }
     }
 }

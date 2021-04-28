@@ -11,7 +11,7 @@ using Web.Areas.Admin.Models;
 namespace Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdministrationController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
@@ -30,7 +30,7 @@ namespace Web.Areas.Admin.Controllers
             var users = userManager.Users;
             return View(users);
         }
-
+          
         [HttpGet]
         public async Task<IActionResult> EditUser(string id)
         {

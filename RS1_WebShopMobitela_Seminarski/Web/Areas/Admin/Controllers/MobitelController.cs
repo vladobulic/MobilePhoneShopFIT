@@ -16,6 +16,7 @@ using Web.Areas.Customer.Models;
 namespace Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin, Zaposlenik")]
     public class MobitelController : Controller
     {
         IMobitelService mobitelService;
@@ -56,74 +57,83 @@ namespace Web.Areas.Admin.Controllers
             proizvodjaci = proizvodjacService.GetProizvodjaci().Select(o => new SelectListItem { Value = o.Id.ToString(), Text = o.Naziv }).Distinct().ToList(),
                 
             popusti = popustiService.GetPopusti().Select(o => new SelectListItem { Value = o.Id.ToString(), Text = o.PostotakPopusta.ToString() }).ToList(),
-               
-           
+             
+
 
         };
-            model.popusti.Insert(0, new SelectListItem { Value = null, Text = "Bez popusta", });
+            
+
             return View(model);
         }
         [HttpPost]
         public IActionResult Dodaj(MobitelDodajVM model)
         {
-            Mobiteli mobitel;
+            
 
-           
+            if (ModelState.IsValid)
+            {
+
+                Mobiteli mobitel;
+
+
 
                 //proizvodjacService.GetProizvodjaci().Select(o => new SelectListItem { Value = o.Id.ToString(), Text = o.Naziv }).Distinct().ToList();
 
-            if (model.Id == 0)
-            {
-                //dodavanje
-                mobitel = new Mobiteli();
-                mobitelService.InsertMobitel(mobitel);
+                if (model.Id == 0)
+                {
+                    //dodavanje
+                    mobitel = new Mobiteli();
+                    mobitelService.InsertMobitel(mobitel);
 
-            }
-            else
-            {
-                mobitel = mobitelService.GetMobitel(model.Id);
-                //editiranje
+                }
+                else
+                {
+                    mobitel = mobitelService.GetMobitel(model.Id);
+                    //editiranje
+                }
+
+
+
+
+                mobitel.Naziv = model.Naziv;
+                mobitel.DijagonalaEkrana = model.DijagonalaEkrana;
+                mobitel.Graficka = model.Graficka;
+                mobitel.Megapikseli = model.Megapikseli;
+                mobitel.PopustId = model.PopustId;
+                mobitel.Cijena = model.Cijena;//Converter.RoundToTwoDecimal(x.PopustId != null ? (x.Cijena - (x.Cijena * (double)x.Popust.PostotakPopusta)) : x.Cijena),
+                mobitel.Procesor = model.Procesor;
+                mobitel.Ram_Gb = model.Ram_Gb;
+                mobitel.StanjeNaSkladistu = model.StanjeNaSkladistu;
+                mobitel.Tezina = model.Tezina;
+                mobitel.Rezolucija = model.Rezolucija;
+                mobitel.Opis = model.Opis;
+                mobitel.KratkiOpis = model.KratkiOpis;
+                mobitel.ProizvodjacId = model.ProizvodjacID;
+
+                string uniqueFileName = null;
+
+
+                Slika slika;
+                if (model.Photos != null)
+                {
+                    slika = new Slika();
+                    string uploadFolder = Path.Combine(hostingEnvironment.WebRootPath, "Admin/images");
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photos.FileName;
+                    string filePath = Path.Combine(uploadFolder, uniqueFileName);
+                    model.Photos.CopyTo(new FileStream(filePath, FileMode.Create));
+                    slika.Order = 1;
+                    slika.Path = uniqueFileName;
+                    slika.MobitelId = mobitel.Id;
+                    slikaService.InsertSlika(slika);
+
+                }
+
+                mobitelService.saveChanges2();
+
+                return RedirectToAction("Prikaz");
             }
             
-
-           
-            
-                   mobitel.Naziv = model.Naziv;
-                   mobitel.DijagonalaEkrana = model.DijagonalaEkrana;
-                   mobitel.Graficka = model.Graficka;
-                   mobitel.Megapikseli = model.Megapikseli;
-                   mobitel.PopustId = model.PopustId;
-                   mobitel.Cijena = model.Cijena;//Converter.RoundToTwoDecimal(x.PopustId != null ? (x.Cijena - (x.Cijena * (double)x.Popust.PostotakPopusta)) : x.Cijena),
-                   mobitel.Procesor = model.Procesor;
-                   mobitel.Ram_Gb = model.Ram_Gb;
-                   mobitel.StanjeNaSkladistu = model.StanjeNaSkladistu;
-                   mobitel.Tezina = model.Tezina;
-                   mobitel.Rezolucija = model.Rezolucija;
-                   mobitel.Opis = model.Opis;
-                   mobitel.KratkiOpis = model.KratkiOpis;
-                   mobitel.ProizvodjacId = model.ProizvodjacID;
-
-                   string uniqueFileName = null;
-
-
-            Slika slika;
-            if (model.Photos != null)
-            {
-                slika = new Slika();
-                string uploadFolder = Path.Combine(hostingEnvironment.WebRootPath, "Admin/images");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photos.FileName;
-                string filePath = Path.Combine(uploadFolder, uniqueFileName);
-                model.Photos.CopyTo(new FileStream(filePath, FileMode.Create));
-                slika.Order = 1;
-                slika.Path = uniqueFileName;
-                slika.MobitelId = mobitel.Id;
-                slikaService.InsertSlika(slika);
-                
-            }
-
-            mobitelService.saveChanges2();
-                    
-            return RedirectToAction("Prikaz");
+            return View(model);
         }
 
         public IActionResult Edit(int id)

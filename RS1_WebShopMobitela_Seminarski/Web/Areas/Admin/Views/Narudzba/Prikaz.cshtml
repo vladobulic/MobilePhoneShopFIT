@@ -6,44 +6,30 @@
     ViewData["Title"] = "Index";
 
 }
-<h1>Upravljanje narudzbama</h1>
+
 
 <table class="table table-striped">
     <tr>
-        <td>Ukupna cijena</td>
+       
         <td>Datum</td>
-        <td>Stanje</td>
+ 
         <td>Kontakt telefon</td>
         <td>Ukupna cijena</td>
         <td>Kupac</td>
-        <td>Opcina</td>
-        <td>Kanton</td>
-        <td>Postanski broj</td>
-        <td>Ulica</td>
-        <td>Zaposlenik</td>
-        <td>Stanje</td>
+        
         <td>Akcije</td>
     </tr>
 
     @foreach (var x in Model)
     {
 <tr>
-    <td>@x.UkupnaCijena</td>
+
     <td>@x.Datum</td>
-    <td>@x.Stanje</td>
     <td>@x.KontaktTelefon</td>
     <td>@x.UkupnaCijena</td>
     <td>@x.kupac</td>
-    <td>@x.Opcina</td>
-    <td>@x.Kanton</td>
-    <td>@x.PostanskiBroj</td>
-    <td>@x.Ulica</td>
-    <td>@x.zaposlenik</td>
-    <td>@x.Stanje</td>
 
     <td>
-        @*<a href="/Admin/Narudzba/Obrisi?Id=@x.Id" class="btn btn-danger">Obrisi</a>
-        <a href="/Admin/Narudzba/Edit?Id=@x.Id" class="btn btn-primary">Edit</a>*@
         @Html.ActionLink("Detalji", "Detalji", new { id = x.Id }, new { @class = "btn btn-primary" })
     </td>
 </tr>

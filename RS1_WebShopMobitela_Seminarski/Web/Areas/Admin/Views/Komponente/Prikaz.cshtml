@@ -2,14 +2,15 @@
 
 
 @{
-    ViewData["Title"] = "View";
+    ViewData["Title"] = "Upravljanje komponentama";
 }
 <br />
-<a href="/Admin/TipKomponente/Prikaz">Pregled tipova komponenti</a>
-<div>
-    <a asp-action="Dodaj" class="btn btn-success">Dodaj komponentu</a>
-</div>
-<h1>View</h1>
+<a href="/Admin/TipKomponente/Prikaz" class="btn btn-success">Pregled tipova komponenti</a> 
+<br />
+<br />
+<a asp-action="Dodaj" class="btn btn-success">Dodaj komponentu</a>
+
+
 
 <table class="table table-striped">
     <tr>
@@ -39,4 +40,3 @@
 
 </table>
 
-<a asp-action="Prikaz">Povratak</a>

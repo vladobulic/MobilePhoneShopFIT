@@ -46,7 +46,7 @@ namespace RepositoryLayer
                 relationship.DeleteBehavior = DeleteBehavior.Restrict; 
             }
             // seed initial db with data.
-            //SeedDb.Make(modelBuilder);
+            SeedDb.Make(modelBuilder);
             // add foreign key to aspnetusers table to match our existing users in the db.
             modelBuilder.Entity<Administrator>().HasOne(x => x.ApplicationUser).WithMany(x => x.Administratori);
             modelBuilder.Entity<Zaposlenik>().HasOne(x => x.ApplicationUser).WithMany(x => x.Zaposlenici);

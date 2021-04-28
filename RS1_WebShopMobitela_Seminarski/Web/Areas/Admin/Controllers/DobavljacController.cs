@@ -10,9 +10,8 @@ using Web.Areas.Admin.Models;
 
 namespace Web.Areas.Admin.Controllers
 {
+   // [Authorize(Roles = RolesEnums.Administrator)]
     [Area("Admin")]
-
-    [Authorize(Roles = RolesEnums.Administrator)]
     public class DobavljacController : Controller
     {
          IDobavljacService dobavljacService;

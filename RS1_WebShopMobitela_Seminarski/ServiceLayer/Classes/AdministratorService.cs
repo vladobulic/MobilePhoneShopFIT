@@ -1,7 +1,9 @@
-﻿using RepositoryLayer;
+﻿using DataAccessLayer;
+using RepositoryLayer;
 using ServiceLayer.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ServiceLayer
@@ -14,7 +16,7 @@ namespace ServiceLayer
         {
             this.adminRepository = adminRepository;
         }
-
+       
         public void DeleteAdmin(Administrator admin)
         {
             adminRepository.Delete(admin);
@@ -24,10 +26,13 @@ namespace ServiceLayer
         {
             return adminRepository.Get(id);
         }
-
+        public int GetAdminByAspUserId(string userId)
+        {
+            return adminRepository.GetAllQueryable().FirstOrDefault(x => x.ApplicationUser.Id == userId)?.Id ?? 0;
+        }
         public IEnumerable<Administrator> GetAdmini()
         {
-            return adminRepository.GetAll();
+            return adminRepository.GetAllQueryable();
         }
         public void InsertAdmin(Administrator admin)
         {

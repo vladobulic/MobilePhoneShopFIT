@@ -1,0 +1,63 @@
+﻿@model List<PregledPorukaViewModel>
+@using Microsoft.AspNetCore.Identity
+@using DataAccessLayer
+@inject UserManager<ApplicationUser> usermanager
+@inject SignInManager<ApplicationUser> SignInManager
+
+<h2>Prikaz svih poruka</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+
+            <th scope="col">Subjekt</th>
+            <th scope="col">Poruka</th>
+            <th scope="col">Poslao: </th>
+            <th scope="col">Prima:</th>
+            <th scope="col">Vrijeme slanja</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+
+                <td>@x.subjekt</td>
+                <td>@x.sadrzaj</td>
+                <td>
+                    @if (x.procitano == false)
+                        @x.ImeAdmina
+                        else
+                        {
+                            @x.ImeZaposlenika
+                        }
+                </td>
+                <td>
+                    @if (x.procitano != true)
+                        @x.ImeZaposlenika
+                        else
+                        {
+                            @x.ImeAdmina
+                        }
+                </td>
+                <td>@x.vrijemeslanja</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+{
+    <a asp-controller="Poruka" asp-action="PosaljiPorukuAdmin" class="btn btn-primary">Nova poruka</a>
+}
+
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Zaposlenik"))
+{
+    <a asp-controller="Poruka" asp-action="PosaljiPorukuZaposlenik" class="btn btn-primary">Nova poruka</a>
+}
+
+
+
+
+

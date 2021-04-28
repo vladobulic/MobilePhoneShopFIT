@@ -1,14 +1,58 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-<p>Admin area vlado</p>
-<a href="/Admin/Mobitel/Prikaz">Mobiteli</a>
-<a href="/Admin/Novosti/Index">Novosti</a>
-<a href="/Admin/Novosti/Dodaj">Dodaj novost</a>
-<a href="/Admin/Grad/Index">Pregled gradova</a>
-<a href="/Admin/Zupanija/Prikaz">Pregled zupanija</a>
-<a href="/Admin/Dobavljac/Prikaz">Pregled dobavljaca</a>
-<a href="/Admin/Komponente/Prikaz">Pregled komponente</a>
-<a href="/Admin/Narudzba/Prikaz">Pregled narudzbi</a>
+﻿@using System.Collections.Generic
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Identity
+@using DataAccessLayer
+@inject SignInManager<ApplicationUser> SignInManager
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-blue order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20"> <a asp-controller="Servis" asp-action="Index" style="color:white">Pregled svih servisa</a></h6>
+                    <h2 class="text-right"><i class="fa fa-wrench f-left"></i></h2><br /><br />
+                    <p class="m-b-0"><span class="f-right"> </span>Dodavanje, izmjena, slanje SMS</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-green order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20"> <a asp-controller="Kupac" asp-action="Index" style="color:white">Kupci</a></h6>
+                    <h2 class="text-right"><i class="fa fa-users f-left"></i></h2><br /><br />
+                    <p class="m-b-0"><span class="f-right"> </span>Baza kupaca</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-yellow order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20"> <a asp-controller="Kupac" asp-action="SviKomentari" style="color:white">Komentari</a></h6>
+                    <h2 class="text-right"><i class="fa fa-comments-o f-left"></i></h2><br /><br />
+                    <p class="m-b-0"><span class="f-right"> </span>Upravljanje komentarima</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-blue order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20"> <a asp-controller="Narudzba" asp-action="Prikaz" style="color:white">Narudzbe</a></h6>
+                    <h2 class="text-right"><i class="fa fa-mobile f-left"></i></h2><br /><br />
+                    <p class="m-b-0"><span class="f-right"> </span>Upravljanje narudzbama</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

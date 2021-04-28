@@ -19,6 +19,7 @@ using ServiceLayer.Classes;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using ServiceLayer.Classes.Helper;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Web
 {
@@ -36,10 +37,14 @@ namespace Web
         {
            
             services.AddDbContext<ApplicationContext>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            
+
+            //services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+           // services.BuildServiceProvider().GetService<ApplicationContext>().Database.Migrate();
+
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             //services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<ApplicationContext>();
+            // .AddEntityFrameworkStores<ApplicationContext>();
 
 
            
@@ -62,14 +67,17 @@ namespace Web
             services.AddTransient<IStavkeNarudzbeService, StavkeNarudzbeService>();
             services.AddTransient<ISlikaService, SlikaService>();
             services.AddTransient<IAdministratorService, AdministratorService>();
-
+            services.AddTransient<IServisService, ServisService>();
+            services.AddTransient<IStavkaServisService, StavkaServisService>();
+            services.AddTransient<IZaposlenikService, ZaposlenikService>();
+            services.AddTransient<IBannedKupacService, BannedKupacService>();
+            services.AddTransient<IPorukaService, PorukaService>();
 
 
             // add our mail settings
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
-            services.Configure<SmsSettings>(Configuration.GetSection("SmsSettings"));
+            //services.Configure<SmsSettings>(Configuration.GetSection("SmsSettings"));
 
-          
 
 
             services.AddMvc();
@@ -86,8 +94,23 @@ namespace Web
                .AddEntityFrameworkStores<ApplicationContext>()
                .AddDefaultTokenProviders();
 
+
+            //services.AddIdentityCore<ApplicationUser>(options =>
+            //{
+            //    options.SignIn.RequireConfirmedAccount = true;
+
+            //})
+            //   .AddRoles<IdentityRole>()
+            //   .AddSignInManager()
+            //   .AddEntityFrameworkStores<ApplicationContext>()
+            //   .AddDefaultTokenProviders();
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
             
 
+            services.AddControllers(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
             services.AddAuthentication(o =>
             {
                 o.DefaultScheme = IdentityConstants.ApplicationScheme;
@@ -101,7 +124,7 @@ namespace Web
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = $"/Admin/Account/Login";
-                options.LogoutPath = $"/Identity/Account/Logout";
+                options.LogoutPath = $"/Admin/Account/Logout";
                 options.AccessDeniedPath = $"/Admin/Account/AccessDenied";
             });
 
@@ -112,7 +135,8 @@ namespace Web
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
+                app.UseExceptionHandler("/Admin/Account/Error");
             }
             else
             {
@@ -121,7 +145,7 @@ namespace Web
                    app.UseExceptionHandler("/Admin/Account/Error");
                 app.UseHsts();
             }
-
+          
             app.UseHttpsRedirection();
             app.UseSession();
             app.UseStaticFiles();
@@ -138,6 +162,13 @@ namespace Web
                 endpoints.MapControllerRoute(
                     name: "Admin",
                     pattern: "{area}/{controller=Home}/{action=Index}/{id?}");
+
+                //app.UseEndpoints(endpoints =>
+                //{
+                //    endpoints.MapControllerRoute(
+                //        name: "default",
+                //        pattern: "{controller=Sms}/{action=Index}/{id?}");
+                //});
 
                 endpoints.MapControllerRoute(
                    name: "Customer",
